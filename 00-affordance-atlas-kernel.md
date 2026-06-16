@@ -37,7 +37,7 @@ It may use all of those as components or sources.
 Its product object is:
 
 ```text
-a sourced, freshness-aware, confidence-scored claim that an affordance is available at a place during a time scope
+a sourced, freshness-aware, confidence-assessed claim that an affordance is available at a place during a time scope
 ```
 
 ## 4. Kernel predicate
@@ -61,7 +61,7 @@ The predicate is claim-relative, not absolute.
 More precise form:
 
 ```text
-Claims(E, Available(A, P, T), C, V)
+Claims(E, Available(A, P, T), C, F, V, X)
 ```
 
 where:
@@ -69,41 +69,53 @@ where:
 ```text
 E = evidence
 C = confidence assessment
+F = freshness state
 V = verification state
+X = contradiction state
 ```
 
-The system should not assert bare availability without evidence and verification context.
+The system should not assert bare availability without evidence and state context.
 
-## 5. Core primitive
+## 5. Core primitive and naming
 
-The core primitive is:
+Canonical class name:
+
+```text
+AvailabilityClaim
+```
+
+Full semantic alias:
 
 ```text
 AffordanceAvailabilityClaim
 ```
 
+They refer to the same object. Use `AvailabilityClaim` in schemas and code unless the longer form is needed for explanation.
+
 Canonical meaning:
 
 ```text
-An AffordanceAvailabilityClaim asserts that a specific affordance is available
+An AvailabilityClaim asserts that a specific affordance is available
 at a specific place during a specific time scope, based on specific evidence,
-with explicit freshness, confidence, and verification state.
+with explicit claim validity, freshness, confidence, verification state,
+contradiction state, and access conditions.
 ```
 
 Canonical shape:
 
 ```text
-AffordanceAvailabilityClaim(
+AvailabilityClaim(
   claim_id,
   affordance,
   place,
   time_scope,
+  claim_validity,
   access_conditions,
   evidence_set,
-  confidence,
+  confidence_assessment,
+  freshness_state,
   verification_state,
-  valid_from,
-  valid_through,
+  contradiction_state,
   last_verified_at
 )
 ```
@@ -173,8 +185,16 @@ Whereness is the physical-location constraint under which the affordance may be 
 A place is:
 
 ```text
-a physical location, venue, facility, campus, building, room, service point, or bounded service area
+a physical location, venue, facility, campus, building, room, or service point
 ```
+
+A service area is:
+
+```text
+a bounded region over which a provider claims coverage or eligibility
+```
+
+A service area is not the same as a physical realization point.
 
 Examples:
 
@@ -209,7 +229,7 @@ physical vs virtual distinction
 
 The default domain is physical availability.
 
-Virtual or hybrid affordances may be represented only when explicitly modeled as modality or access conditions.
+Virtual, hybrid, mobile, or service-area-based affordances may be represented only when explicitly modeled as modality, access condition, or ServiceArea.
 
 ## 8. Whenness
 
@@ -218,8 +238,16 @@ Whenness is the temporal constraint under which the affordance may be realized.
 A TimeScope is:
 
 ```text
-an instant, interval, date, daypart, recurrence rule, season, exception, validity window, or verification timestamp relevant to availability
+an instant, interval, date, daypart, recurrence rule, season, or exception relevant to availability
 ```
+
+A ClaimValidity window is:
+
+```text
+the date range in which the claim record should be considered applicable
+```
+
+TimeScope and ClaimValidity must not be collapsed.
 
 Examples:
 
@@ -241,11 +269,13 @@ Whenness must distinguish at least:
 ```text
 user_requested_time
 claim_availability_time
+claim_recurrence_rule
+claim_exception_rule
+claim_validity_window
 source_publication_time
 source_retrieval_time
 claim_last_verified_at
-claim_validity_window
-exception_time
+answer_generated_at
 ```
 
 Recurring availability is incomplete without exception handling.
@@ -292,7 +322,7 @@ Before resolution, the system must normalize:
 ```text
 user intent → canonical affordance constraint
 location phrase → canonical place or spatial constraint
-time phrase → canonical time scope
+time phrase → canonical temporal constraint
 ```
 
 Normalization must preserve uncertainty.
@@ -329,6 +359,8 @@ access conditions
 evidence references
 freshness
 confidence
+verification state
+contradiction state
 uncertainty
 exceptions or caveats
 coverage-gap notes, if any
@@ -350,8 +382,11 @@ query
 → parse and normalize constraints
 → search claim base
 → evaluate constraint satisfaction
+→ evaluate evidence
 → evaluate freshness
 → evaluate confidence
+→ evaluate verification state
+→ evaluate contradiction state
 → compose sourced answer
 → answer synchronously
 ```
@@ -377,7 +412,7 @@ The system treats missing knowledge as work to perform, not as terminal failure.
 
 ## 13. Coverage gap
 
-A coverage gap exists when the system cannot produce an answer that satisfies minimum requirements for relevance, freshness, evidence, and confidence.
+A coverage gap exists when the system cannot produce an answer that satisfies minimum requirements for relevance, freshness, evidence, confidence, verification, contradiction, and access conditions.
 
 Coverage gaps include:
 
@@ -423,6 +458,13 @@ unless supported by evidence.
 
 Every availability claim must be grounded in evidence.
 
+Evidence must distinguish:
+
+```text
+EvidenceSource = source identity / authority class
+EvidenceItem   = concrete retrieved or recorded artifact
+```
+
 Evidence may include:
 
 ```text
@@ -444,7 +486,8 @@ Evidence must carry:
 ```text
 evidence_id
 source identity
-source type
+source class
+item class
 source URL or locator when available
 retrieval time
 publication time when available
@@ -459,48 +502,42 @@ Evidence quality is not uniform.
 
 Official, current, specific, directly relevant evidence outranks stale, indirect, generic, or third-party evidence.
 
-## 15. Confidence
+## 15. State separation
 
-Confidence is not a generic LLM probability.
+Affordance Atlas separates four state concepts.
 
-Confidence is a structured assessment of whether the claim is safe to use in an answer.
+### 15.1 ConfidenceAssessment
 
-Confidence depends on:
+ConfidenceAssessment represents how safe it is to use the claim in an answer.
 
-```text
-source authority
-source freshness
-extraction certainty
-specificity of affordance
-specificity of place
-specificity of time
-corroboration
-contradiction state
-known exception risk
-verification history
-```
-
-Useful confidence states:
+Initial states:
 
 ```text
-verified
 high_confidence
 probable
 candidate
-stale
-contradicted
 insufficient
 ```
 
-The system may compute numeric confidence internally, but user-facing confidence should be interpretable.
+Confidence is not a lifecycle state, freshness state, or contradiction state.
 
-## 16. Verification state
+### 15.2 FreshnessState
 
-Verification state answers:
+FreshnessState represents whether the supporting evidence is temporally current enough.
+
+Initial states:
 
 ```text
-What do we know about the claim's reliability right now?
+current
+recent
+possibly_stale
+stale
+unknown
 ```
+
+### 15.3 VerificationState
+
+VerificationState represents lifecycle state.
 
 Initial states:
 
@@ -511,28 +548,27 @@ normalized
 verified
 active
 stale
-contradicted
 retired
 ```
 
-State meanings:
+### 15.4 ContradictionState
+
+ContradictionState represents conflict with other evidence-backed claims.
+
+Initial states:
 
 ```text
-candidate     = possible claim found but not normalized or verified
-extracted     = claim extracted from evidence
-normalized    = claim mapped to canonical affordance/place/time
-verified      = claim passed source, freshness, and consistency checks
-active        = claim is usable for answers
-stale         = claim may be outdated
-contradicted  = claim conflicts with stronger or newer evidence
-retired       = claim should not be used except for audit/history
+none
+suspected
+confirmed
+resolved
 ```
 
 A stale claim may be shown only as stale.
 
-A contradicted claim must not silently appear as active.
+A confirmed contradiction must not silently appear as active availability.
 
-## 17. Access conditions
+## 16. Access conditions
 
 Availability is incomplete without access conditions when those conditions affect user actionability.
 
@@ -571,7 +607,7 @@ with reservation_required = true
 and ticket_required = true
 ```
 
-## 18. Acquisition loop
+## 17. Acquisition loop
 
 A research job exists to close a coverage gap.
 
@@ -597,7 +633,7 @@ The acquisition loop must store what it learned, not merely answer the current u
 
 A completed research job should improve future synchronous coverage.
 
-## 19. Async answer contract
+## 18. Async answer contract
 
 An asynchronous answer must preserve continuity with the original query.
 
@@ -609,6 +645,9 @@ research scope
 newly acquired claims
 evidence used
 confidence
+freshness
+verification state
+contradiction state
 remaining uncertainty
 answer timestamp
 ```
@@ -623,7 +662,7 @@ learned during research
 still unknown
 ```
 
-## 20. Human-in-the-loop boundary
+## 19. Human-in-the-loop boundary
 
 Human review may be required when:
 
@@ -640,7 +679,7 @@ the source has legal or access restrictions
 
 Human intervention is part of the system boundary, not an implementation failure.
 
-## 21. Non-goals
+## 20. Non-goals
 
 Affordance Atlas is not primarily:
 
@@ -664,7 +703,7 @@ But its core responsibility remains:
 produce, maintain, and answer from sourced real-world affordance-availability claims
 ```
 
-## 22. Boundary against event search
+## 21. Boundary against event search
 
 Event search usually asks:
 
@@ -696,7 +735,7 @@ facility access
 scheduled services
 ```
 
-## 23. Boundary against recommendations
+## 22. Boundary against recommendations
 
 Recommendations optimize preference fit.
 
@@ -706,7 +745,7 @@ Ranking may consider convenience, distance, user preference, cost, freshness, an
 
 Constraint satisfaction precedes preference ranking.
 
-## 24. Boundary against closed-world databases
+## 23. Boundary against closed-world databases
 
 Affordance Atlas is open-world with respect to missing data.
 
@@ -721,7 +760,7 @@ stale ≠ active
 candidate ≠ verified
 ```
 
-## 25. Minimal ontology
+## 24. Minimal ontology
 
 Initial ontology:
 
@@ -729,15 +768,19 @@ Initial ontology:
 Affordance
 AffordanceCategory
 Place
+ServiceArea
 SpatialConstraint
 TimeScope
 TemporalConstraint
+ClaimValidity
 AccessCondition
 AvailabilityClaim
 EvidenceSource
 EvidenceItem
 ConfidenceAssessment
+FreshnessState
 VerificationState
+ContradictionState
 CoverageGap
 ResearchJob
 UserIntent
@@ -746,7 +789,7 @@ Answer
 Notification
 ```
 
-## 26. Minimal system modules
+## 25. Minimal system modules
 
 Initial module map:
 
@@ -770,7 +813,7 @@ contradiction-resolver
 notification-runner
 ```
 
-## 27. Minimal v0
+## 26. Minimal v0
 
 A viable v0 may restrict scope to:
 
@@ -798,12 +841,12 @@ partial user constraints
 
 This is a good proving vertical, not a permanent product boundary.
 
-## 28. Design invariants
+## 27. Design invariants
 
 ```text
 Every user-facing availability claim must have evidence.
 No stale claim may appear fresh.
-No contradicted claim may appear active.
+No confirmed contradiction may appear active.
 No missing data may be treated as non-availability.
 No answer may collapse whatness, whereness, and whenness into mere keyword match.
 No async research job may lose the original user intent.
@@ -812,9 +855,10 @@ No ranking may outrank constraint satisfaction.
 No recurrence may be treated as complete without exception awareness.
 No inferred constraint may be hidden from the user.
 No source may be treated as authoritative without source-class assessment.
+No confidence state may hide freshness, verification, or contradiction state.
 ```
 
-## 29. Kernel summary
+## 28. Kernel summary
 
 Affordance Atlas answers:
 
@@ -824,7 +868,7 @@ Where?
 When?
 Under what access conditions?
 According to what evidence?
-With what freshness and confidence?
+With what freshness, confidence, verification, and contradiction state?
 ```
 
 Its fundamental predicate is:
@@ -836,7 +880,7 @@ Available(Affordance, Place, TimeScope)
 Its fundamental record is:
 
 ```text
-AffordanceAvailabilityClaim
+AvailabilityClaim
 ```
 
 Its fundamental behavior is:
