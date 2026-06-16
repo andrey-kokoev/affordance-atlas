@@ -44,7 +44,11 @@ where it is available
 when it is available
 under what access conditions
 according to what evidence
-with what confidence and verification state
+with what confidence
+with what freshness
+with what verification state
+with what contradiction state
+within what claim validity window
 ```
 
 ## 3. Minimal ontology inventory
@@ -55,15 +59,19 @@ The minimal ontology contains these core classes:
 Affordance
 AffordanceCategory
 Place
+ServiceArea
 SpatialConstraint
 TimeScope
 TemporalConstraint
+ClaimValidity
 AccessCondition
 AvailabilityClaim
 EvidenceSource
 EvidenceItem
 ConfidenceAssessment
+FreshnessState
 VerificationState
+ContradictionState
 CoverageGap
 ResearchJob
 UserIntent
@@ -78,10 +86,13 @@ These are minimal because removing any one of them causes a semantic failure:
 Without Affordance, the system collapses into place/time search.
 Without Place, the system loses physical realizability.
 Without TimeScope, the system loses actionability.
+Without ClaimValidity, availability time gets confused with claim applicability.
 Without AccessCondition, the system may answer with unusable availability.
 Without Evidence, the system becomes unsupported assertion.
 Without ConfidenceAssessment, the system cannot choose sync answer vs gap.
-Without VerificationState, stale and contradicted claims become indistinguishable from active claims.
+Without FreshnessState, current evidence and stale evidence become indistinguishable.
+Without VerificationState, lifecycle state is confused with truth confidence.
+Without ContradictionState, conflicting evidence is hidden inside confidence.
 Without CoverageGap, unknown becomes falsely terminal.
 Without ResearchJob, the closed loop disappears.
 Without NormalizedQuery, user language cannot be separated from resolved constraints.
@@ -90,11 +101,19 @@ Without Answer, claim retrieval is not yet user-facing resolution.
 
 ## 4. Core primitive decision
 
-The core primitive is:
+The canonical class name is:
+
+```text
+AvailabilityClaim
+```
+
+The full semantic name is:
 
 ```text
 AffordanceAvailabilityClaim
 ```
+
+They are aliases. Use `AvailabilityClaim` in schemas and code unless the longer name is needed for explanatory clarity.
 
 This remains the best primitive because it binds the three irreducible axes:
 
@@ -109,9 +128,11 @@ and attaches the required truth-supporting envelope:
 ```text
 Evidence
 ConfidenceAssessment
+FreshnessState
 VerificationState
+ContradictionState
 AccessCondition
-Freshness
+ClaimValidity
 ```
 
 Rejected alternatives:
@@ -139,16 +160,18 @@ Affordance
 Canonical primitive:
 
 ```text
-AffordanceAvailabilityClaim(
+AvailabilityClaim(
   claim_id,
   affordance,
   place,
   time_scope,
+  claim_validity,
   access_conditions,
   evidence_set,
   confidence_assessment,
+  freshness_state,
   verification_state,
-  validity_window,
+  contradiction_state,
   last_verified_at
 )
 ```
@@ -195,7 +218,7 @@ Categories support normalization, search, aggregation, and generalization.
 
 ### 5.3 Place
 
-A Place is a physical location, venue, facility, campus, building, room, service point, or bounded service area where an affordance may be realized.
+A Place is a physical location, venue, facility, campus, building, room, or service point where an affordance may be realized.
 
 A place may have hierarchy:
 
@@ -206,9 +229,24 @@ museum → wing → gallery
 clinic network → clinic site → lab counter
 ```
 
-### 5.4 SpatialConstraint
+### 5.4 ServiceArea
 
-A SpatialConstraint is a user- or system-specified restriction over possible places.
+A ServiceArea is a bounded region over which a provider claims coverage or eligibility.
+
+A ServiceArea is not a Place. It can constrain where users are eligible or where a mobile/remote service applies, but it is not itself the ordinary physical realization point of an affordance.
+
+Examples:
+
+```text
+within Cook County
+inside a school district
+covered by a mobile clinic route
+served by a municipal office
+```
+
+### 5.5 SpatialConstraint
+
+A SpatialConstraint is a user- or system-specified restriction over possible places or service areas.
 
 Examples:
 
@@ -223,11 +261,11 @@ reachable by public transit
 
 SpatialConstraint is not identical to Place. It may resolve to zero, one, or many places.
 
-### 5.5 TimeScope
+### 5.6 TimeScope
 
-A TimeScope is a temporal object attached to a claim.
+A TimeScope is the temporal availability object attached to a claim.
 
-It describes when the affordance is available or when the claim is valid.
+It describes when the affordance is available.
 
 Examples:
 
@@ -236,11 +274,12 @@ Examples:
 Mondays 09:00-17:00
 first Friday of each month
 summer season
-valid through 2026-08-31
 except federal holidays
 ```
 
-### 5.6 TemporalConstraint
+A TimeScope does not describe when the claim record is valid. Claim applicability belongs to `ClaimValidity`.
+
+### 5.7 TemporalConstraint
 
 A TemporalConstraint is a user- or system-specified restriction over possible TimeScopes.
 
@@ -255,9 +294,31 @@ during Lent
 within the next 7 days
 ```
 
-TemporalConstraint is not identical to TimeScope. It is a filter or request-side expression.
+TemporalConstraint is not identical to TimeScope. It is a request-side filter expression.
 
-### 5.7 AccessCondition
+### 5.8 ClaimValidity
+
+ClaimValidity describes the date range in which the claim record should be considered applicable.
+
+Examples:
+
+```text
+valid_from: 2026-01-01
+valid_through: 2026-08-31
+valid_from: null
+valid_through: null
+```
+
+ClaimValidity is not availability time.
+
+Example:
+
+```text
+Availability time: Sundays at 10:00
+Claim validity: this schedule is known to apply through August 2026
+```
+
+### 5.9 AccessCondition
 
 An AccessCondition is a condition that affects whether a user can actually realize the affordance.
 
@@ -280,21 +341,19 @@ remote_or_hybrid_modality
 
 Access conditions are part of actionability.
 
-### 5.8 AvailabilityClaim
+### 5.10 AvailabilityClaim
 
-AvailabilityClaim is the shorter class name for AffordanceAvailabilityClaim.
-
-It is the central stored assertion:
+AvailabilityClaim is the canonical stored assertion:
 
 ```text
 Available(Affordance, Place, TimeScope)
 ```
 
-with evidence, confidence, verification state, and access conditions.
+with evidence, confidence, freshness, verification state, contradiction state, claim validity, and access conditions.
 
-### 5.9 EvidenceSource
+### 5.11 EvidenceSource
 
-An EvidenceSource is the origin of evidence.
+An EvidenceSource is the source identity behind evidence.
 
 Examples:
 
@@ -309,7 +368,7 @@ manual phone note
 user-submitted report
 ```
 
-### 5.10 EvidenceItem
+### 5.12 EvidenceItem
 
 An EvidenceItem is a retrieved or recorded piece of evidence from a source.
 
@@ -325,11 +384,22 @@ specific image of a posted schedule
 
 EvidenceSource is the source identity. EvidenceItem is the concrete observed artifact.
 
-### 5.11 ConfidenceAssessment
+### 5.13 ConfidenceAssessment
 
-ConfidenceAssessment represents whether a claim is safe to use in an answer.
+ConfidenceAssessment represents how safe it is to use the claim as support for an answer.
 
-It is based on:
+It should not encode lifecycle, freshness, or contradiction directly.
+
+Initial states:
+
+```text
+high_confidence
+probable
+candidate
+insufficient
+```
+
+Confidence is based on:
 
 ```text
 source authority
@@ -337,12 +407,26 @@ source freshness
 extraction certainty
 specificity
 corroboration
-contradiction state
 known exception risk
 verification history
+contradiction state as input, not as confidence state
 ```
 
-### 5.12 VerificationState
+### 5.14 FreshnessState
+
+FreshnessState represents whether the supporting evidence is temporally current enough for the affordance category.
+
+Initial states:
+
+```text
+current
+recent
+possibly_stale
+stale
+unknown
+```
+
+### 5.15 VerificationState
 
 VerificationState represents the current lifecycle state of a claim.
 
@@ -355,11 +439,27 @@ normalized
 verified
 active
 stale
-contradicted
 retired
 ```
 
-### 5.13 CoverageGap
+`contradicted` is not a VerificationState. It belongs to ContradictionState.
+
+### 5.16 ContradictionState
+
+ContradictionState represents whether the claim conflicts with other evidence-backed claims.
+
+Initial states:
+
+```text
+none
+suspected
+confirmed
+resolved
+```
+
+A confirmed contradiction blocks active use unless resolved by stronger evidence.
+
+### 5.17 CoverageGap
 
 A CoverageGap is a structured reason why the system cannot answer from current claims.
 
@@ -374,13 +474,13 @@ holiday exception unresolved
 access condition unresolved
 ```
 
-### 5.14 ResearchJob
+### 5.18 ResearchJob
 
 A ResearchJob is work created to close a CoverageGap.
 
 It preserves the original query, target constraints, research scope, evidence gathered, claims produced, and remaining uncertainty.
 
-### 5.15 UserIntent
+### 5.19 UserIntent
 
 UserIntent is the raw or lightly parsed user request before full normalization.
 
@@ -390,7 +490,7 @@ Example:
 I want to attend a mess next sunday
 ```
 
-### 5.16 NormalizedQuery
+### 5.20 NormalizedQuery
 
 NormalizedQuery is the resolved constraint form produced from UserIntent.
 
@@ -403,11 +503,11 @@ temporal_constraint: next Sunday in resolved timezone
 uncertainty: possible spelling correction from mess to Mass
 ```
 
-### 5.17 Answer
+### 5.21 Answer
 
 An Answer is the user-facing resolution object composed from matching claims, evidence, confidence, caveats, and unresolved gaps.
 
-### 5.18 Notification
+### 5.22 Notification
 
 A Notification is an asynchronous delivery object produced when a ResearchJob later creates an answer.
 
@@ -528,11 +628,21 @@ place:
   longitude: number | null
   jurisdiction: string | null
   parent_place_id: string | null
-  service_area: string | null
   source_place_ids: string[]
 ```
 
-### 7.2 SpatialConstraint fields
+### 7.2 ServiceArea fields
+
+```yaml
+service_area:
+  service_area_id: string
+  label: string
+  geometry_ref: string | null
+  jurisdiction: string | null
+  provider_place_id: string | null
+```
+
+### 7.3 SpatialConstraint fields
 
 ```yaml
 spatial_constraint:
@@ -559,13 +669,14 @@ service_area_overlap
 unspecified
 ```
 
-### 7.3 Whereness invariants
+### 7.4 Whereness invariants
 
 ```text
 A place is not the same as a spatial constraint.
+A service area is not the same as a physical realization point.
 A named place must be identity-resolved before claim matching.
 A spatial constraint may resolve to multiple places.
-A physical affordance requires a physical or service-area anchor.
+A physical affordance requires a physical place unless explicitly modeled as mobile, remote, virtual, hybrid, or service-area based.
 Virtual or hybrid access must be explicit, not silently merged with physical availability.
 ```
 
@@ -599,8 +710,6 @@ time_scope:
   recurrence_rule: string | null
   recurrence_label: string | null
   exception_rules: string[]
-  valid_from: date | null
-  valid_through: date | null
 ```
 
 Allowed `kind` values initially:
@@ -612,12 +721,20 @@ date
 daypart
 recurrence
 season
-validity_window
 exception
 unknown
 ```
 
-### 8.2 TemporalConstraint fields
+### 8.2 ClaimValidity fields
+
+```yaml
+claim_validity:
+  valid_from: date | null
+  valid_through: date | null
+  validity_basis: string | null
+```
+
+### 8.3 TemporalConstraint fields
 
 ```yaml
 temporal_constraint:
@@ -630,7 +747,7 @@ temporal_constraint:
   uncertainty: string[]
 ```
 
-### 8.3 Whenness examples
+### 8.4 Whenness examples
 
 ```yaml
 temporal_constraint:
@@ -649,13 +766,19 @@ time_scope:
   exception_rules:
     - Easter schedule may override ordinary Sunday schedule
     - Christmas schedule may override ordinary Sunday schedule
+
+claim_validity:
+  valid_from: null
+  valid_through: null
+  validity_basis: no explicit source validity window
 ```
 
-### 8.4 Whenness invariants
+### 8.5 Whenness invariants
 
 ```text
 A user temporal phrase is not the same as a claim TimeScope.
 A recurrence is incomplete without exception awareness.
+A claim validity window is not an availability window.
 A source retrieval time is not an availability time.
 A source publication time is not a verification time.
 Timezone must be explicit before resolving relative dates.
@@ -672,11 +795,14 @@ NormalizedQuery contains AffordanceConstraint
 NormalizedQuery contains SpatialConstraint
 NormalizedQuery contains TemporalConstraint
 AvailabilityClaim asserts Available(Affordance, Place, TimeScope)
+AvailabilityClaim has ClaimValidity
 AvailabilityClaim has AccessCondition
 AvailabilityClaim supported_by EvidenceItem
 EvidenceItem comes_from EvidenceSource
 AvailabilityClaim has ConfidenceAssessment
+AvailabilityClaim has FreshnessState
 AvailabilityClaim has VerificationState
+AvailabilityClaim has ContradictionState
 CoverageGap blocks Answer
 CoverageGap creates ResearchJob
 ResearchJob produces EvidenceItem
@@ -688,7 +814,7 @@ Notification delivers Answer
 ## 10. Minimal YAML sketch
 
 ```yaml
-affordance_availability_claim:
+availability_claim:
   claim_id: claim_001
   affordance:
     canonical_label: Catholic Mass
@@ -707,6 +833,10 @@ affordance_availability_claim:
     recurrence_label: Sundays at 10:00
     exception_rules:
       - holiday schedules may override ordinary recurrence
+  claim_validity:
+    valid_from: null
+    valid_through: null
+    validity_basis: no explicit source validity window
   access_conditions:
     - walk_in_allowed: true
     - reservation_required: false
@@ -721,7 +851,9 @@ affordance_availability_claim:
       - official source
       - specific time
       - current retrieval
+  freshness_state: current
   verification_state: active
+  contradiction_state: none
   last_verified_at: 2026-06-16T12:00:00-05:00
 ```
 
@@ -747,17 +879,21 @@ Those depend on this ontology but should not be mixed into it.
 
 ```text
 N01 answer:
-  The minimal ontology consists of Affordance, Place, TimeScope, AccessCondition,
-  AvailabilityClaim, Evidence, ConfidenceAssessment, VerificationState,
-  CoverageGap, ResearchJob, UserIntent, NormalizedQuery, Answer, and Notification.
+  The minimal ontology consists of Affordance, Place, ServiceArea, TimeScope,
+  ClaimValidity, AccessCondition, AvailabilityClaim, Evidence, ConfidenceAssessment,
+  FreshnessState, VerificationState, ContradictionState, CoverageGap, ResearchJob,
+  UserIntent, NormalizedQuery, Answer, and Notification.
 
 N02 answer:
-  AffordanceAvailabilityClaim is the correct core primitive because it binds
-  whatness, whereness, and whenness into an evidence-backed, verification-aware assertion.
+  AvailabilityClaim / AffordanceAvailabilityClaim is the correct core primitive
+  because it binds whatness, whereness, and whenness into an evidence-backed,
+  verification-aware assertion.
 
 N23 answer:
   Time decomposes into requested time, availability time, recurrence, exception,
-  validity, source publication, source retrieval, verification, and answer-generation time.
+  claim validity, source publication, source retrieval, verification, and
+  answer-generation time. Availability time belongs to TimeScope; claim
+  applicability belongs to ClaimValidity.
 
 N24 answer:
   Where decomposes into place identity, spatial constraint, coordinates/address,
