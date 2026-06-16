@@ -1,13 +1,16 @@
 {
-  "name": "affordance-atlas",
+  "name": "affordance-atlas-workspace",
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "description": "Closed-loop spatiotemporal affordance availability resolver domain model.",
+  "packageManager": "pnpm@latest",
+  "description": "Closed-loop spatiotemporal affordance availability resolver.",
   "scripts": {
-    "typecheck": "tsc --noEmit"
+    "dev": "pnpm --filter @affordance-atlas/web dev",
+    "build": "pnpm -r build",
+    "typecheck": "pnpm -r typecheck"
   },
   "devDependencies": {
-    "typescript": "^5.5.0"
+    "typescript": "latest"
   }
 }
