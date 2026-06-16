@@ -23,37 +23,10 @@ export const NotificationIdSchema = IdSchema.brand<"NotificationId">();
 export const EventIdSchema = IdSchema.brand<"EventId">();
 export const CorrelationIdSchema = IdSchema.brand<"CorrelationId">();
 
-export const ConfidenceStateSchema = z.enum([
-  "high_confidence",
-  "probable",
-  "candidate",
-  "insufficient",
-]);
-
-export const FreshnessStateSchema = z.enum([
-  "current",
-  "recent",
-  "possibly_stale",
-  "stale",
-  "unknown",
-]);
-
-export const VerificationStateSchema = z.enum([
-  "candidate",
-  "extracted",
-  "normalized",
-  "verified",
-  "active",
-  "stale",
-  "retired",
-]);
-
-export const ContradictionStateSchema = z.enum([
-  "none",
-  "suspected",
-  "confirmed",
-  "resolved",
-]);
+export const ConfidenceStateSchema = z.enum(["high_confidence", "probable", "candidate", "insufficient"]);
+export const FreshnessStateSchema = z.enum(["current", "recent", "possibly_stale", "stale", "unknown"]);
+export const VerificationStateSchema = z.enum(["candidate", "extracted", "normalized", "verified", "active", "stale", "retired"]);
+export const ContradictionStateSchema = z.enum(["none", "suspected", "confirmed", "resolved"]);
 
 export const SourceClassSchema = z.enum([
   "official_primary",
@@ -104,25 +77,10 @@ export const AccessConditionTypeSchema = z.enum([
   "other",
 ]);
 
-export const ExtractionMethodSchema = z.enum([
-  "manual",
-  "llm",
-  "parser",
-  "api_import",
-  "crawler",
-  "hybrid",
-  "unknown",
-]);
+export const ExtractionMethodSchema = z.enum(["manual", "llm", "parser", "api_import", "crawler", "hybrid", "unknown"]);
 
 export const JsonValueSchema: z.ZodType<unknown> = z.lazy(() =>
-  z.union([
-    z.string(),
-    z.number(),
-    z.boolean(),
-    z.null(),
-    z.array(JsonValueSchema),
-    z.record(JsonValueSchema),
-  ]),
+  z.union([z.string(), z.number(), z.boolean(), z.null(), z.array(JsonValueSchema), z.record(JsonValueSchema)]),
 );
 
 export const AffordanceRefSchema = z.object({
@@ -185,9 +143,42 @@ export const RecurrenceTimeScopeSchema = z.object({
   "recurrence TimeScope requires recurrence_rule or recurrence_label",
 );
 
-export const OtherTimeScopeSchema = z.object({
+export const DateTimeScopeSchema = z.object({
   time_scope_id: TimeScopeIdSchema.optional(),
-  kind: z.enum(["date", "daypart", "season", "exception", "unknown"]),
+  kind: z.literal("date"),
+  timezone: IanaTimezoneSchema,
+  starts_at: IsoDateTimeSchema.nullable(),
+  ends_at: IsoDateTimeSchema.nullable(),
+  recurrence_rule: z.null(),
+  recurrence_label: z.string().min(1).nullable(),
+  exception_rules: z.array(z.string()),
+});
+
+export const DaypartTimeScopeSchema = z.object({
+  time_scope_id: TimeScopeIdSchema.optional(),
+  kind: z.literal("daypart"),
+  timezone: IanaTimezoneSchema,
+  starts_at: IsoDateTimeSchema.nullable(),
+  ends_at: IsoDateTimeSchema.nullable(),
+  recurrence_rule: z.null(),
+  recurrence_label: z.string().min(1).nullable(),
+  exception_rules: z.array(z.string()),
+});
+
+export const SeasonTimeScopeSchema = z.object({
+  time_scope_id: TimeScopeIdSchema.optional(),
+  kind: z.literal("season"),
+  timezone: IanaTimezoneSchema,
+  starts_at: IsoDateTimeSchema.nullable(),
+  ends_at: IsoDateTimeSchema.nullable(),
+  recurrence_rule: z.null(),
+  recurrence_label: z.string().min(1).nullable(),
+  exception_rules: z.array(z.string()),
+});
+
+export const ExceptionTimeScopeSchema = z.object({
+  time_scope_id: TimeScopeIdSchema.optional(),
+  kind: z.literal("exception"),
   timezone: IanaTimezoneSchema,
   starts_at: IsoDateTimeSchema.nullable(),
   ends_at: IsoDateTimeSchema.nullable(),
@@ -196,11 +187,26 @@ export const OtherTimeScopeSchema = z.object({
   exception_rules: z.array(z.string()),
 });
 
+export const UnknownTimeScopeSchema = z.object({
+  time_scope_id: TimeScopeIdSchema.optional(),
+  kind: z.literal("unknown"),
+  timezone: IanaTimezoneSchema,
+  starts_at: z.null(),
+  ends_at: z.null(),
+  recurrence_rule: z.null(),
+  recurrence_label: z.null(),
+  exception_rules: z.array(z.string()),
+});
+
 export const TimeScopeSchema = z.discriminatedUnion("kind", [
   InstantTimeScopeSchema,
   IntervalTimeScopeSchema,
   RecurrenceTimeScopeSchema,
-  OtherTimeScopeSchema,
+  DateTimeScopeSchema,
+  DaypartTimeScopeSchema,
+  SeasonTimeScopeSchema,
+  ExceptionTimeScopeSchema,
+  UnknownTimeScopeSchema,
 ]);
 
 export const ClaimValiditySchema = z.object({
@@ -280,11 +286,7 @@ export const AvailabilityClaimSchema = z.object({
   }),
 }).superRefine((claim, ctx) => {
   if (claim.assessments.contradiction_state !== claim.contradiction.contradiction_state) {
-    ctx.addIssue({
-      code: z.ZodIssueCode.custom,
-      path: ["contradiction", "contradiction_state"],
-      message: "contradiction state must agree with assessments.contradiction_state",
-    });
+    ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["contradiction", "contradiction_state"], message: "contradiction state must agree with assessments.contradiction_state" });
   }
 
   if (claim.lifecycle.verification_state === "active") {
@@ -294,11 +296,7 @@ export const AvailabilityClaimSchema = z.object({
       (claim.assessments.contradiction_state === "none" || claim.assessments.contradiction_state === "resolved");
 
     if (!eligible) {
-      ctx.addIssue({
-        code: z.ZodIssueCode.custom,
-        path: ["lifecycle", "verification_state"],
-        message: "active claims must have answer-eligible confidence, freshness, and contradiction states",
-      });
+      ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["lifecycle", "verification_state"], message: "active claims must have answer-eligible confidence, freshness, and contradiction states" });
     }
   }
 });
@@ -313,15 +311,48 @@ export const AffordanceConstraintSchema = z.object({
   normalization_confidence: ConfidenceStateSchema,
 });
 
-export const SpatialConstraintSchema = z.discriminatedUnion("kind", [
-  z.object({ kind: z.literal("exact_place"), raw_phrase: z.string().nullable(), anchor_place_id: PlaceIdSchema, anchor_label: z.string().nullable(), anchor_address: z.string().nullable(), anchor_coordinates: z.tuple([z.number(), z.number()]).nullable(), radius_distance: z.null(), max_travel_time: z.null(), travel_mode: z.null(), jurisdiction: z.string().nullable(), normalization_confidence: ConfidenceStateSchema }),
-  z.object({ kind: z.literal("within_radius"), raw_phrase: z.string().nullable(), anchor_place_id: PlaceIdSchema.nullable(), anchor_label: z.string().nullable(), anchor_address: z.string().nullable(), anchor_coordinates: z.tuple([z.number(), z.number()]).nullable(), radius_distance: z.string().min(1), max_travel_time: z.null(), travel_mode: z.string().nullable(), jurisdiction: z.string().nullable(), normalization_confidence: ConfidenceStateSchema }),
-  z.object({ kind: z.enum(["near_place", "within_travel_time", "within_jurisdiction", "inside_place", "service_area_overlap", "unspecified"]), raw_phrase: z.string().nullable(), anchor_place_id: PlaceIdSchema.nullable(), anchor_label: z.string().nullable(), anchor_address: z.string().nullable(), anchor_coordinates: z.tuple([z.number(), z.number()]).nullable(), radius_distance: z.string().nullable(), max_travel_time: z.string().nullable(), travel_mode: z.string().nullable(), jurisdiction: z.string().nullable(), normalization_confidence: ConfidenceStateSchema }),
+const SpatialConstraintBaseSchema = z.object({
+  raw_phrase: z.string().nullable(),
+  anchor_place_id: PlaceIdSchema.nullable(),
+  anchor_label: z.string().nullable(),
+  anchor_address: z.string().nullable(),
+  anchor_coordinates: z.tuple([z.number(), z.number()]).nullable(),
+  radius_distance: z.string().nullable(),
+  max_travel_time: z.string().nullable(),
+  travel_mode: z.string().nullable(),
+  jurisdiction: z.string().nullable(),
+  normalization_confidence: ConfidenceStateSchema,
+});
+
+export const SpatialConstraintSchema = z.union([
+  SpatialConstraintBaseSchema.extend({ kind: z.literal("exact_place"), anchor_place_id: PlaceIdSchema }),
+  SpatialConstraintBaseSchema.extend({ kind: z.literal("within_radius"), radius_distance: z.string().min(1) }),
+  SpatialConstraintBaseSchema.extend({ kind: z.literal("near_place") }),
+  SpatialConstraintBaseSchema.extend({ kind: z.literal("within_travel_time") }),
+  SpatialConstraintBaseSchema.extend({ kind: z.literal("within_jurisdiction") }),
+  SpatialConstraintBaseSchema.extend({ kind: z.literal("inside_place") }),
+  SpatialConstraintBaseSchema.extend({ kind: z.literal("service_area_overlap") }),
+  SpatialConstraintBaseSchema.extend({ kind: z.literal("unspecified") }),
 ]);
 
-export const TemporalConstraintSchema = z.discriminatedUnion("kind", [
-  z.object({ kind: z.literal("relative_date"), raw_phrase: z.string().min(1), timezone: IanaTimezoneSchema, window_start: IsoDateTimeSchema, window_end: IsoDateTimeSchema, recurrence_filter: z.string().nullable(), daypart: z.string().nullable(), normalization_confidence: ConfidenceStateSchema }),
-  z.object({ kind: z.enum(["exact_instant", "interval", "date", "daypart", "recurrence_filter", "unspecified"]), raw_phrase: z.string().nullable(), timezone: IanaTimezoneSchema, window_start: IsoDateTimeSchema.nullable(), window_end: IsoDateTimeSchema.nullable(), recurrence_filter: z.string().nullable(), daypart: z.string().nullable(), normalization_confidence: ConfidenceStateSchema }),
+const TemporalConstraintBaseSchema = z.object({
+  raw_phrase: z.string().nullable(),
+  timezone: IanaTimezoneSchema,
+  window_start: IsoDateTimeSchema.nullable(),
+  window_end: IsoDateTimeSchema.nullable(),
+  recurrence_filter: z.string().nullable(),
+  daypart: z.string().nullable(),
+  normalization_confidence: ConfidenceStateSchema,
+});
+
+export const TemporalConstraintSchema = z.union([
+  TemporalConstraintBaseSchema.extend({ kind: z.literal("relative_date"), raw_phrase: z.string().min(1), window_start: IsoDateTimeSchema, window_end: IsoDateTimeSchema }),
+  TemporalConstraintBaseSchema.extend({ kind: z.literal("exact_instant") }),
+  TemporalConstraintBaseSchema.extend({ kind: z.literal("interval") }),
+  TemporalConstraintBaseSchema.extend({ kind: z.literal("date") }),
+  TemporalConstraintBaseSchema.extend({ kind: z.literal("daypart") }),
+  TemporalConstraintBaseSchema.extend({ kind: z.literal("recurrence_filter") }),
+  TemporalConstraintBaseSchema.extend({ kind: z.literal("unspecified") }),
 ]);
 
 export const AccessConstraintSchema = z.object({
