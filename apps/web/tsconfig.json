@@ -5,7 +5,11 @@
     "jsx": "react-jsx",
     "allowImportingTsExtensions": false,
     "noEmit": true,
-    "types": ["vite/client"]
+    "types": ["vite/client"],
+    "baseUrl": ".",
+    "paths": {
+      "@affordance-atlas/domain": ["../../packages/domain/src/index.ts"]
+    }
   },
   "include": ["src", "vite.config.ts"],
   "references": [{ "path": "../../packages/domain" }]
