@@ -89,6 +89,8 @@ normalized_query:
   requested_answer_mode: synchronous | asynchronous_allowed | either
 ```
 
+Normalization confidence in query constraints is separate from claim ConfidenceAssessment.
+
 ## 4. Query IR: affordance constraint
 
 ```yaml
@@ -99,31 +101,7 @@ affordance:
   subtype: string | null
   raw_phrase: string | null
   synonyms_considered: string[]
-  confidence: verified | high_confidence | probable | candidate | insufficient
-```
-
-Examples:
-
-```yaml
-affordance:
-  kind: exact
-  canonical_label: Catholic Mass
-  category: religious_service
-  subtype: catholic_mass
-  raw_phrase: mass
-  synonyms_considered: [Mass, Sunday Mass, Catholic Mass]
-  confidence: high_confidence
-```
-
-```yaml
-affordance:
-  kind: fuzzy
-  canonical_label: Catholic Mass
-  category: religious_service
-  subtype: catholic_mass
-  raw_phrase: mess
-  synonyms_considered: [Mass]
-  confidence: probable
+  normalization_confidence: high_confidence | probable | candidate | insufficient
 ```
 
 Rules:
@@ -148,7 +126,7 @@ spatial:
   max_travel_time: string | null
   travel_mode: string | null
   jurisdiction: string | null
-  confidence: verified | high_confidence | probable | candidate | insufficient
+  normalization_confidence: high_confidence | probable | candidate | insufficient
 ```
 
 Rules:
@@ -156,6 +134,7 @@ Rules:
 ```text
 SpatialConstraint is request-side.
 Place is claim-side.
+ServiceArea is provider coverage/eligibility, not ordinary place identity.
 A spatial constraint may match zero, one, or many places.
 A vague spatial phrase must not be stored as a claim place.
 ```
@@ -171,7 +150,7 @@ temporal:
   window_end: datetime | null
   recurrence_filter: string | null
   daypart: string | null
-  confidence: verified | high_confidence | probable | candidate | insufficient
+  normalization_confidence: high_confidence | probable | candidate | insufficient
 ```
 
 Rules:
@@ -179,22 +158,9 @@ Rules:
 ```text
 Relative temporal phrases must resolve against timezone and date anchor.
 TemporalConstraint is request-side.
-TimeScope is claim-side.
-A query temporal window matches a claim when the claim has an occurrence intersecting the window.
-```
-
-Example:
-
-```yaml
-temporal:
-  kind: relative_date
-  raw_phrase: next Sunday
-  timezone: America/New_York
-  window_start: 2026-06-21T00:00:00-04:00
-  window_end: 2026-06-22T00:00:00-04:00
-  recurrence_filter: null
-  daypart: null
-  confidence: verified
+TimeScope is claim-side availability time.
+ClaimValidity is claim-side applicability time.
+A query temporal window matches a claim when the claim has an occurrence intersecting the window and the claim validity does not exclude it.
 ```
 
 ## 7. Query IR: access constraints
@@ -205,24 +171,6 @@ access:
     desired_value: string | boolean | number | null
     required: boolean
     raw_phrase: string | null
-```
-
-Examples:
-
-```yaml
-access:
-  - condition_type: walk_in_allowed
-    desired_value: true
-    required: true
-    raw_phrase: walk in
-```
-
-```yaml
-access:
-  - condition_type: language
-    desired_value: Spanish
-    required: false
-    raw_phrase: Spanish if possible
 ```
 
 Required access constraints affect eligibility. Optional access constraints affect ranking.
@@ -260,11 +208,13 @@ resolution_plan:
     time_required: boolean
     evidence_required: boolean
     freshness_required: boolean
-    confidence_minimum: string
+    confidence_minimum: high_confidence | probable | candidate
+    allowed_verification_states: string[]
+    allowed_contradiction_states: string[]
   ranking_policy: constraint_first
 ```
 
-ResolutionPlan exists so that the system can explain why it answered, researched, or refused to conclude.
+ResolutionPlan exists so the system can explain why it answered, researched, or refused to conclude.
 
 ## 10. Claim matching semantics
 
@@ -280,6 +230,7 @@ access_match
 evidence_match
 freshness_match
 confidence_match
+verification_match
 contradiction_match
 ```
 
@@ -297,7 +248,8 @@ claim_match:
     evidence_match: admissible | weak | missing | rejected
     freshness_match: current | recent | possibly_stale | stale | unknown
     confidence_match: sufficient | insufficient
-    contradiction_match: none | suspected | confirmed
+    verification_match: active | verified | stale | candidate | rejected
+    contradiction_match: none | suspected | confirmed | resolved
   generated_occurrences:
     - starts_at: datetime
       ends_at: datetime | null
@@ -313,7 +265,7 @@ A rejected match must not appear as availability.
 
 ## 11. Canonical answer object
 
-An Answer is a user-facing resolution object composed from claims, generated occurrences, evidence, confidence, and coverage notes.
+An Answer is a user-facing resolution object composed from claims, generated occurrences, evidence, confidence, freshness, verification, contradiction, and coverage notes.
 
 Canonical shape:
 
@@ -339,8 +291,10 @@ answer:
         timezone: string
         recurrence_label: string | null
       access_conditions: AccessCondition[]
-      confidence_state: string
-      freshness_state: string
+      confidence_state: high_confidence | probable | candidate | insufficient
+      freshness_state: current | recent | possibly_stale | stale | unknown
+      verification_state: candidate | extracted | normalized | verified | active | stale | retired
+      contradiction_state: none | suspected | confirmed | resolved
       evidence_refs: string[]
       caveats: string[]
   coverage_gaps:
@@ -369,10 +323,10 @@ answered
   The system found enough supported claims to answer the normalized query.
 
 partially_answered
-  The system found some supported claims but important constraints or confidence requirements remain unresolved.
+  The system found some supported claims but important constraints or state requirements remain unresolved.
 
 insufficient_coverage
-  The system cannot determine availability because data is missing, stale, ambiguous, or contradicted.
+  The system cannot determine availability because data is missing, stale, ambiguous, weak, or contradicted.
 
 no_supported_availability
   The system has evidence that the requested affordance is not available under the requested constraints.
@@ -398,7 +352,7 @@ coverage_gap:
   query_id: string
   gap_type: enum
   severity: blocking | degrading | informational
-  affected_constraint: affordance | place | time | access | evidence | freshness | confidence | contradiction | answer
+  affected_constraint: affordance | place | time | access | evidence | freshness | confidence | verification | contradiction | answer
   description: string
   required_to_close: string[]
   suggested_research_actions: string[]
@@ -428,6 +382,7 @@ reservation_or_capacity_unknown
 evidence_missing
 evidence_weak
 confidence_insufficient
+verification_state_not_answerable
 contradictory_sources
 claim_contradicted
 answer_requires_research
@@ -456,7 +411,7 @@ parking information missing may be informational unless requested.
 
 ## 15. Sync vs async decision policy
 
-The resolver decides between synchronous answer and asynchronous research using coverage, evidence, freshness, confidence, and contradiction checks.
+The resolver decides between synchronous answer and asynchronous research using coverage, evidence, freshness, confidence, verification state, contradiction state, and access checks.
 
 Synchronous answer is allowed when:
 
@@ -466,7 +421,8 @@ candidate claims satisfy required constraints
 candidate claims have admissible evidence
 freshness is acceptable for the affordance category
 confidence state meets threshold
-no confirmed contradiction affects the answer
+verification state is active or verified
+contradiction state is none or resolved
 required access conditions are known or safely caveated
 ```
 
@@ -481,6 +437,8 @@ sources contradict each other
 exception risk is material and unresolved
 required access conditions are unknown
 confidence is insufficient
+verification state is not answerable
+contradiction state is suspected or confirmed
 user requested research or verification
 ```
 
@@ -514,9 +472,11 @@ sync_thresholds:
   evidence_required: true
   minimum_confidence_state: probable
   allowed_verification_states: [verified, active]
-  disallowed_verification_states: [candidate, contradicted, retired]
+  disallowed_verification_states: [candidate, extracted, normalized, stale, retired]
+  allowed_freshness_states: [current, recent]
   stale_claim_policy: caveat_or_research
-  contradiction_policy: block_if_confirmed
+  contradiction_policy: block_if_suspected_or_confirmed
+  allowed_contradiction_states: [none, resolved]
   recurrence_exception_policy: block_or_caveat_if_material
 ```
 
@@ -618,18 +578,18 @@ constraints:
     category: religious_service
     subtype: catholic_mass
     raw_phrase: Mass
-    confidence: high_confidence
+    normalization_confidence: high_confidence
   spatial:
     kind: near_place
     anchor_label: Clifton Park, NY
-    confidence: high_confidence
+    normalization_confidence: high_confidence
   temporal:
     kind: relative_date
     raw_phrase: next Sunday
     timezone: America/New_York
     window_start: 2026-06-21T00:00:00-04:00
     window_end: 2026-06-22T00:00:00-04:00
-    confidence: verified
+    normalization_confidence: high_confidence
 ```
 
 Possible resolution:
@@ -683,6 +643,7 @@ A synchronous answer requires no blocking gap.
 An asynchronous research job must preserve the original query.
 Ranking cannot repair failed constraint satisfaction.
 Unknown cannot be converted to false.
+Confidence cannot hide freshness, verification, or contradiction state.
 ```
 
 ## 23. Deferred questions
@@ -712,14 +673,15 @@ N18 answer:
 N27 answer:
   The canonical Answer object is a sourced resolution object containing original query,
   normalized query reference, matched claims, generated occurrences, evidence refs,
-  confidence, freshness, caveats, coverage gaps, and next actions.
+  confidence, freshness, verification state, contradiction state, caveats, coverage gaps,
+  and next actions.
 
 N28 answer:
   Coverage gaps are typed blockers or degraders over affordance, place, time, access,
-  evidence, freshness, confidence, contradiction, or answerability.
+  evidence, freshness, confidence, verification, contradiction, or answerability.
 
 N10 answer:
   The system answers synchronously only when normalized constraints, evidence,
-  freshness, confidence, access, and contradiction checks pass; otherwise it creates
-  explicit coverage gaps and research work when the gaps are researchable.
+  freshness, confidence, verification, access, and contradiction checks pass;
+  otherwise it creates explicit coverage gaps and research work when the gaps are researchable.
 ```
