@@ -160,11 +160,14 @@ Place
 SpatialConstraint
 TimeScope
 TemporalConstraint
+ClaimValidity
 AccessCondition
 AvailabilityClaim
 EvidenceItem
 ConfidenceAssessment
+FreshnessState
 VerificationState
+ContradictionState
 CoverageGap
 ResearchJob
 Answer
@@ -200,28 +203,30 @@ place identity
 place address or coordinates when available
 time scope as recurrence or instance
 timezone
+claim validity
 evidence item
-source type
+source class
+item class
 retrieved_at
 confidence state
+freshness state
 verification state
+contradiction state
 exception caveat when relevant
 ```
 
 Minimum valid example:
 
 ```yaml
-affordance_availability_claim:
+availability_claim:
   claim_id: claim_example_mass_sunday_1000
-  claim_type: affordance_availability_claim
-  schema_version: 0.1.0
+  claim_type: availability_claim
+  schema_version: 0.2.0
   lifecycle:
     verification_state: active
     created_at: 2026-06-16T12:00:00-05:00
     updated_at: 2026-06-16T12:00:00-05:00
     last_verified_at: 2026-06-16T12:00:00-05:00
-    valid_from: null
-    valid_through: null
   assertion:
     affordance:
       affordance_id: aff_catholic_mass
@@ -236,6 +241,7 @@ affordance_availability_claim:
       latitude: null
       longitude: null
       parent_place_id: null
+    service_area: null
     time_scope:
       kind: recurrence
       timezone: America/New_York
@@ -245,8 +251,10 @@ affordance_availability_claim:
       recurrence_label: Sundays at 10:00 AM
       exception_rules:
         - holiday schedules may override ordinary Sunday schedule
+    claim_validity:
       valid_from: null
       valid_through: null
+      validity_basis: no explicit source validity window
     access_conditions:
       - condition_type: walk_in_allowed
         value: true
@@ -256,6 +264,8 @@ affordance_availability_claim:
     evidence_items:
       - evidence_item_id: ev_example_001
         evidence_source_id: src_example_parish_website
+        source_class: official_primary
+        item_class: webpage
         source_type: official_website
         source_locator: https://example.invalid/mass-times
         retrieved_at: 2026-06-16T12:00:00-05:00
@@ -266,13 +276,16 @@ affordance_availability_claim:
         authority_level: official
         freshness_state: current
     evidence_summary: Official parish page lists Sunday Mass at 10:00 AM.
-  confidence:
-    state: high_confidence
-    score: null
-    basis:
-      - official source
-      - specific recurrence
-      - source retrieved recently
+  assessments:
+    confidence:
+      state: high_confidence
+      score: null
+      basis:
+        - official primary source
+        - specific recurrence
+        - source retrieved recently
+    freshness_state: current
+    contradiction_state: none
   provenance:
     extraction_method: manual
     extracted_by: null
@@ -296,6 +309,8 @@ addresses
 source references
 freshness or retrieval date
 confidence state
+verification state
+contradiction state
 exception caveat if ordinary recurrence may be overridden
 coverage-gap notes if incomplete
 ```
@@ -386,6 +401,7 @@ Synchronous answer is allowed when:
 active claims already exist
 claims match Mass, place constraint, and requested date window
 source evidence is admissible
+freshness is current/recent enough for the category
 confidence is probable or higher
 no blocking contradiction exists
 exception risk is caveated or resolved
