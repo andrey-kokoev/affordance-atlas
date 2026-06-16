@@ -13,7 +13,9 @@ Depends on:
 
 ## 1. Purpose
 
-This document defines the canonical normal form for an AffordanceAvailabilityClaim.
+This document defines the canonical normal form for an AvailabilityClaim.
+
+`AvailabilityClaim` is the canonical schema/code name. `AffordanceAvailabilityClaim` is the full semantic name. They are aliases.
 
 The normal form is the semantic source for later artifacts:
 
@@ -31,22 +33,24 @@ It is not yet a database schema. It is a normalized record contract.
 
 ## 2. Record-level definition
 
-An AffordanceAvailabilityClaim is a sourced assertion that:
+An AvailabilityClaim is a sourced assertion that:
 
 ```text
 Available(Affordance, Place, TimeScope)
 ```
 
-is true enough, under stated access conditions and verification state, to be considered by the resolver.
+is supported enough, under stated access conditions and state assessments, to be considered by the resolver.
 
 Expanded assertion:
 
 ```text
 EvidenceSet supports Available(Affordance, Place, TimeScope)
 under AccessConditions,
+within ClaimValidity,
 with ConfidenceAssessment,
+with FreshnessState,
 in VerificationState,
-within ClaimValidity.
+with ContradictionState.
 ```
 
 The claim is not a document, event, listing, schedule, or answer.
@@ -60,9 +64,12 @@ The normal form must:
 ```text
 separate user language from normalized constraints
 separate place identity from spatial constraint
-separate availability time from source time
+separate physical place from service area
+separate availability time from claim validity
 separate evidence source from evidence item
+separate confidence from freshness
 separate confidence from verification state
+separate contradiction state from verification state
 represent recurrence and exceptions
 represent access conditions
 represent provenance
@@ -74,29 +81,29 @@ support sync/async coverage decisions
 ## 4. Top-level shape
 
 ```yaml
-affordance_availability_claim:
+availability_claim:
   claim_id: string
-  claim_type: affordance_availability_claim
+  claim_type: availability_claim
   schema_version: string
   lifecycle:
     verification_state: enum
     created_at: datetime
     updated_at: datetime
     last_verified_at: datetime | null
-    valid_from: date | null
-    valid_through: date | null
   assertion:
     affordance: AffordanceRef
     place: PlaceRef
+    service_area: ServiceAreaRef | null
     time_scope: TimeScope
+    claim_validity: ClaimValidity
     access_conditions: AccessCondition[]
   evidence:
     evidence_items: EvidenceItemRef[]
     evidence_summary: string | null
-  confidence:
-    state: enum
-    score: number | null
-    basis: string[]
+  assessments:
+    confidence: ConfidenceAssessment
+    freshness_state: FreshnessState
+    contradiction_state: ContradictionState
   provenance:
     extraction_method: enum
     extracted_by: string | null
@@ -121,8 +128,11 @@ lifecycle.verification_state
 assertion.affordance
 assertion.place
 assertion.time_scope
+assertion.claim_validity
 evidence.evidence_items
-confidence.state
+assessments.confidence.state
+assessments.freshness_state
+assessments.contradiction_state
 provenance.extraction_method
 contradiction.contradiction_state
 ```
@@ -168,12 +178,10 @@ access conditions materially change
 
 ```yaml
 lifecycle:
-  verification_state: candidate | extracted | normalized | verified | active | stale | contradicted | retired
+  verification_state: candidate | extracted | normalized | verified | active | stale | retired
   created_at: datetime
   updated_at: datetime
   last_verified_at: datetime | null
-  valid_from: date | null
-  valid_through: date | null
 ```
 
 Semantics:
@@ -182,19 +190,11 @@ Semantics:
 created_at       = when this normalized claim record was first created
 updated_at       = when this claim record was last modified
 last_verified_at = when the claim was last checked against admissible evidence
-valid_from       = first date the claim should be considered applicable, if known
-valid_through    = last date the claim should be considered applicable, if known
 ```
 
-`valid_from` and `valid_through` are not the same as availability time.
+`stale` here means the claim lifecycle has been demoted due to freshness. It does not replace `FreshnessState`, which records the evidence freshness assessment.
 
-Example:
-
-```text
-A schedule may say Sunday Mass is at 10:00.
-The recurring availability time is Sundays 10:00.
-The claim validity window may be 2026-01-01 through 2026-08-31.
-```
+`contradicted` is not a lifecycle value. Contradiction belongs to `ContradictionState`.
 
 ## 8. Assertion block
 
@@ -213,6 +213,11 @@ assertion:
     latitude: number | null
     longitude: number | null
     parent_place_id: string | null
+  service_area:
+    service_area_id: string | null
+    label: string | null
+    geometry_ref: string | null
+    jurisdiction: string | null
   time_scope:
     kind: enum
     timezone: string
@@ -221,12 +226,14 @@ assertion:
     recurrence_rule: string | null
     recurrence_label: string | null
     exception_rules: string[]
+  claim_validity:
     valid_from: date | null
     valid_through: date | null
+    validity_basis: string | null
   access_conditions:
     - condition_type: string
       value: string | boolean | number | null
-      confidence: enum | null
+      confidence: high_confidence | probable | candidate | insufficient | null
       evidence_item_ids: string[]
 ```
 
@@ -309,19 +316,29 @@ place:
 
 The user-side phrase `near Clifton Park` belongs to SpatialConstraint, not Place.
 
-## 11. TimeScope normal form
+## 11. ServiceArea normal form
+
+```yaml
+service_area:
+  service_area_id: string | null
+  label: string | null
+  geometry_ref: string | null
+  jurisdiction: string | null
+```
+
+ServiceArea is optional. It should be used only when availability depends on a covered area rather than a single physical realization point.
+
+## 12. TimeScope normal form
 
 ```yaml
 time_scope:
-  kind: instant | interval | date | daypart | recurrence | season | validity_window | exception | unknown
+  kind: instant | interval | date | daypart | recurrence | season | exception | unknown
   timezone: string
   starts_at: datetime | null
   ends_at: datetime | null
   recurrence_rule: string | null
   recurrence_label: string | null
   exception_rules: string[]
-  valid_from: date | null
-  valid_through: date | null
 ```
 
 Required semantics:
@@ -333,29 +350,44 @@ ends_at           = end datetime for intervals when known
 recurrence_rule   = machine-readable recurrence when known
 recurrence_label  = human-readable recurrence when useful
 exception_rules   = known or suspected exceptions
-valid_from        = first date this time_scope is known to apply
-valid_through     = last date this time_scope is known to apply
-```
-
-The system must distinguish:
-
-```text
-availability time
-source publication time
-source retrieval time
-claim verification time
-answer generation time
 ```
 
 Only availability time belongs in `assertion.time_scope`.
 
-## 12. AccessCondition normal form
+## 13. ClaimValidity normal form
+
+```yaml
+claim_validity:
+  valid_from: date | null
+  valid_through: date | null
+  validity_basis: string | null
+```
+
+Required semantics:
+
+```text
+valid_from       = first date this claim should be considered applicable, if known
+valid_through    = last date this claim should be considered applicable, if known
+validity_basis   = evidence or rule explaining the validity window
+```
+
+ClaimValidity is not availability time.
+
+Example:
+
+```text
+A schedule may say Sunday Mass is at 10:00.
+The recurring availability time is Sundays 10:00.
+The claim validity window may be 2026-01-01 through 2026-08-31.
+```
+
+## 14. AccessCondition normal form
 
 ```yaml
 access_conditions:
   - condition_type: reservation_required | ticket_required | walk_in_allowed | cost | eligibility | capacity | language | accessibility | modality | other
     value: string | boolean | number | null
-    confidence: verified | high_confidence | probable | candidate | insufficient | null
+    confidence: high_confidence | probable | candidate | insufficient | null
     evidence_item_ids: string[]
 ```
 
@@ -377,13 +409,15 @@ access_conditions:
     evidence_item_ids: []
 ```
 
-## 13. Evidence block
+## 15. Evidence block
 
 ```yaml
 evidence:
   evidence_items:
     - evidence_item_id: string
       evidence_source_id: string | null
+      source_class: enum
+      item_class: enum
       source_type: enum
       source_locator: string | null
       retrieved_at: datetime
@@ -396,32 +430,42 @@ evidence:
   evidence_summary: string | null
 ```
 
-Allowed initial `source_type` values:
+Vocabulary rule:
 
 ```text
-official_website
-official_calendar
-pdf_bulletin
-posted_schedule
-government_page
-venue_page
+source_class  = authority class of the source identity
+item_class    = concrete artifact type retrieved or recorded
+source_type   = legacy/display label; later schemas should derive it from source_class + item_class when possible
+```
+
+Allowed initial `source_class` values:
+
+```text
+official_primary
+official_secondary
+affiliated
 trusted_aggregator
+generic_aggregator
 user_report
-manual_phone_note
-manual_observation
+manual_verification
+machine_inferred
 unknown
 ```
 
-Allowed initial `authority_level` values:
+Allowed initial `item_class` values:
 
 ```text
-official
-affiliated
-trusted_third_party
-untrusted_third_party
-user_report
-manual_verification
-unknown
+webpage
+pdf
+calendar_feed
+calendar_event
+structured_api_response
+image_or_scan
+posted_schedule_photo
+phone_note
+manual_observation_note
+user_submission
+search_result_snippet
 ```
 
 Allowed initial `freshness_state` values:
@@ -436,37 +480,39 @@ unknown
 
 EvidenceItem is the concrete observed artifact. EvidenceSource is the source identity behind it.
 
-## 14. Confidence block
+## 16. Assessments block
 
 ```yaml
-confidence:
-  state: verified | high_confidence | probable | candidate | stale | contradicted | insufficient
-  score: number | null
-  basis: string[]
+assessments:
+  confidence:
+    state: high_confidence | probable | candidate | insufficient
+    score: number | null
+    basis: string[]
+  freshness_state: current | recent | possibly_stale | stale | unknown
+  contradiction_state: none | suspected | confirmed | resolved
 ```
 
 Confidence answers:
 
 ```text
-How safe is this claim to use in an answer?
+How safe is this claim to use in an answer, considering evidence and other state inputs?
 ```
 
-Confidence is derived from:
+Freshness answers:
 
 ```text
-source authority
-source freshness
-extraction certainty
-specificity of affordance/place/time
-corroboration
-contradiction state
-known exception risk
-verification history
+Is the evidence current enough for this claim category?
 ```
 
-Numeric score is optional. The state is required.
+Contradiction answers:
 
-## 15. Provenance block
+```text
+Does this claim conflict with other evidence-backed claims?
+```
+
+These are separated so stale or contradicted claims are not hidden as mere low confidence.
+
+## 17. Provenance block
 
 ```yaml
 provenance:
@@ -493,7 +539,7 @@ Provenance answers:
 How did this system produce the normalized record?
 ```
 
-## 16. Contradiction block
+## 18. Contradiction block
 
 ```yaml
 contradiction:
@@ -506,20 +552,20 @@ Contradiction state is required because silence is unsafe.
 
 A claim with `contradiction_state: confirmed` must not be treated as active even if its lifecycle has not yet been retired.
 
-## 17. Complete example
+`assessments.contradiction_state` and `contradiction.contradiction_state` must agree. The nested block carries supporting references and notes.
+
+## 19. Complete example
 
 ```yaml
-affordance_availability_claim:
+availability_claim:
   claim_id: claim_mass_example_church_sunday_1000
-  claim_type: affordance_availability_claim
-  schema_version: 0.1.0
+  claim_type: availability_claim
+  schema_version: 0.2.0
   lifecycle:
     verification_state: active
     created_at: 2026-06-16T12:00:00-05:00
     updated_at: 2026-06-16T12:00:00-05:00
     last_verified_at: 2026-06-16T12:00:00-05:00
-    valid_from: null
-    valid_through: null
   assertion:
     affordance:
       affordance_id: aff_catholic_mass
@@ -534,6 +580,7 @@ affordance_availability_claim:
       latitude: null
       longitude: null
       parent_place_id: null
+    service_area: null
     time_scope:
       kind: recurrence
       timezone: America/New_York
@@ -543,8 +590,10 @@ affordance_availability_claim:
       recurrence_label: Sundays at 10:00 AM
       exception_rules:
         - holiday schedules may override ordinary Sunday schedule
+    claim_validity:
       valid_from: null
       valid_through: null
+      validity_basis: no explicit source validity window
     access_conditions:
       - condition_type: walk_in_allowed
         value: true
@@ -554,6 +603,8 @@ affordance_availability_claim:
     evidence_items:
       - evidence_item_id: ev_example_001
         evidence_source_id: src_example_church_website
+        source_class: official_primary
+        item_class: webpage
         source_type: official_website
         source_locator: https://example.invalid/mass-times
         retrieved_at: 2026-06-16T12:00:00-05:00
@@ -564,15 +615,18 @@ affordance_availability_claim:
         authority_level: official
         freshness_state: current
     evidence_summary: Official parish page lists Sunday Mass at 10:00 AM.
-  confidence:
-    state: high_confidence
-    score: null
-    basis:
-      - official source
-      - specific affordance
-      - specific recurrence
-      - source retrieved recently
-      - no contradiction known
+  assessments:
+    confidence:
+      state: high_confidence
+      score: null
+      basis:
+        - official primary source
+        - specific affordance
+        - specific recurrence
+        - source retrieved recently
+        - no contradiction known
+    freshness_state: current
+    contradiction_state: none
   provenance:
     extraction_method: manual
     extracted_by: null
@@ -585,9 +639,9 @@ affordance_availability_claim:
     notes: null
 ```
 
-## 18. Normalization rules
+## 20. Normalization rules
 
-### 18.1 One claim per normalized assertion
+### 20.1 One claim per normalized assertion
 
 A claim should represent one normalized availability assertion.
 
@@ -607,7 +661,7 @@ Claim 2: Available(Confession, Church, Saturday 15:00-16:00)
 Claim 3: Available(Adoration, Church, First Friday 19:00)
 ```
 
-### 18.2 Recurrence and instance are distinct
+### 20.2 Recurrence and instance are distinct
 
 A recurring claim may generate date-specific instances for answering.
 
@@ -623,7 +677,7 @@ Answer instance: 2026-06-21 10:00
 
 The answer instance should point back to the recurrence claim.
 
-### 18.3 Exceptions do not delete recurrence
+### 20.3 Exceptions do not delete recurrence
 
 An exception modifies applicability. It does not erase the underlying recurring claim.
 
@@ -636,7 +690,7 @@ Christmas schedule different.
 
 This should be represented as recurrence plus exception awareness, not as contradictory ordinary data.
 
-### 18.4 Unknown is explicit
+### 20.4 Unknown is explicit
 
 Unknown values remain null or explicit unknown states.
 
@@ -650,13 +704,13 @@ cost unknown ≠ free
 valid_through unknown ≠ never expires
 ```
 
-### 18.5 Evidence is mandatory
+### 20.5 Evidence is mandatory
 
-A claim without evidence is not an AvailabilityClaim.
+A claim without evidence is not an active answer-eligible AvailabilityClaim.
 
 It may exist as a candidate hypothesis, but it must not be eligible for normal answer composition.
 
-## 19. Derived artifacts
+## 21. Derived artifacts
 
 This normal form should later generate or constrain:
 
@@ -669,12 +723,12 @@ answer claim citation format
 coverage-check inputs
 ```
 
-## 20. Decision summary
+## 22. Decision summary
 
 ```text
 N04 answer:
-  The canonical record normal form is AffordanceAvailabilityClaim, a normalized,
+  The canonical record normal form is AvailabilityClaim, a normalized,
   evidence-backed assertion over Affordance, Place, and TimeScope, with explicit
-  access conditions, lifecycle, confidence, provenance, contradiction state,
-  and freshness-aware evidence.
+  claim validity, access conditions, lifecycle, confidence, freshness,
+  provenance, contradiction state, and evidence vocabulary.
 ```
