@@ -1,0 +1,324 @@
+domain_design_dag:
+  id: closed_loop_spatiotemporal_affordance_availability_resolver
+  label: Closed-loop spatiotemporal affordance availability resolver
+  purpose: >
+    Resolve partial user constraints over whatness, whereness, and whenness
+    into sourced real-world availability claims; convert insufficient coverage
+    into acquisition work that expands the claim base.
+
+  node_types:
+    - definition
+    - ontology
+    - schema
+    - query_semantics
+    - answer_semantics
+    - coverage_semantics
+    - acquisition
+    - architecture
+    - product_boundary
+    - v0_scope
+    - naming
+    - formalization
+
+  nodes:
+    - id: N01
+      question: What is the minimal ontology / primitive set for this domain?
+      type: ontology
+      depends_on: []
+      artifact_produced: Minimal ontology inventory
+      answered_by: 02-minimal-ontology.md
+
+    - id: N02
+      question: Is AffordanceAvailabilityClaim the right primitive, or is there a better one?
+      type: ontology
+      depends_on: [N01]
+      artifact_produced: Core primitive decision
+      answered_by: 02-minimal-ontology.md
+
+    - id: N03
+      question: How would this be represented as RDF triples / graph / ontology?
+      type: schema
+      depends_on: [N01, N02]
+      artifact_produced: RDF/graph ontology sketch
+      answered_by: null
+
+    - id: N04
+      question: What is the normal form for these records?
+      type: schema
+      depends_on: [N01, N02]
+      artifact_produced: Canonical record normal form
+      answered_by: 03-availability-claim-normal-form.md
+
+    - id: N05
+      question: What is the architecture of the system?
+      type: architecture
+      depends_on: [N01, N02, N04]
+      artifact_produced: System architecture diagram
+      answered_by: null
+
+    - id: N06
+      question: What is the boundary between search, crawler, calendar, event aggregator, and this system?
+      type: product_boundary
+      depends_on: [N01, N02]
+      artifact_produced: Product boundary statement
+      answered_by: null
+
+    - id: N07
+      question: What are the hardest edge cases?
+      type: coverage_semantics
+      depends_on: [N01, N02, N04, N06]
+      artifact_produced: Edge-case catalog
+      answered_by: null
+
+    - id: N08
+      question: How do we model recurrence and exceptions?
+      type: ontology
+      depends_on: [N04, N07]
+      artifact_produced: TimeScope and exception model
+      answered_by: null
+
+    - id: N09
+      question: What is the acquisition loop / research job contract?
+      type: acquisition
+      depends_on: [N04, N05, N07]
+      artifact_produced: ResearchJob contract
+      answered_by: 05-acquisition-loop.md
+
+    - id: N10
+      question: How do we decide synchronous answer vs asynchronous research?
+      type: coverage_semantics
+      depends_on: [N04, N07, N09]
+      artifact_produced: Sync/async resolution policy
+      answered_by: 04-query-answer-coverage.md
+
+    - id: N11
+      question: What is the data model in SQL?
+      type: schema
+      depends_on: [N04, N08, N09, N10]
+      artifact_produced: Relational schema draft
+      answered_by: null
+
+    - id: N12
+      question: What is the event log / CQRS shape?
+      type: architecture
+      depends_on: [N05, N09, N10, N11]
+      artifact_produced: Event model and CQRS boundary
+      answered_by: null
+
+    - id: N13
+      question: What is the identity model?
+      type: ontology
+      depends_on: [N02, N04, N08]
+      artifact_produced: Identity and deduplication model
+      answered_by: null
+
+    - id: N14
+      question: What would be a vertical slice / test case?
+      type: v0_scope
+      depends_on: [N06, N07, N10]
+      artifact_produced: Candidate vertical slice
+      answered_by: 06-v0-scope.md
+
+    - id: N15
+      question: How would this compare to Google Maps / Perplexity / Eventbrite / Yelp?
+      type: product_boundary
+      depends_on: [N06, N10, N14]
+      artifact_produced: Competitive/comparative positioning
+      answered_by: null
+
+    - id: N16
+      question: What should the repo/package/protocol names be?
+      type: naming
+      depends_on: [N02, N05, N09, N11]
+      artifact_produced: Naming inventory
+      answered_by: null
+
+    - id: N17
+      question: Can this be framed as a compiler/runtime?
+      type: formalization
+      depends_on: [N04, N05, N10]
+      artifact_produced: Compiler/runtime metaphor mapping
+      answered_by: null
+
+    - id: N18
+      question: What is the query IR / DSL for this?
+      type: query_semantics
+      depends_on: [N01, N02, N04, N08]
+      artifact_produced: Query intermediate representation
+      answered_by: 04-query-answer-coverage.md
+
+    - id: N19
+      question: What are the invariants?
+      type: coverage_semantics
+      depends_on: [N04, N07, N09, N10]
+      artifact_produced: System invariants list
+      answered_by: null
+
+    - id: N20
+      question: What is the lifecycle/state machine of an AvailabilityClaim?
+      type: architecture
+      depends_on: [N02, N04, N09, N19]
+      artifact_produced: Claim lifecycle state machine
+      answered_by: null
+
+    - id: N21
+      question: How should confidence be computed?
+      type: coverage_semantics
+      depends_on: [N04, N09, N19, N20]
+      artifact_produced: Confidence scoring model
+      answered_by: null
+
+    - id: N22
+      question: What are the source classes?
+      type: acquisition
+      depends_on: [N04, N09, N21]
+      artifact_produced: Source taxonomy
+      answered_by: 05-acquisition-loop.md
+
+    - id: N23
+      question: What is the decomposition of time?
+      type: ontology
+      depends_on: [N01, N04, N08]
+      artifact_produced: Temporal ontology
+      answered_by: 02-minimal-ontology.md
+
+    - id: N24
+      question: What is the decomposition of where?
+      type: ontology
+      depends_on: [N01, N04, N13]
+      artifact_produced: Spatial/place ontology
+      answered_by: 02-minimal-ontology.md
+
+    - id: N25
+      question: What is the decomposition of whatness?
+      type: ontology
+      depends_on: [N01, N02]
+      artifact_produced: Affordance/category ontology
+      answered_by: 02-minimal-ontology.md
+
+    - id: N26
+      question: How do we model contradictory sources?
+      type: coverage_semantics
+      depends_on: [N21, N22]
+      artifact_produced: Contradiction handling policy
+      answered_by: 05-acquisition-loop.md
+
+    - id: N27
+      question: What is the canonical answer object?
+      type: answer_semantics
+      depends_on: [N04, N10, N18, N21]
+      artifact_produced: Answer object schema
+      answered_by: 04-query-answer-coverage.md
+
+    - id: N28
+      question: What is the exact coverage-gap taxonomy?
+      type: coverage_semantics
+      depends_on: [N10, N18, N21, N27]
+      artifact_produced: CoverageGap taxonomy
+      answered_by: 04-query-answer-coverage.md
+
+    - id: N29
+      question: What are the failure modes / silent degradations?
+      type: coverage_semantics
+      depends_on: [N07, N19, N26, N28]
+      artifact_produced: Failure-mode catalog
+      answered_by: null
+
+    - id: N30
+      question: What should be cached vs recomputed?
+      type: architecture
+      depends_on: [N05, N11, N12, N20, N21]
+      artifact_produced: Cache/recompute policy
+      answered_by: null
+
+    - id: N31
+      question: How should ranking work?
+      type: query_semantics
+      depends_on: [N18, N21, N23, N24, N25, N27]
+      artifact_produced: Ranking policy
+      answered_by: null
+
+    - id: N32
+      question: Can this be generalized beyond public events?
+      type: product_boundary
+      depends_on: [N06, N14, N25]
+      artifact_produced: Generalization boundary analysis
+      answered_by: null
+
+    - id: N33
+      question: What is the first vertical that proves the abstraction?
+      type: v0_scope
+      depends_on: [N14, N15, N32]
+      artifact_produced: First vertical decision
+      answered_by: 06-v0-scope.md
+
+    - id: N34
+      question: What would make this not terminal / what would reopen the object?
+      type: ontology
+      depends_on: [N02, N04, N23, N24, N25, N29]
+      artifact_produced: Ontology insufficiency tests
+      answered_by: null
+
+    - id: N35
+      question: How does async notification semantics work?
+      type: answer_semantics
+      depends_on: [N09, N10, N27, N28]
+      artifact_produced: Async answer/notification contract
+      answered_by: null
+
+    - id: N36
+      question: What is the minimal v0?
+      type: v0_scope
+      depends_on: [N11, N18, N27, N28, N33, N35]
+      artifact_produced: Minimal v0 build scope
+      answered_by: 06-v0-scope.md
+
+    - id: N37
+      question: What is the ingestion/extraction pipeline?
+      type: acquisition
+      depends_on: [N09, N22, N26, N28]
+      artifact_produced: Ingestion/extraction pipeline
+      answered_by: 05-acquisition-loop.md
+
+    - id: N38
+      question: What is the relation to schema.org Event / Place / OpeningHoursSpecification?
+      type: schema
+      depends_on: [N03, N04, N23, N24, N25]
+      artifact_produced: Schema.org mapping
+      answered_by: null
+
+    - id: N39
+      question: What does a claim look like in JSON?
+      type: schema
+      depends_on: [N04, N21, N23, N24, N25, N26]
+      artifact_produced: JSON AvailabilityClaim example
+      answered_by: null
+
+    - id: N40
+      question: What are good names for the modules?
+      type: naming
+      depends_on: [N05, N09, N11, N12, N18, N37]
+      artifact_produced: Module naming map
+      answered_by: null
+
+    - id: N41
+      question: Can we express the whole thing as a small algebra?
+      type: formalization
+      depends_on: [N01, N02, N18, N27, N28]
+      artifact_produced: Domain algebra
+      answered_by: null
+
+    - id: N42
+      question: What is the human-in-the-loop boundary?
+      type: acquisition
+      depends_on: [N09, N21, N22, N26, N29, N37]
+      artifact_produced: Human review/escalation policy
+      answered_by: 05-acquisition-loop.md
+
+  current_semantic_spine:
+    - 00-affordance-atlas-kernel.md
+    - 02-minimal-ontology.md
+    - 03-availability-claim-normal-form.md
+    - 04-query-answer-coverage.md
+    - 05-acquisition-loop.md
+    - 06-v0-scope.md
