@@ -1,0 +1,13 @@
+{
+  "name": "affordance-atlas",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Closed-loop spatiotemporal affordance availability resolver domain model.",
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.0"
+  }
+}
