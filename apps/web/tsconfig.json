@@ -2,8 +2,6 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "composite": true,
-    "jsx": "react-jsx",
-    "allowImportingTsExtensions": false,
     "noEmit": true,
     "types": ["vite/client"],
     "baseUrl": ".",
@@ -11,6 +9,6 @@
       "@affordance-atlas/domain": ["../../packages/domain/src/index.ts"]
     }
   },
-  "include": ["src", "vite.config.ts"],
+  "include": ["src/**/*.ts", "src/**/*.vue", "vite.config.ts", "env.d.ts"],
   "references": [{ "path": "../../packages/domain" }]
 }
