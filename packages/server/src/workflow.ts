@@ -11,6 +11,7 @@ import {
 import * as db from "./db.js";
 
 const FIXTURE_URL = "https://affordance-atlas-server.andrei-kokoev.workers.dev/__fixtures/availability/test-library";
+const OPEN_WEB_URL = "https://www.nps.gov/stli/planyourvisit/hours.htm";
 
 export interface ResearchWorkflowPayload {
   jobId: ResearchJobId;
@@ -82,6 +83,51 @@ async function extractFixtureWithBrowser(env: ResearchWorkflowEnv): Promise<Extr
     affordance_label: result.affordance_label,
     recurrence_label: result.recurrence_label,
     summary: result.summary,
+  };
+}
+
+async function extractOpenWebWithBrowser(env: ResearchWorkflowEnv): Promise<ExtractedAvailability> {
+  if (!env.BROWSER.quickAction) {
+    throw new Error("Browser Run quickAction binding is unavailable.");
+  }
+
+  const response = await env.BROWSER.quickAction("json", {
+    url: OPEN_WEB_URL,
+    prompt:
+      "Extract public visiting-hours availability from this National Park Service page for Statue of Liberty National Monument. Return place_name as Statue of Liberty National Monument, include the address if visible, use an affordance label for public visiting access, include a concise recurrence label or hours summary, and include a one-sentence summary. Do not invent data that is not on the page.",
+    response_format: {
+      type: "json_schema",
+      schema: {
+        type: "object",
+        properties: {
+          place_name: { type: "string" },
+          place_address: { type: "string" },
+          affordance_label: { type: "string" },
+          recurrence_label: { type: "string" },
+          summary: { type: "string" },
+        },
+        required: ["place_name", "affordance_label", "recurrence_label", "summary"],
+      },
+    },
+  });
+  if (!response.ok) {
+    throw new Error(`Browser Run open-web extraction failed: ${response.status}`);
+  }
+  const payload = (await response.json()) as { result?: Partial<ExtractedAvailability> };
+  const result = payload.result;
+  const extractedText = `${result?.place_name ?? ""} ${result?.affordance_label ?? ""} ${result?.recurrence_label ?? ""} ${result?.summary ?? ""}`;
+  if (!result || !/statue of liberty|national park service/i.test(extractedText)) {
+    throw new Error("Browser Run open-web extraction did not identify the Statue of Liberty NPS page.");
+  }
+  if (!result.recurrence_label && !result.summary) {
+    throw new Error("Browser Run open-web extraction did not return hours or availability text.");
+  }
+  return {
+    place_name: result.place_name || "Statue of Liberty National Monument",
+    place_address: result.place_address ?? null,
+    affordance_label: result.affordance_label || "Public visiting access",
+    recurrence_label: result.recurrence_label || result.summary || "Current public visiting hours are published online.",
+    summary: result.summary || `Statue of Liberty National Monument public visiting access is listed as ${result.recurrence_label}.`,
   };
 }
 
@@ -163,6 +209,9 @@ export class ResearchWorkflow extends WorkflowEntrypoint<ResearchWorkflowEnv, Re
           }
           if (payload.userQuery.includes("__workflow_browser_strict__")) {
             return await extractFixtureWithBrowser(this.env);
+          }
+          if (payload.userQuery.includes("__workflow_open_web_strict__")) {
+            return await extractOpenWebWithBrowser(this.env);
           }
           if (payload.userQuery.includes("__workflow_fixture__")) {
             try {
