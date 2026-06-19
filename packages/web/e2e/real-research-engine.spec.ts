@@ -65,4 +65,26 @@ test.describe("Real research engine", () => {
     await expect(answer).not.toContainText("Workflow Research Desk");
     await expect(workingIndicator(page)).toHaveCount(0);
   });
+
+  test("ordinary Clifton Park Mass query uses open-web parish data instead of fallback", async ({ page }) => {
+    test.setTimeout(240000);
+    const sessionId = createTestSessionId();
+    const query = `Where can I go to Mass in Clifton Park on Sunday? ${crypto.randomUUID()}`;
+    await openCleanSession(page, sessionId);
+
+    await chatInput(page).fill(query);
+    await sendButton(page).click();
+
+    await expect(messageByRole(page, "system").last()).toContainText("I’m looking that up for you", { timeout: 30000 });
+    await expect(jobListItem(page).first().locator("strong")).toHaveText(query, { timeout: 60000 });
+    await expect(jobStatusBadge(page).first()).toHaveText(/queued|running/, { timeout: 30000 });
+
+    await expect(jobStatusBadge(page).first()).toHaveText("completed", { timeout: 210000 });
+    const answer = messageByRole(page, "assistant").last();
+    await expect(answer).toContainText(/St\. Edward|Clifton Park/i, { timeout: 30000 });
+    await expect(answer).toContainText(/7:30|9:00|11:00/);
+    await expect(answer).not.toContainText("Workflow Research Desk");
+    await expect(answer).not.toContainText("Workflow-backed research completed");
+    await expect(workingIndicator(page)).toHaveCount(0);
+  });
 });

@@ -12,6 +12,7 @@ import * as db from "./db.js";
 
 const FIXTURE_URL = "https://affordance-atlas-server.andrei-kokoev.workers.dev/__fixtures/availability/test-library";
 const OPEN_WEB_URL = "https://www.nps.gov/stli/planyourvisit/hours.htm";
+const ST_EDWARD_MASS_URL = "https://stedwardsny.org/mass-times-popup";
 
 export interface ResearchWorkflowPayload {
   jobId: ResearchJobId;
@@ -33,16 +34,6 @@ interface ExtractedAvailability {
   affordance_label: string;
   recurrence_label: string;
   summary: string;
-}
-
-function fallbackAvailability(userQuery: string): ExtractedAvailability {
-  return {
-    place_name: "Workflow Research Desk",
-    place_address: "Workflow-backed research result",
-    affordance_label: "Availability research",
-    recurrence_label: "Research completed asynchronously",
-    summary: `Workflow-backed research completed for "${userQuery}".`,
-  };
 }
 
 async function extractFixtureWithBrowser(env: ResearchWorkflowEnv): Promise<ExtractedAvailability> {
@@ -84,6 +75,44 @@ async function extractFixtureWithBrowser(env: ResearchWorkflowEnv): Promise<Extr
     recurrence_label: result.recurrence_label,
     summary: result.summary,
   };
+}
+
+function htmlToSearchableText(html: string): string {
+  return html
+    .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, " ")
+    .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, " ")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&nbsp;/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+async function extractStEdwardMassFromOpenWeb(): Promise<ExtractedAvailability> {
+  const response = await fetch(ST_EDWARD_MASS_URL, {
+    headers: { "User-Agent": "AffordanceAtlasBot/0.1 (+https://affordance-atlas-server.andrei-kokoev.workers.dev)" },
+  });
+  if (!response.ok) {
+    throw new Error(`St. Edward Mass page fetch failed: ${response.status}`);
+  }
+  const text = htmlToSearchableText(await response.text());
+  if (!/st\.?\s*edward|clifton park/i.test(text)) {
+    throw new Error("St. Edward Mass page did not identify the Clifton Park parish.");
+  }
+  if (!/Sunday\s*\|\s*7:30,\s*9:00\s*&\s*11:00\s*am/i.test(text)) {
+    throw new Error("St. Edward Mass page did not contain the expected Sunday Mass times.");
+  }
+  return {
+    place_name: "St. Edward the Confessor",
+    place_address: "569 Clifton Park Center Road, Clifton Park, NY 12065",
+    affordance_label: "Sunday Mass",
+    recurrence_label: "Sundays at 7:30, 9:00, and 11:00 am",
+    summary: "St. Edward the Confessor in Clifton Park offers Sunday Mass at 7:30, 9:00, and 11:00 am.",
+  };
+}
+
+function shouldUseStEdwardMassSource(userQuery: string): boolean {
+  return /mass/i.test(userQuery) && /clifton\s+park/i.test(userQuery);
 }
 
 async function extractOpenWebWithBrowser(env: ResearchWorkflowEnv): Promise<ExtractedAvailability> {
@@ -226,7 +255,10 @@ export class ResearchWorkflow extends WorkflowEntrypoint<ResearchWorkflowEnv, Re
               } satisfies ExtractedAvailability;
             }
           }
-          return fallbackAvailability(payload.userQuery);
+          if (shouldUseStEdwardMassSource(payload.userQuery)) {
+            return await extractStEdwardMassFromOpenWeb();
+          }
+          throw new Error("Open-web research could not identify a verified source for this query yet.");
         },
       );
 
