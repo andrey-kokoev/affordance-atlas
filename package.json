@@ -3,14 +3,21 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "packageManager": "pnpm@latest",
+  "packageManager": "pnpm@10.9.0",
   "description": "Closed-loop spatiotemporal affordance availability resolver.",
   "scripts": {
     "dev": "pnpm --filter @affordance-atlas/web dev",
-    "build": "pnpm -r build",
-    "typecheck": "pnpm -r typecheck"
+    "dev:server": "pnpm --filter @affordance-atlas/server dev",
+    "build": "pnpm -r --sort build",
+    "typecheck": "pnpm --filter @affordance-atlas/domain build && pnpm -r --sort typecheck",
+    "deploy:server": "pnpm --filter @affordance-atlas/server deploy:worker"
   },
   "devDependencies": {
     "typescript": "latest"
+  },
+  "pnpm": {
+    "overrides": {
+      "partysocket": "1.1.19"
+    }
   }
 }

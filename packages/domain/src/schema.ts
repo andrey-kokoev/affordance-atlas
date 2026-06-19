@@ -6,22 +6,45 @@ export const IanaTimezoneSchema = z.string().min(1);
 export const UrlStringSchema = z.string().url();
 export const RRuleStringSchema = z.string().min(1);
 
-export const IdSchema = z.string().min(1);
-export const AffordanceIdSchema = IdSchema.brand<"AffordanceId">();
-export const PlaceIdSchema = IdSchema.brand<"PlaceId">();
-export const ServiceAreaIdSchema = IdSchema.brand<"ServiceAreaId">();
-export const TimeScopeIdSchema = IdSchema.brand<"TimeScopeId">();
-export const ClaimIdSchema = IdSchema.brand<"ClaimId">();
-export const EvidenceSourceIdSchema = IdSchema.brand<"EvidenceSourceId">();
-export const EvidenceItemIdSchema = IdSchema.brand<"EvidenceItemId">();
-export const CoverageGapIdSchema = IdSchema.brand<"CoverageGapId">();
-export const ResearchJobIdSchema = IdSchema.brand<"ResearchJobId">();
-export const ResearchStepIdSchema = IdSchema.brand<"ResearchStepId">();
-export const QueryIdSchema = IdSchema.brand<"QueryId">();
-export const AnswerIdSchema = IdSchema.brand<"AnswerId">();
-export const NotificationIdSchema = IdSchema.brand<"NotificationId">();
-export const EventIdSchema = IdSchema.brand<"EventId">();
-export const CorrelationIdSchema = IdSchema.brand<"CorrelationId">();
+declare const brand: unique symbol;
+
+export type BrandedId<Kind extends string> = string & { readonly [brand]: Kind };
+
+export type AffordanceId = BrandedId<"affordance_id">;
+export type PlaceId = BrandedId<"place_id">;
+export type ServiceAreaId = BrandedId<"service_area_id">;
+export type TimeScopeId = BrandedId<"time_scope_id">;
+export type ClaimId = BrandedId<"claim_id">;
+export type EvidenceSourceId = BrandedId<"evidence_source_id">;
+export type EvidenceItemId = BrandedId<"evidence_item_id">;
+export type CoverageGapId = BrandedId<"coverage_gap_id">;
+export type ResearchJobId = BrandedId<"research_job_id">;
+export type ResearchStepId = BrandedId<"research_step_id">;
+export type QueryId = BrandedId<"query_id">;
+export type AnswerId = BrandedId<"answer_id">;
+export type NotificationId = BrandedId<"notification_id">;
+export type EventId = BrandedId<"event_id">;
+export type CorrelationId = BrandedId<"correlation_id">;
+
+function makeIdSchema<Kind extends string>(_kind: Kind) {
+  return z.string().min(1).transform((s) => s as BrandedId<Kind>);
+}
+
+export const AffordanceIdSchema = makeIdSchema<"affordance_id">("affordance_id");
+export const PlaceIdSchema = makeIdSchema<"place_id">("place_id");
+export const ServiceAreaIdSchema = makeIdSchema<"service_area_id">("service_area_id");
+export const TimeScopeIdSchema = makeIdSchema<"time_scope_id">("time_scope_id");
+export const ClaimIdSchema = makeIdSchema<"claim_id">("claim_id");
+export const EvidenceSourceIdSchema = makeIdSchema<"evidence_source_id">("evidence_source_id");
+export const EvidenceItemIdSchema = makeIdSchema<"evidence_item_id">("evidence_item_id");
+export const CoverageGapIdSchema = makeIdSchema<"coverage_gap_id">("coverage_gap_id");
+export const ResearchJobIdSchema = makeIdSchema<"research_job_id">("research_job_id");
+export const ResearchStepIdSchema = makeIdSchema<"research_step_id">("research_step_id");
+export const QueryIdSchema = makeIdSchema<"query_id">("query_id");
+export const AnswerIdSchema = makeIdSchema<"answer_id">("answer_id");
+export const NotificationIdSchema = makeIdSchema<"notification_id">("notification_id");
+export const EventIdSchema = makeIdSchema<"event_id">("event_id");
+export const CorrelationIdSchema = makeIdSchema<"correlation_id">("correlation_id");
 
 export const ConfidenceStateSchema = z.enum(["high_confidence", "probable", "candidate", "insufficient"]);
 export const FreshnessStateSchema = z.enum(["current", "recent", "possibly_stale", "stale", "unknown"]);
@@ -80,7 +103,7 @@ export const AccessConditionTypeSchema = z.enum([
 export const ExtractionMethodSchema = z.enum(["manual", "llm", "parser", "api_import", "crawler", "hybrid", "unknown"]);
 
 export const JsonValueSchema: z.ZodType<unknown> = z.lazy(() =>
-  z.union([z.string(), z.number(), z.boolean(), z.null(), z.array(JsonValueSchema), z.record(JsonValueSchema)]),
+  z.union([z.string(), z.number(), z.boolean(), z.null(), z.array(JsonValueSchema), z.record(z.string(), JsonValueSchema)]),
 );
 
 export const AffordanceRefSchema = z.object({
@@ -135,13 +158,18 @@ export const RecurrenceTimeScopeSchema = z.object({
   timezone: IanaTimezoneSchema,
   starts_at: z.null(),
   ends_at: z.null(),
-  recurrence_rule: RRuleStringSchema.nullable(),
-  recurrence_label: z.string().min(1).nullable(),
+  recurrence_payload: z.union([
+    z.object({
+      recurrence_rule: RRuleStringSchema,
+      recurrence_label: z.string().min(1).nullable(),
+    }),
+    z.object({
+      recurrence_rule: z.null(),
+      recurrence_label: z.string().min(1),
+    }),
+  ]),
   exception_rules: z.array(z.string()),
-}).refine(
-  (scope) => scope.recurrence_rule !== null || scope.recurrence_label !== null,
-  "recurrence TimeScope requires recurrence_rule or recurrence_label",
-);
+});
 
 export const DateTimeScopeSchema = z.object({
   time_scope_id: TimeScopeIdSchema.optional(),
@@ -389,6 +417,25 @@ export const NormalizedQuerySchema = z.object({
   requested_answer_mode: z.enum(["synchronous", "asynchronous_allowed", "either"]),
 });
 
+export const CoverageGapTypeSchema = z.enum([
+  "missing_place",
+  "missing_time",
+  "missing_availability",
+  "missing_access_conditions",
+  "ambiguous_query",
+  "source_conflict",
+]);
+
+export const CoverageGapSchema = z.object({
+  gap_id: CoverageGapIdSchema,
+  gap_type: CoverageGapTypeSchema,
+  description: z.string().min(1),
+  constraint_field: z.enum(["affordance", "spatial", "temporal", "access"]),
+  constraint_snapshot: JsonValueSchema,
+  created_at: IsoDateTimeSchema,
+  status: z.enum(["open", "researching", "resolved"]),
+});
+
 export const AnswerResultSchema = z.object({
   result_id: z.string().min(1),
   claim_id: ClaimIdSchema,
@@ -420,7 +467,7 @@ export const AnswerSchema = z.object({
   original_user_query: z.string().min(1),
   normalized_query_ref: QueryIdSchema,
   results: z.array(AnswerResultSchema),
-  coverage_gaps: z.array(CoverageGapIdSchema),
+  coverage_gaps: z.array(CoverageGapSchema),
   answer_summary: z.string().min(1),
   next_actions: z.array(z.object({ action_type: z.enum(["research", "verify", "ask_user", "none"]), label: z.string() })),
 }).superRefine((answer, ctx) => {
@@ -432,9 +479,75 @@ export const AnswerSchema = z.object({
   }
 });
 
+export const ResearchJobStatusSchema = z.enum(["queued", "running", "completed", "failed"]);
+
+export const ResearchJobSchema = z.object({
+  job_id: ResearchJobIdSchema,
+  query_id: QueryIdSchema,
+  query_snapshot: NormalizedQuerySchema,
+  status: ResearchJobStatusSchema,
+  created_at: IsoDateTimeSchema,
+  updated_at: IsoDateTimeSchema,
+  scheduled_at: IsoDateTimeSchema.nullable(),
+  completed_at: IsoDateTimeSchema.nullable(),
+  result_answer_id: AnswerIdSchema.nullable(),
+  error_message: z.string().nullable(),
+});
+
 export type AvailabilityClaim = z.infer<typeof AvailabilityClaimSchema>;
 export type NormalizedQuery = z.infer<typeof NormalizedQuerySchema>;
 export type Answer = z.infer<typeof AnswerSchema>;
+export type AnswerResult = z.infer<typeof AnswerResultSchema>;
+export type CoverageGap = z.infer<typeof CoverageGapSchema>;
+export type ResearchJob = z.infer<typeof ResearchJobSchema>;
+
+interface AnsweredAnswerInput {
+  answer_id: string;
+  query_id: string;
+  answer_mode: "synchronous" | "asynchronous";
+  answer_state: "answered";
+  original_user_query: string;
+  normalized_query_ref: string;
+  results: AnswerResult[];
+  coverage_gaps?: [];
+  answer_summary: string;
+  next_actions: { action_type: "research" | "verify" | "ask_user" | "none"; label: string }[];
+}
+
+interface GappyAnswerInput {
+  answer_id: string;
+  query_id: string;
+  answer_mode: "synchronous" | "asynchronous";
+  answer_state: "insufficient_coverage" | "partially_answered" | "no_supported_availability";
+  original_user_query: string;
+  normalized_query_ref: string;
+  results?: AnswerResult[];
+  coverage_gaps: CoverageGap[];
+  answer_summary: string;
+  next_actions: { action_type: "research" | "verify" | "ask_user" | "none"; label: string }[];
+}
+
+export function buildAnswer(input: AnsweredAnswerInput | GappyAnswerInput): Answer {
+  const base = {
+    schema_version: "0.1.0" as const,
+    generated_at: new Date().toISOString(),
+    results: input.results ?? [],
+    coverage_gaps: input.coverage_gaps ?? [],
+  };
+
+  if (input.answer_state === "answered") {
+    return AnswerSchema.parse({
+      ...input,
+      ...base,
+      coverage_gaps: [],
+    });
+  }
+
+  return AnswerSchema.parse({
+    ...input,
+    ...base,
+  });
+}
 
 export function parseAvailabilityClaim(input: unknown): AvailabilityClaim {
   return AvailabilityClaimSchema.parse(input);

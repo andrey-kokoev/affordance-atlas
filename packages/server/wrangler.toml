@@ -1,0 +1,31 @@
+name = "affordance-atlas-server"
+main = "src/index.ts"
+compatibility_date = "2025-06-16"
+compatibility_flags = ["nodejs_compat"]
+
+[[workflows]]
+name = "affordance-atlas-research"
+binding = "RESEARCH_WORKFLOW"
+class_name = "ResearchWorkflow"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "affordance-atlas-db"
+database_id = "51880d60-e894-41d5-b755-6fe742f3bd4d"
+
+[[durable_objects.bindings]]
+name = "AffordanceAtlasAgent"
+class_name = "AffordanceAtlasAgent"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["AffordanceAtlasAgent"]
+
+[ai]
+binding = "AI"
+
+[browser]
+binding = "BROWSER"
+
+[assets]
+directory = "../web/dist"
