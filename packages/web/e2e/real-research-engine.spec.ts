@@ -4,6 +4,7 @@ import {
   chatInput,
   connectionStatus,
   demoModeToggle,
+  jobOutcome,
   jobListItem,
   jobStatusBadge,
   messageByRole,
@@ -36,6 +37,7 @@ test.describe("Real research engine", () => {
     await expect(jobStatusBadge(page).first()).toHaveText(/queued|running/, { timeout: 30000 });
 
     await expect(jobStatusBadge(page).first()).toHaveText("completed", { timeout: 210000 });
+    await expect(jobOutcome(page).first()).toHaveText("Answer shown in chat.");
     const answer = messageByRole(page, "assistant").last();
     await expect(answer).toContainText("Controlled Fixture Reading Room", { timeout: 30000 });
     await expect(answer).toContainText("789 Fixture Ave, Testville, NY 12000");
@@ -59,6 +61,7 @@ test.describe("Real research engine", () => {
     await expect(jobStatusBadge(page).first()).toHaveText(/queued|running/, { timeout: 30000 });
 
     await expect(jobStatusBadge(page).first()).toHaveText("completed", { timeout: 210000 });
+    await expect(jobOutcome(page).first()).toHaveText("Answer shown in chat.");
     const answer = messageByRole(page, "assistant").last();
     await expect(answer).toContainText(/Statue of Liberty|National Park Service/i, { timeout: 30000 });
     await expect(answer).not.toContainText("Browser extraction fallback");
@@ -80,11 +83,18 @@ test.describe("Real research engine", () => {
     await expect(jobStatusBadge(page).first()).toHaveText(/queued|running/, { timeout: 30000 });
 
     await expect(jobStatusBadge(page).first()).toHaveText("completed", { timeout: 210000 });
+    await expect(jobOutcome(page).first()).toHaveText("Answer shown in chat.");
     const answer = messageByRole(page, "assistant").last();
     await expect(answer).toContainText(/St\. Edward|Clifton Park/i, { timeout: 30000 });
     await expect(answer).toContainText(/7:30|9:00|11:00/);
     await expect(answer).not.toContainText("Workflow Research Desk");
     await expect(answer).not.toContainText("Workflow-backed research completed");
     await expect(workingIndicator(page)).toHaveCount(0);
+
+    await page.reload();
+    await expect(connectionStatus(page)).toHaveText("Online", { timeout: 60000 });
+    await expect(messageByRole(page, "assistant").last()).toContainText(/St\. Edward|Clifton Park/i, { timeout: 30000 });
+    await expect(jobStatusBadge(page).first()).toHaveText("completed");
+    await expect(jobOutcome(page).first()).toHaveText("Answer shown in chat.");
   });
 });

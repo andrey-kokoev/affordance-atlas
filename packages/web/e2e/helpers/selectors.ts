@@ -36,6 +36,10 @@ export function jobStatusBadge(page: Page): Locator {
   return page.getByTestId("job-status-badge");
 }
 
+export function jobOutcome(page: Page): Locator {
+  return page.getByTestId("job-outcome");
+}
+
 export function errorBanner(page: Page): Locator {
   return page.getByTestId("error-banner");
 }

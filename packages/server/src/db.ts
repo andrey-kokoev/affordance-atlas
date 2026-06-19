@@ -296,21 +296,22 @@ export async function getLatestAnswerForOriginalQuery(
 export async function getCompletedAnswersBySession(
   db: D1Database,
   sessionId: string,
-): Promise<{ answer: Answer; generatedAt: string }[]> {
+): Promise<{ answer: Answer; generatedAt: string; researchJobId: ResearchJobId }[]> {
   const { results } = await db
     .prepare(
-      `SELECT a.answer_json, a.generated_at
+      `SELECT a.answer_json, a.generated_at, a.research_job_id
        FROM answer a
        JOIN research_job j ON j.research_job_id = a.research_job_id
        WHERE j.session_id = ? AND j.status = 'completed'
        ORDER BY a.generated_at ASC`,
     )
     .bind(sessionId)
-    .all<{ answer_json: string; generated_at: string }>();
+    .all<{ answer_json: string; generated_at: string; research_job_id: string }>();
 
   return (results ?? []).map((row) => ({
     answer: JSON.parse(row.answer_json) as Answer,
     generatedAt: row.generated_at,
+    researchJobId: row.research_job_id as ResearchJobId,
   }));
 }
 

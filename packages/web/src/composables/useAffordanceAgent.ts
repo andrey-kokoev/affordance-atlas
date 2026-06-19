@@ -89,6 +89,7 @@ export function useAffordanceAgent() {
           messages.value = state.messages;
           jobs.value = state.jobs;
         }
+        void client.call("listSessionJobs", [], { timeout: 10000 }).catch(() => undefined);
       })
       .catch((err: unknown) => {
         error.value = err instanceof Error ? err.message : String(err);

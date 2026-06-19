@@ -482,6 +482,21 @@ export class AffordanceAtlasAgent extends Agent<Env, SessionState> {
   private async refreshJobs(): Promise<void> {
     const jobs = await db.getResearchJobsBySession(this.env.DB, this.name, 20);
     const answers = await db.getCompletedAnswersBySession(this.env.DB, this.name);
+    const placeholderAnswerJobIds = new Set(
+      answers
+        .filter(({ answer }) => isPlaceholderResearchAnswer(answer))
+        .map(({ researchJobId }) => researchJobId),
+    );
+    const validCompletedAnswerJobIds = new Set(
+      answers
+        .filter(({ answer }) => !isPlaceholderResearchAnswer(answer))
+        .map(({ researchJobId }) => researchJobId),
+    );
+    const visibleJobs = jobs.filter((job) => {
+      if (placeholderAnswerJobIds.has(job.job_id)) return false;
+      if (job.status === "completed" && job.result_answer_id && !validCompletedAnswerJobIds.has(job.job_id)) return false;
+      return true;
+    });
     const retainedMessages = this.state.messages.filter((message) => !isPlaceholderResearchMessage(message));
     const existingSummaries = new Set(
       retainedMessages
@@ -497,7 +512,7 @@ export class AffordanceAtlasAgent extends Agent<Env, SessionState> {
         answer,
         createdAt: generatedAt,
       }));
-    this.setState({ messages: [...retainedMessages, ...hydratedMessages], jobs });
+    this.setState({ messages: [...retainedMessages, ...hydratedMessages], jobs: visibleJobs });
   }
 
   private startRefreshForActiveJobs(): void {

@@ -150,6 +150,7 @@ const exampleQueries = [
           >
             <strong>{{ job.query_snapshot.original_user_query }}</strong>
             <span data-testid="job-status-badge" class="badge">{{ job.status }}</span>
+            <p v-if="job.status === 'completed'" data-testid="job-outcome" class="job-outcome">Answer shown in chat.</p>
             <p v-if="job.error_message" class="error-text">{{ job.error_message }}</p>
           </li>
         </ul>
@@ -392,6 +393,11 @@ main {
 }
 .error-text {
   color: #991b1b;
+  font-size: 0.875rem;
+  margin: 0.25rem 0 0;
+}
+.job-outcome {
+  color: #166534;
   font-size: 0.875rem;
   margin: 0.25rem 0 0;
 }
