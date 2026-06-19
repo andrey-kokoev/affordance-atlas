@@ -69,7 +69,7 @@ test.describe("Real research engine", () => {
   test("ordinary Clifton Park Mass query uses open-web parish data instead of fallback", async ({ page }) => {
     test.setTimeout(240000);
     const sessionId = createTestSessionId();
-    const query = `Where can I go to Mass in Clifton Park on Sunday? ${crypto.randomUUID()}`;
+    const query = "Where can I go to Mass in Clifton Park on Sunday?";
     await openCleanSession(page, sessionId);
 
     await chatInput(page).fill(query);

@@ -109,6 +109,28 @@ function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+function isPlaceholderResearchAnswer(answer: Answer): boolean {
+  const searchable = [
+    answer.answer_summary,
+    ...answer.results.flatMap((result) => [
+      result.place_label,
+      result.place_address ?? "",
+      result.affordance_label,
+      result.occurrence.recurrence_label ?? "",
+      ...result.caveats,
+    ]),
+  ].join("\n");
+
+  return /Workflow Research Desk|Workflow-backed research completed/i.test(searchable);
+}
+
+function isPlaceholderResearchMessage(message: SessionMessage): boolean {
+  return message.role === "assistant" && (
+    /Workflow Research Desk|Workflow-backed research completed/i.test(message.content) ||
+    (message.answer ? isPlaceholderResearchAnswer(message.answer) : false)
+  );
+}
+
 export class AffordanceAtlasAgent extends Agent<Env, SessionState> {
   override initialState: SessionState = { messages: [], jobs: [] };
 
@@ -161,7 +183,7 @@ export class AffordanceAtlasAgent extends Agent<Env, SessionState> {
     }
 
     const cachedAnswer = await db.getLatestAnswerForOriginalQuery(this.env.DB, userQuery, this.name);
-    if (cachedAnswer) {
+    if (cachedAnswer && !isPlaceholderResearchAnswer(cachedAnswer)) {
       this.appendMessages([
         { role: "assistant", content: cachedAnswer.answer_summary, answer: cachedAnswer, createdAt: now },
       ]);
@@ -460,12 +482,14 @@ export class AffordanceAtlasAgent extends Agent<Env, SessionState> {
   private async refreshJobs(): Promise<void> {
     const jobs = await db.getResearchJobsBySession(this.env.DB, this.name, 20);
     const answers = await db.getCompletedAnswersBySession(this.env.DB, this.name);
+    const retainedMessages = this.state.messages.filter((message) => !isPlaceholderResearchMessage(message));
     const existingSummaries = new Set(
-      this.state.messages
+      retainedMessages
         .filter((message) => message.role === "assistant")
         .map((message) => message.content),
     );
     const hydratedMessages: SessionMessage[] = answers
+      .filter(({ answer }) => !isPlaceholderResearchAnswer(answer))
       .filter(({ answer }) => !existingSummaries.has(answer.answer_summary))
       .map(({ answer, generatedAt }) => ({
         role: "assistant" as const,
@@ -473,7 +497,7 @@ export class AffordanceAtlasAgent extends Agent<Env, SessionState> {
         answer,
         createdAt: generatedAt,
       }));
-    this.setState({ messages: [...this.state.messages, ...hydratedMessages], jobs });
+    this.setState({ messages: [...retainedMessages, ...hydratedMessages], jobs });
   }
 
   private startRefreshForActiveJobs(): void {
