@@ -576,18 +576,17 @@ const exampleQueries = [
               </div>
               <template v-if="msg.role === 'assistant' && msg.answer">
                 <p :class="['answer-lede', answerHasOnlyUnverifiedResults(msg.answer) ? 'unverified' : '']">{{ answerLead(msg.answer) }}</p>
-                <div v-if="answerHasOnlyUnverifiedResults(msg.answer)" class="unverified-answer-alert" role="status">
-                  <strong>Unverified lead</strong>
-                  <p>The source may be relevant, but Atlas could not verify the place and schedule fields well enough to present this as an answer.</p>
-                </div>
                 <section
                   v-for="result in msg.answer.results"
                   :key="result.result_id"
                   data-testid="answer-result"
                   :class="['answer-flat', resultQuality(result).unverified ? 'unverified-result' : '']"
                 >
-                  <div v-if="resultQuality(result).unverified" class="result-warning">
-                    <strong>{{ resultQuality(result).confidenceLabel }}</strong>
+                  <div v-if="resultQuality(result).unverified" class="result-warning" role="status">
+                    <div class="result-warning-heading">
+                      <strong>{{ resultQuality(result).confidenceLabel }}</strong>
+                      <span>Source found; schedule not verified.</span>
+                    </div>
                     <ul>
                       <li v-for="problem in resultQuality(result).problems" :key="problem">{{ problem }}</li>
                     </ul>
@@ -758,7 +757,7 @@ h1 {
 .admin-panel {
   border: 1px solid #e5e7eb;
   border-radius: 0.5rem;
-  padding: 1rem;
+  padding: 0.875rem;
   background: #f9fafb;
 }
 .admin-heading h2,
@@ -798,9 +797,9 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 0.75rem;
   flex-wrap: wrap;
-  padding-bottom: 1rem;
+  padding-bottom: 0.75rem;
   border-bottom: 1px solid #e5e7eb;
 }
 .admin-token-row code {
@@ -815,8 +814,8 @@ h1 {
 }
 .admin-summary {
   display: grid;
-  gap: 1rem;
-  margin-top: 1rem;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
 }
 .status-grid {
   display: grid;
@@ -826,7 +825,7 @@ h1 {
 .status-card {
   border: 1px solid #e5e7eb;
   border-radius: 0.5rem;
-  padding: 0.75rem;
+  padding: 0.6rem;
   background: #ffffff;
 }
 .status-card span,
@@ -842,6 +841,7 @@ h1 {
 }
 .recent-jobs summary {
   cursor: pointer;
+  font-size: 0.9rem;
   font-weight: 700;
 }
 .recent-jobs ol {
@@ -857,21 +857,21 @@ h1 {
 }
 .admin-table-explorer {
   display: grid;
-  gap: 0.75rem;
+  gap: 0.6rem;
   border-top: 1px solid #e5e7eb;
-  padding-top: 1rem;
+  padding-top: 0.75rem;
 }
 .admin-table-header,
 .admin-table-meta {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.75rem;
+  gap: 0.5rem;
   flex-wrap: wrap;
 }
 .admin-table-header button,
 .admin-table-pager button {
-  padding: 0.45rem 0.7rem;
+  padding: 0.38rem 0.6rem;
   border: 1px solid #d1d5db;
   border-radius: 0.5rem;
   background: #ffffff;
@@ -885,7 +885,7 @@ h1 {
 }
 .admin-table-tabs {
   display: flex;
-  gap: 0.5rem;
+  gap: 0.35rem;
   overflow-x: auto;
   padding-bottom: 0.25rem;
 }
@@ -894,7 +894,7 @@ h1 {
   align-items: center;
   gap: 0.4rem;
   white-space: nowrap;
-  padding: 0.45rem 0.65rem;
+  padding: 0.35rem 0.5rem;
   border: 1px solid #d1d5db;
   border-radius: 0.5rem;
   background: #ffffff;
@@ -926,15 +926,15 @@ h1 {
   min-width: max-content;
   table-layout: fixed;
   border-collapse: collapse;
-  font-size: 0.8125rem;
-  line-height: 1.35;
+  font-size: 0.8rem;
+  line-height: 1.3;
 }
 .admin-data-table th,
 .admin-data-table td {
-  width: 240px;
-  min-width: 240px;
+  width: 220px;
+  min-width: 220px;
   max-width: 360px;
-  padding: 0.55rem 0.7rem;
+  padding: 0.45rem 0.6rem;
   border-bottom: 1px solid #e5e7eb;
   text-align: left;
   vertical-align: top;
@@ -1170,42 +1170,50 @@ main {
   font-size: 0.875rem;
 }
 .answer-lede {
-  margin: 0.25rem 0 0.75rem;
+  margin: 0.2rem 0 0.55rem;
   font-size: 1rem;
 }
 .answer-lede.unverified {
   font-weight: 700;
   color: #92400e;
 }
-.unverified-answer-alert,
 .result-warning {
   border: 1px solid #f59e0b;
   border-radius: 0.5rem;
   background: #fffbeb;
   color: #78350f;
-  padding: 0.6rem 0.7rem;
+  padding: 0.5rem 0.6rem;
 }
-.unverified-answer-alert p,
+.result-warning-heading {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.5rem;
+}
+.result-warning-heading span {
+  font-size: 0.8125rem;
+}
 .result-warning ul {
   margin: 0.25rem 0 0;
 }
 .result-warning ul {
   padding-left: 1rem;
+  font-size: 0.8125rem;
 }
 .unverified-result {
   border-top-color: #f59e0b;
 }
 .answer-flat {
   display: grid;
-  gap: 0.75rem;
-  margin-top: 0.75rem;
-  padding-top: 0.75rem;
+  gap: 0.55rem;
+  margin-top: 0.55rem;
+  padding-top: 0.55rem;
   border-top: 1px solid #d1d5db;
 }
 .answer-facts {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 0.75rem;
+  gap: 0.55rem;
 }
 .answer-facts > div,
 .evidence-row > div {
@@ -1298,10 +1306,15 @@ main {
 }
 @media (max-width: 768px) {
   .app {
-    padding: 0.75rem;
+    padding: 0.5rem 0.75rem;
   }
   header {
     align-items: flex-start;
+    gap: 0.4rem;
+    margin-bottom: 0.75rem;
+  }
+  h1 {
+    font-size: 1.25rem;
   }
   main {
     grid-template-columns: 1fr;
@@ -1309,8 +1322,15 @@ main {
   }
   .header-actions {
     width: 100%;
-    justify-content: space-between;
+    justify-content: flex-start;
     gap: 0.5rem;
+  }
+  .secondary-button {
+    padding: 0.35rem 0.55rem;
+  }
+  .status {
+    font-size: 0.8125rem;
+    padding: 0.2rem 0.45rem;
   }
   .chat {
     min-height: auto;
@@ -1329,6 +1349,7 @@ main {
   }
   .answer-facts {
     grid-template-columns: 1fr;
+    gap: 0.5rem;
   }
   .input-row {
     align-items: stretch;
@@ -1337,8 +1358,20 @@ main {
     padding-inline: 1rem;
   }
   .jobs {
-    padding: 0.65rem;
-    border-radius: 0.5rem;
+    padding: 0.5rem 0 0;
+    border-top: 1px solid #e5e7eb;
+    border-radius: 0;
+    background: transparent;
+  }
+  .jobs h2 {
+    margin-bottom: 0.35rem;
+    font-size: 0.875rem;
+  }
+  .jobs ul {
+    gap: 0.4rem;
+  }
+  .job {
+    padding: 0.45rem 0.5rem;
   }
   .admin-panel {
     padding: 0.75rem;
