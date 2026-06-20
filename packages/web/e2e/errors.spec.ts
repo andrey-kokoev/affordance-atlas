@@ -1,41 +1,35 @@
 import { test, expect } from "@playwright/test";
-import { createTestSessionId, setSessionId, resetSession } from "./helpers/session.js";
+import { createTestSessionId, setSessionId } from "./helpers/session.js";
 import {
   connectionStatus,
-  demoModeToggle,
   chatInput,
   sendButton,
+  messageByRole,
   jobListItem,
   jobStatusBadge,
 } from "./helpers/selectors.js";
 
-const NONSENSE_QUERY = "xyzq123 nonexistent activity in Antarctica";
+const NONSENSE_QUERY = "Where can I attend a qzxv nonexistent public ceremony in Atlantis tomorrow?";
 
 test.describe("Affordance Atlas errors", () => {
-  test("a failed research path surfaces an error and re-enables the input", async ({ page }) => {
+  test("a failed research path surfaces an error in chat and sidebar, then recovers input", async ({ page }) => {
+    test.setTimeout(300000);
     const sessionId = createTestSessionId();
     await setSessionId(page, sessionId);
     await page.goto("/");
 
     await expect(connectionStatus(page)).toHaveText("Online", { timeout: 60000 });
-    await resetSession(page);
-
-    const demoToggle = demoModeToggle(page);
-    if (await demoToggle.isChecked()) {
-      await demoToggle.uncheck();
-    }
 
     await chatInput(page).fill(NONSENSE_QUERY);
     await sendButton(page).click();
 
-    // Wait for the job to appear. External research timing is intentionally not
-    // part of this e2e contract; recovery is the contract.
     await expect(jobListItem(page).first()).toBeVisible({ timeout: 120000 });
-    await expect(jobStatusBadge(page).first()).toHaveText(/queued|running|completed|failed/, { timeout: 30000 });
+    await expect(jobStatusBadge(page).first()).toHaveText("failed", { timeout: 240000 });
+    await expect(jobListItem(page).first()).toContainText(/No promising candidate URL|Could not extract|research failed|Open-web research/i);
+    await expect(messageByRole(page, "assistant").last()).toContainText("couldn't produce a reliable answer", { timeout: 30000 });
 
-    // UI must recover
     await expect(chatInput(page)).toBeEnabled({ timeout: 30000 });
-    await chatInput(page).fill("recovery check");
+    await chatInput(page).fill("When is the Brooklyn Museum open this weekend?");
     await expect(sendButton(page)).toBeEnabled({ timeout: 30000 });
   });
 });

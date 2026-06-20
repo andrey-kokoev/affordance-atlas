@@ -1,5 +1,6 @@
 import {
   type Answer,
+  type AnswerEvidence,
   type AnswerResult,
   type AnswerId,
   type ClaimId,
@@ -18,6 +19,7 @@ export interface BuildAnswerFromClaimsInput {
   normalizedQueryRef: QueryId;
   matches: ClaimMatch[];
   accessConditionsByClaim?: Record<string, import("zod").infer<typeof AccessConditionSchema>[]>;
+  evidenceByClaim?: Record<string, AnswerEvidence[]>;
 }
 
 function parseTimeScope(json: string): AnswerResult["occurrence"] {
@@ -42,21 +44,29 @@ function parseTimeScope(json: string): AnswerResult["occurrence"] {
 
 export function buildAnswerFromClaims(input: BuildAnswerFromClaimsInput): Answer {
   const conditionsMap = input.accessConditionsByClaim ?? {};
-  const results: AnswerResult[] = input.matches.map((match) => ({
-    result_id: `result_${match.claim_id}`,
-    claim_id: match.claim_id as ClaimId,
-    affordance_label: match.affordance_label,
-    place_label: match.place_name,
-    place_address: match.place_address,
-    occurrence: parseTimeScope(match.time_scope_json),
-    access_conditions: conditionsMap[match.claim_id] ?? [],
-    confidence_state: match.confidence_state as AnswerResult["confidence_state"],
-    freshness_state: match.freshness_state as AnswerResult["freshness_state"],
-    verification_state: match.verification_state as AnswerResult["verification_state"],
-    contradiction_state: match.contradiction_state as AnswerResult["contradiction_state"],
-    evidence_refs: [match.claim_id as unknown as EvidenceItemId],
-    caveats: ["Verify details with the venue before traveling."],
-  }));
+  const evidenceMap = input.evidenceByClaim ?? {};
+  const results: AnswerResult[] = input.matches.map((match) => {
+    const evidence = evidenceMap[match.claim_id] ?? [];
+    if (evidence.length === 0) {
+      throw new Error(`Cannot build answer for claim ${match.claim_id} without evidence metadata.`);
+    }
+    return {
+      result_id: `result_${match.claim_id}`,
+      claim_id: match.claim_id as ClaimId,
+      affordance_label: match.affordance_label,
+      place_label: match.place_name,
+      place_address: match.place_address,
+      occurrence: parseTimeScope(match.time_scope_json),
+      access_conditions: conditionsMap[match.claim_id] ?? [],
+      confidence_state: match.confidence_state as AnswerResult["confidence_state"],
+      freshness_state: match.freshness_state as AnswerResult["freshness_state"],
+      verification_state: match.verification_state as AnswerResult["verification_state"],
+      contradiction_state: match.contradiction_state as AnswerResult["contradiction_state"],
+      evidence_refs: evidence.map((item) => item.evidence_item_id),
+      evidence,
+      caveats: ["Verify details with the venue before traveling."],
+    };
+  });
 
   return buildAnswer({
     answer_id: input.answerId,
@@ -144,6 +154,18 @@ export function buildDemoAnswer(
         verification_state: "active",
         contradiction_state: "none",
         evidence_refs: ["ev_demo" as EvidenceItemId],
+        evidence: [
+          {
+            evidence_item_id: "ev_demo" as EvidenceItemId,
+            source_url: "https://stedwardsny.org/mass-times-popup",
+            source_title: "Mass Times - St. Edward the Confessor",
+            retrieved_at: new Date().toISOString(),
+            evidence_span: "Sunday Mass at 10:00 AM",
+            extracted_text: "Sunday Mass at 10:00 AM",
+            authority_level: "official",
+            freshness_state: "current",
+          },
+        ],
         caveats: ["Confirm schedule with parish before traveling."],
       },
     ],

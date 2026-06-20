@@ -26,15 +26,3 @@ export async function resetSession(page: Page): Promise<void> {
     await fn();
   });
 }
-
-export async function seedTestAnswer(page: Page, query: string): Promise<void> {
-  await page.evaluate(async (seedQuery) => {
-    const fn = (window as Record<string, unknown>).__seedTestAnswer as
-      | ((query: string) => Promise<void>)
-      | undefined;
-    if (typeof fn !== "function") {
-      throw new Error("__seedTestAnswer not exposed on window");
-    }
-    await fn(seedQuery);
-  }, query);
-}

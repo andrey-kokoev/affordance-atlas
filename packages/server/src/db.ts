@@ -78,7 +78,7 @@ export interface ResearchJobRow {
   query_id: string;
   original_user_query: string;
   normalized_query_json: string;
-  status: "queued" | "running" | "completed" | "failed";
+  status: "queued" | "running" | "completed" | "failed" | "cancelled";
   scope_json: string;
   objective_json: string;
   result_answer_id: string | null;
@@ -206,7 +206,7 @@ export async function updateResearchJobStatus(
   db: D1Database,
   jobId: ResearchJobId,
   updates: {
-    status?: "queued" | "running" | "completed" | "failed";
+    status?: "queued" | "running" | "completed" | "failed" | "cancelled";
     resultAnswerId?: AnswerId | null;
     errorMessage?: string | null;
     scheduledAt?: string | null;
@@ -296,22 +296,24 @@ export async function getLatestAnswerForOriginalQuery(
 export async function getCompletedAnswersBySession(
   db: D1Database,
   sessionId: string,
-): Promise<{ answer: Answer; generatedAt: string; researchJobId: ResearchJobId }[]> {
+): Promise<{ answer: Answer; generatedAt: string; researchJobId: ResearchJobId; originalUserQuery: string; jobCreatedAt: string }[]> {
   const { results } = await db
     .prepare(
-      `SELECT a.answer_json, a.generated_at, a.research_job_id
+      `SELECT a.answer_json, a.generated_at, a.research_job_id, j.original_user_query, j.created_at
        FROM answer a
        JOIN research_job j ON j.research_job_id = a.research_job_id
        WHERE j.session_id = ? AND j.status = 'completed'
        ORDER BY a.generated_at ASC`,
     )
     .bind(sessionId)
-    .all<{ answer_json: string; generated_at: string; research_job_id: string }>();
+    .all<{ answer_json: string; generated_at: string; research_job_id: string; original_user_query: string; created_at: string }>();
 
   return (results ?? []).map((row) => ({
     answer: JSON.parse(row.answer_json) as Answer,
     generatedAt: row.generated_at,
     researchJobId: row.research_job_id as ResearchJobId,
+    originalUserQuery: row.original_user_query,
+    jobCreatedAt: row.created_at,
   }));
 }
 
@@ -392,14 +394,27 @@ export async function getAccessConditions(
 export async function getEvidenceItemsForClaim(
   db: D1Database,
   claimId: string,
-): Promise<{ evidence_item_id: string; source_class: string; item_class: string; source_locator: string | null; authority_level: string | null; freshness_state: string }[]> {
+): Promise<{
+  evidence_item_id: string;
+  source_class: string;
+  item_class: string;
+  source_locator: string | null;
+  retrieved_at: string;
+  evidence_span: string | null;
+  extracted_text: string | null;
+  authority_level: string | null;
+  freshness_state: string;
+}[]> {
   const { results } = await db
     .prepare(
       `SELECT
         e.evidence_item_id,
-        e.source_class,
+        COALESCE(s.source_class, 'unknown') AS source_class,
         e.item_class,
         e.source_locator,
+        e.retrieved_at,
+        e.evidence_span,
+        e.extracted_text,
         s.authority_level,
         e.freshness_state
       FROM evidence_item e
@@ -408,7 +423,17 @@ export async function getEvidenceItemsForClaim(
       WHERE ce.claim_id = ?`,
     )
     .bind(claimId)
-    .all<{ evidence_item_id: string; source_class: string; item_class: string; source_locator: string | null; authority_level: string | null; freshness_state: string }>();
+    .all<{
+      evidence_item_id: string;
+      source_class: string;
+      item_class: string;
+      source_locator: string | null;
+      retrieved_at: string;
+      evidence_span: string | null;
+      extracted_text: string | null;
+      authority_level: string | null;
+      freshness_state: string;
+    }>();
 
   return results ?? [];
 }

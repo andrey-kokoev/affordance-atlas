@@ -84,22 +84,8 @@ await test("mcp tools/list", async () => {
   assert(names.includes("list_session_jobs"), "list_session_jobs tool missing");
 });
 
-await test("mcp ask demo returns immediate answer", async () => {
-  const result = (await mcpRequest({
-    jsonrpc: "2.0",
-    id: 3,
-    method: "tools/call",
-    params: {
-      name: "ask",
-      arguments: { query: "Where can I play pickleball in NYC this weekend?", demo: true },
-    },
-  }));
-  const text = result.result?.content[0]?.text ?? "";
-  assert(JSON.parse(text).answered === true, "expected immediate answer");
-});
-
 await test("mcp ask non-demo queues observable research", async () => {
-  const query = `Mass times St Edward the Confessor Church Clifton Park NY ${crypto.randomUUID()}`;
+  const query = "What time is Sunday Mass at St. Patrick's Cathedral in New York?";
   const askResult = (await mcpRequest({
     jsonrpc: "2.0",
     id: 4,
@@ -179,74 +165,6 @@ await test("mcp session_id targets an isolated session", async () => {
   }));
   const defaultJobs = JSON.parse(defaultList.result?.content[0]?.text ?? "[]");
   assert(!defaultJobs.some((job) => job.job_id === askJson.job_id), "targeted job leaked into default MCP session");
-});
-
-await test("mcp deterministic progression reaches completed with answer id", async () => {
-  const sessionId = `test-${crypto.randomUUID()}`;
-  const query = `__progress_complete__ mcp ${crypto.randomUUID()}`;
-  const askResult = (await mcpRequest({
-    jsonrpc: "2.0",
-    id: 64,
-    method: "tools/call",
-    params: { name: "ask", arguments: { session_id: sessionId, query } },
-  }));
-  const askJson = JSON.parse(askResult.result?.content[0]?.text ?? "{}");
-  assert(askJson.answered === false, "expected deterministic progression to queue");
-  assert(askJson.job_id, "expected deterministic progression job id");
-
-  const seen = new Set();
-  let resultAnswerId = null;
-  const start = Date.now();
-  while (Date.now() - start < 30000) {
-    const statusResult = (await mcpRequest({
-      jsonrpc: "2.0",
-      id: 65,
-      method: "tools/call",
-      params: { name: "get_job_status", arguments: { session_id: sessionId, jobId: askJson.job_id } },
-    }));
-    const statusJson = JSON.parse(statusResult.result?.content[0]?.text ?? "{}");
-    seen.add(statusJson.status);
-    resultAnswerId = statusJson.result_answer_id;
-    if (statusJson.status === "completed") break;
-    await new Promise((r) => setTimeout(r, 500));
-  }
-  assert(seen.has("running") || seen.has("queued"), "expected to observe nonterminal progression status");
-  assert(seen.has("completed"), "expected completed status");
-  assert(resultAnswerId, "expected result_answer_id");
-});
-
-await test("mcp deterministic progression reaches failed with error text", async () => {
-  const sessionId = `test-${crypto.randomUUID()}`;
-  const query = `__progress_fail__ mcp ${crypto.randomUUID()}`;
-  const askResult = (await mcpRequest({
-    jsonrpc: "2.0",
-    id: 66,
-    method: "tools/call",
-    params: { name: "ask", arguments: { session_id: sessionId, query } },
-  }));
-  const askJson = JSON.parse(askResult.result?.content[0]?.text ?? "{}");
-  assert(askJson.job_id, "expected deterministic failure job id");
-
-  let errorMessage = null;
-  const start = Date.now();
-  let failedStatus = false;
-  while (Date.now() - start < 30000) {
-    const statusResult = (await mcpRequest({
-      jsonrpc: "2.0",
-      id: 67,
-      method: "tools/call",
-      params: { name: "get_job_status", arguments: { session_id: sessionId, jobId: askJson.job_id } },
-    }));
-    const statusJson = JSON.parse(statusResult.result?.content[0]?.text ?? "{}");
-    errorMessage = statusJson.error_message;
-    if (statusJson.status === "failed") {
-      failedStatus = true;
-      break;
-    }
-    await new Promise((r) => setTimeout(r, 500));
-  }
-  assert(failedStatus, "expected failed status");
-  assert(errorMessage === "Deterministic delayed failure for e2e.", "expected deterministic failure text");
 });
 
 await test("mcp unknown job returns structured not-found result", async () => {

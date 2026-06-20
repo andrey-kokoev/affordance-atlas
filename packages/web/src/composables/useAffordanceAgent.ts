@@ -1,6 +1,6 @@
 import { ref, shallowRef, onMounted, onUnmounted, computed } from "vue";
 import { AgentClient } from "agents/client";
-import type { Answer, ResearchJob } from "@affordance-atlas/domain";
+import type { Answer, ResearchJob, ResearchJobId } from "@affordance-atlas/domain";
 
 const AGENT_CLASS = "AffordanceAtlasAgent";
 const STORAGE_KEY = "affordance-atlas-session-id";
@@ -123,21 +123,37 @@ export function useAffordanceAgent() {
     }
   }
 
+  async function cancelResearchJob(jobId: ResearchJobId): Promise<void> {
+    const client = clientRef.value;
+    if (!client) throw new Error("Agent client not ready");
+    error.value = null;
+    try {
+      await client.call("cancelResearchJob", [jobId], { timeout: 30000 });
+      busy.value = false;
+      await client.call("listSessionJobs", [], { timeout: 10000 });
+    } catch (err) {
+      error.value = err instanceof Error ? err.message : String(err);
+    }
+  }
+
   async function resetSession(): Promise<void> {
     const client = clientRef.value;
     if (!client) throw new Error("Agent client not ready");
     await client.call("resetSession", [], { timeout: 30000 });
   }
 
-  async function seedTestAnswer(query: string): Promise<void> {
-    const client = clientRef.value;
-    if (!client) throw new Error("Agent client not ready");
-    await client.call("seedTestAnswer", [query], { timeout: 30000 });
+  function startNewSession(): void {
+    if (typeof window === "undefined") return;
+    window.localStorage.setItem(STORAGE_KEY, crypto.randomUUID());
+    messages.value = [];
+    jobs.value = [];
+    busy.value = false;
+    error.value = null;
+    window.location.reload();
   }
 
   if (typeof window !== "undefined") {
     (window as unknown as Record<string, unknown>).__resetSession = resetSession;
-    (window as unknown as Record<string, unknown>).__seedTestAnswer = seedTestAnswer;
   }
 
   return {
@@ -149,6 +165,8 @@ export function useAffordanceAgent() {
     busy,
     working,
     ask,
+    cancelResearchJob,
+    startNewSession,
     resetSession,
   };
 }

@@ -436,6 +436,17 @@ export const CoverageGapSchema = z.object({
   status: z.enum(["open", "researching", "resolved"]),
 });
 
+export const AnswerEvidenceSchema = z.object({
+  evidence_item_id: EvidenceItemIdSchema,
+  source_url: UrlStringSchema,
+  source_title: z.string().min(1).nullable(),
+  retrieved_at: IsoDateTimeSchema,
+  evidence_span: z.string().min(1).nullable(),
+  extracted_text: z.string().min(1),
+  authority_level: AuthorityLevelSchema,
+  freshness_state: FreshnessStateSchema,
+});
+
 export const AnswerResultSchema = z.object({
   result_id: z.string().min(1),
   claim_id: ClaimIdSchema,
@@ -454,6 +465,7 @@ export const AnswerResultSchema = z.object({
   verification_state: VerificationStateSchema,
   contradiction_state: ContradictionStateSchema,
   evidence_refs: z.array(EvidenceItemIdSchema).min(1),
+  evidence: z.array(AnswerEvidenceSchema).min(1),
   caveats: z.array(z.string()),
 });
 
@@ -479,7 +491,7 @@ export const AnswerSchema = z.object({
   }
 });
 
-export const ResearchJobStatusSchema = z.enum(["queued", "running", "completed", "failed"]);
+export const ResearchJobStatusSchema = z.enum(["queued", "running", "completed", "failed", "cancelled"]);
 
 export const ResearchJobSchema = z.object({
   job_id: ResearchJobIdSchema,
@@ -498,6 +510,7 @@ export type AvailabilityClaim = z.infer<typeof AvailabilityClaimSchema>;
 export type NormalizedQuery = z.infer<typeof NormalizedQuerySchema>;
 export type Answer = z.infer<typeof AnswerSchema>;
 export type AnswerResult = z.infer<typeof AnswerResultSchema>;
+export type AnswerEvidence = z.infer<typeof AnswerEvidenceSchema>;
 export type CoverageGap = z.infer<typeof CoverageGapSchema>;
 export type ResearchJob = z.infer<typeof ResearchJobSchema>;
 

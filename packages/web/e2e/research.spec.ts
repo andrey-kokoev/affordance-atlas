@@ -2,7 +2,6 @@ import { test, expect } from "@playwright/test";
 import { createTestSessionId, setSessionId, resetSession } from "./helpers/session.js";
 import {
   connectionStatus,
-  demoModeToggle,
   chatInput,
   sendButton,
   messageByRole,
@@ -20,11 +19,6 @@ test.describe("Affordance Atlas research", () => {
 
     await expect(connectionStatus(page)).toHaveText("Online", { timeout: 60000 });
     await resetSession(page);
-
-    const demoToggle = demoModeToggle(page);
-    if (await demoToggle.isChecked()) {
-      await demoToggle.uncheck();
-    }
 
     await chatInput(page).fill(RESEARCH_QUERY);
     await sendButton(page).click();
@@ -49,11 +43,6 @@ test.describe("Affordance Atlas research", () => {
 
     await expect(connectionStatus(page)).toHaveText("Online", { timeout: 60000 });
     await resetSession(page);
-
-    const demoToggle = demoModeToggle(page);
-    if (await demoToggle.isChecked()) {
-      await demoToggle.uncheck();
-    }
 
     await chatInput(page).fill(RESEARCH_QUERY);
     await sendButton(page).click();

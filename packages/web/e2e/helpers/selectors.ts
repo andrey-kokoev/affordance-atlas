@@ -4,16 +4,16 @@ export function connectionStatus(page: Page): Locator {
   return page.getByTestId("connection-status");
 }
 
-export function demoModeToggle(page: Page): Locator {
-  return page.getByTestId("demo-mode-toggle").locator("input");
-}
-
 export function chatInput(page: Page): Locator {
   return page.getByTestId("chat-input");
 }
 
 export function sendButton(page: Page): Locator {
   return page.getByTestId("send-button");
+}
+
+export function newChatButton(page: Page): Locator {
+  return page.getByTestId("new-chat-button");
 }
 
 export function messagesContainer(page: Page): Locator {

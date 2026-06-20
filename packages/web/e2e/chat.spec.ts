@@ -1,23 +1,42 @@
 import { test, expect } from "@playwright/test";
+import { createTestSessionId, setSessionId } from "./helpers/session.js";
+import { chatInput, connectionStatus, jobListItem, messageByRole, newChatButton, sendButton } from "./helpers/selectors.js";
 
 test.describe("Affordance Atlas chat", () => {
-  test("demo mode returns an answer for a sample query", async ({ page }) => {
+  test("non-demo chat queues ordinary open-web research", async ({ page }) => {
+    const sessionId = createTestSessionId();
+    await setSessionId(page, sessionId);
     await page.goto("/");
 
     await expect(page.locator("h1")).toHaveText("Affordance Atlas");
-    await expect(page.locator("text=Connecting...")).not.toBeVisible({ timeout: 10000 });
-    await expect(page.locator("text=Online")).toBeVisible();
+    await expect(connectionStatus(page)).toHaveText("Online", { timeout: 60000 });
 
-    await page.locator('label:has-text("Demo mode") input[type="checkbox"]').check();
+    const query = "When is the Union Square Greenmarket open in Manhattan?";
+    await chatInput(page).fill(query);
+    await sendButton(page).click();
 
-    const input = page.locator('input[placeholder="Ask when and where something is available..."]');
-    await input.fill("Where can I play pickleball in NYC this weekend?");
-    await input.press("Enter");
+    await expect(messageByRole(page, "user").last()).toContainText(query, { timeout: 120000 });
+    await expect(messageByRole(page, "system").last()).toContainText("I’m looking that up for you", { timeout: 30000 });
+    await expect(jobListItem(page).first()).toBeVisible({ timeout: 120000 });
+  });
 
-    await expect(page.locator(".message.user")).toHaveText(/pickleball/, { timeout: 120000 });
-    await expect(page.locator(".message.assistant")).toBeVisible({ timeout: 120000 });
+  test("new chat starts a fresh visible session", async ({ page }) => {
+    await page.goto("/");
 
-    const answerText = await page.locator(".message.assistant .bubble").textContent();
-    expect(answerText).toBeTruthy();
+    await expect(connectionStatus(page)).toHaveText("Online", { timeout: 60000 });
+    const sessionId = await page.evaluate(() => window.localStorage.getItem("affordance-atlas-session-id"));
+
+    await Promise.all([
+      page.waitForEvent("load"),
+      newChatButton(page).click(),
+    ]);
+    await page.waitForFunction(
+      (previousSessionId) => window.localStorage.getItem("affordance-atlas-session-id") !== previousSessionId,
+      sessionId,
+    );
+    await expect(connectionStatus(page)).toHaveText("Online", { timeout: 60000 });
+    await expect(messageByRole(page, "user")).toHaveCount(0);
+    await expect(messageByRole(page, "assistant")).toHaveCount(0);
+    await expect(page.getByText("No research jobs yet.")).toBeVisible();
   });
 });
