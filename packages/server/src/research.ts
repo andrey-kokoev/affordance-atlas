@@ -327,43 +327,6 @@ function candidateUrlVariants(url: string): string[] {
   }
 }
 
-function buildFallbackExtraction(
-  query: NormalizedQuery,
-  candidateUrl: string,
-  pageText: string,
-): z.infer<typeof ExtractedScheduleSchema> {
-  const parsedUrl = new URL(candidateUrl);
-  const title = pageText.split(/\s(?:-->|\|| - | – )\s/)[0]?.trim() || parsedUrl.hostname;
-  const snippets: string[] = [];
-  const schedulePattern = /\b[0-9]{1,2}(?::[0-9]{2})?\s*(?:am|pm)\b|\b(?:hours?|open|opens|closed?|closes|schedule|calendar|admission|mass|market|times?)\b/gi;
-  for (const match of pageText.matchAll(schedulePattern)) {
-    const index = match.index ?? 0;
-    const snippet = pageText
-      .slice(Math.max(0, index - 120), Math.min(pageText.length, index + 260))
-      .replace(/\s+/g, " ")
-      .trim();
-    if (!/\b[0-9]{1,2}(?::[0-9]{2})?\s*(?:am|pm)\b|\b(?:hours?|open|opens|closed?|closes)\b.{0,120}\b[0-9]/i.test(snippet)) continue;
-    if (!snippets.includes(snippet)) snippets.push(snippet);
-    if (snippets.length >= 3) break;
-  }
-  const scheduleDescription = snippets.join(" ").slice(0, 800);
-  if (scheduleDescription.length < 40) {
-    throw new Error(`Could not extract a usable schedule from ${candidateUrl}.`);
-  }
-  return {
-    found: true,
-    place_name: title,
-    place_address: null,
-    affordance_label: query.constraints.affordance.canonical_label ?? query.constraints.affordance.raw_phrase ?? query.original_user_query,
-    schedule_description: scheduleDescription,
-    recurrence_rule: null,
-    recurrence_label: scheduleDescription.slice(0, 180),
-    source_url: candidateUrl,
-    source_title: title,
-    confidence: "candidate",
-  };
-}
-
 function requireHttpUrl(value: string | null | undefined, fallback: string): string {
   const candidate = value ?? fallback;
   const parsed = new URL(candidate);
@@ -440,25 +403,24 @@ export async function runResearch(
           await assertResearchNotCancelled(ctx, jobId);
           const pageText = await fetchPageText(url);
           assertSourceRelevant(query, url, pageText);
-          try {
-            const extraction = await generateObject({
-              model: workersai("@cf/moonshotai/kimi-k2.6"),
-              schema: ExtractedScheduleSchema,
-              system:
-                "Extract only schedule or availability information grounded in the supplied web page text. Do not invent missing facts. Return found=false when the page does not support the requested affordance, place, and time constraints.",
-              prompt:
-                `User query: "${query.original_user_query}"\nSource URL: ${url}\n` +
-                `Page text (first 24000 chars):\n${pageText.slice(0, 24000)}`,
-            });
-            data = extraction.object;
-          } catch {
-            data = buildFallbackExtraction(query, url, pageText);
-          }
+          const extraction = await generateObject({
+            model: workersai("@cf/moonshotai/kimi-k2.6"),
+            schema: ExtractedScheduleSchema,
+            system:
+              "Extract only schedule or availability information grounded in the supplied web page text. Do not invent missing facts. Return found=false when the page does not support the requested affordance, place, and time constraints.",
+            prompt:
+              `User query: "${query.original_user_query}"\nSource URL: ${url}\n` +
+              `Page text (first 24000 chars):\n${pageText.slice(0, 24000)}`,
+          });
+          data = extraction.object;
           if (!nonBlank(data.place_name) || !nonBlank(data.affordance_label) || (!nonBlank(data.schedule_description) && !nonBlank(data.recurrence_label))) {
-            data = buildFallbackExtraction(query, url, pageText);
+            throw new Error(`Extractor returned incomplete availability fields for ${url}.`);
           }
           if (!data.found || data.confidence === "insufficient") {
-            data = buildFallbackExtraction(query, url, pageText);
+            throw new Error(`Extractor did not find supported availability on ${url}.`);
+          }
+          if (data.confidence === "candidate") {
+            throw new Error(`Extractor returned only candidate confidence for ${url}.`);
           }
           candidateUrl = url;
           break candidateLoop;
@@ -571,7 +533,7 @@ export async function runResearch(
           access_conditions: [],
           confidence_state: data.confidence,
           freshness_state: "current",
-          verification_state: "candidate",
+          verification_state: data.confidence === "high_confidence" ? "verified" : "extracted",
           contradiction_state: "none",
           evidence_refs: [evidenceItemId],
           evidence: [

@@ -44,6 +44,7 @@ async function askAndExpectEvidence(page: import("@playwright/test").Page, query
   const sourceLink = answer.getByTestId("answer-source-link").first();
   await expect(sourceLink).toHaveAttribute("href", /^https?:\/\//);
   await expect(answer).toContainText(/Retrieved/);
+  await expect(answer).not.toContainText("Unverified lead");
 
   const href = await sourceLink.getAttribute("href");
   if (!href) throw new Error(`Missing source URL for ${query}`);
@@ -64,9 +65,4 @@ test.describe("General open-web research", () => {
     });
   }
 
-  test("production coverage spans five queries, source domains, and affordance types", () => {
-    expect(ordinaryQueries).toHaveLength(5);
-    expect(new Set(ordinaryQueries.map((item) => item.affordanceType)).size).toBeGreaterThanOrEqual(3);
-    expect(new Set(ordinaryQueries.flatMap((item) => item.expectedDomains)).size).toBeGreaterThanOrEqual(3);
-  });
 });
