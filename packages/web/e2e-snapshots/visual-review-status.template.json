@@ -1,0 +1,4364 @@
+{
+  "schema": "affordance-atlas.visual-review-status.v1",
+  "template_schema": "affordance-atlas.visual-review-status-template.v1",
+  "generated_at": "2026-06-21T02:05:12.020Z",
+  "screenshot_count": 286,
+  "snapshot_set_sha256": "48ae1c723d72ac169c32cc84be6fdd9bf8c7eeca0c9e63ef2673458f81c31ee8",
+  "review_scope": {
+    "inventory-state-coverage": false,
+    "responsive-layout": false,
+    "spacing-density-alignment": false,
+    "color-design-system-coherence": false,
+    "text-readability-contrast": false,
+    "interaction-focus-hover-disabled-states": false,
+    "chat-progression-completeness": false,
+    "admin-data-table-usability": false,
+    "error-empty-loading-states": false
+  },
+  "review_scope_reviewed_at": "",
+  "review_scope_reviewed_by": "",
+  "screenshots": {
+    "admin-auth-summary-desktop.png": {
+      "state": "admin-auth-summary",
+      "viewport": "desktop",
+      "sections": [
+        "Admin: Authenticated Summary",
+        "Global Shell"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "d3d1e853b853af91c3ba553f4193bf4bac0fcf450d0108b3e0e72f57d784dc32",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-auth-summary-mobile.png": {
+      "state": "admin-auth-summary",
+      "viewport": "mobile",
+      "sections": [
+        "Admin: Authenticated Summary",
+        "Global Shell"
+      ],
+      "width": 390,
+      "height": 844,
+      "sha256": "4b2e49d2623bb9f4f6ef25fcc095347fb391f0bf38e73d2a7e28a9cf567dd3df",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-auth-summary-tablet.png": {
+      "state": "admin-auth-summary",
+      "viewport": "tablet",
+      "sections": [
+        "Admin: Authenticated Summary",
+        "Global Shell"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "952dabb268a023dbf917cbf7771313bc0219168e9c2b29f0fb646664e19f9699",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-auth-summary-wide.png": {
+      "state": "admin-auth-summary",
+      "viewport": "wide",
+      "sections": [
+        "Admin: Authenticated Summary",
+        "Global Shell"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "d89f74e883464792a5a517a126b053ebbd734c6d2428936625f25c18a48e7ee7",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-back-focus-desktop.png": {
+      "state": "admin-back-focus",
+      "viewport": "desktop",
+      "sections": [
+        "Global Shell",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "914b2f875c331aa0297a870615c52fae4527ac73213026dac2d2c33ccfe49d16",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-back-focus-mobile.png": {
+      "state": "admin-back-focus",
+      "viewport": "mobile",
+      "sections": [
+        "Global Shell",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 390,
+      "height": 844,
+      "sha256": "ac4952d8f7ac168b27bbbe2eb6f6fd0f78a67fc1ccdd6c7650af36d84e52a42e",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-back-focus-tablet.png": {
+      "state": "admin-back-focus",
+      "viewport": "tablet",
+      "sections": [
+        "Global Shell",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "6f343a6224b561a8165c2da5daf918fe2bfb354b9319b76ee986071ccd959f17",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-back-focus-wide.png": {
+      "state": "admin-back-focus",
+      "viewport": "wide",
+      "sections": [
+        "Global Shell",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "0d2c20a687e497e3b32c2655a36acdeb7144999b03b7da38182d7eb46758fc3b",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-back-hover-desktop.png": {
+      "state": "admin-back-hover",
+      "viewport": "desktop",
+      "sections": [
+        "Global Shell",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "fb0fe9b0e97b12c3069e38c3341ef97243e0f732c8a6ffabf35cdbcb4a347a62",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-back-hover-mobile.png": {
+      "state": "admin-back-hover",
+      "viewport": "mobile",
+      "sections": [
+        "Global Shell",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 390,
+      "height": 844,
+      "sha256": "593eb79b5498632e426451176b8d6273b43a47156ad4ec220c83becaf95dfa05",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-back-hover-tablet.png": {
+      "state": "admin-back-hover",
+      "viewport": "tablet",
+      "sections": [
+        "Global Shell",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "2aa44a6431fb36b9a4ad0d38ea8d66d2ce9d453f85592d6f325b48d8ef8faacb",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-back-hover-wide.png": {
+      "state": "admin-back-hover",
+      "viewport": "wide",
+      "sections": [
+        "Global Shell",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "92fd18134f5269f6fc675f3a2fdb955fa5931315b8ddd44065756043352e11a7",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-copy-button-focus-desktop.png": {
+      "state": "admin-copy-button-focus",
+      "viewport": "desktop",
+      "sections": [
+        "Admin: Authenticated Summary",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "c47771a425d6cb4328ec9c8b4af96fcd65f755dcf0035f30ef3da3e5e73bf15e",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-copy-button-focus-mobile.png": {
+      "state": "admin-copy-button-focus",
+      "viewport": "mobile",
+      "sections": [
+        "Admin: Authenticated Summary",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 390,
+      "height": 844,
+      "sha256": "9c58d89349f2e8b22694cefc59fdff1299160781dd5d46090efc5d963711dc37",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-copy-button-focus-tablet.png": {
+      "state": "admin-copy-button-focus",
+      "viewport": "tablet",
+      "sections": [
+        "Admin: Authenticated Summary",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "839a37767b63d9e00a408b83ac0662fa4f64f139eecfc7a26c620b59e48e8720",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-copy-button-focus-wide.png": {
+      "state": "admin-copy-button-focus",
+      "viewport": "wide",
+      "sections": [
+        "Admin: Authenticated Summary",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "52082a3b757a74268a20be5fd187b8f6ed4b0cf1b4d59bd30c3b03dda844ff1d",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-copy-success-desktop.png": {
+      "state": "admin-copy-success",
+      "viewport": "desktop",
+      "sections": [
+        "Admin: Authenticated Summary"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "f060542ac838a781ae8a91f39a819b1a1f7ac1d773d63a1cdf1f02c1f2fa86d1",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-copy-success-mobile.png": {
+      "state": "admin-copy-success",
+      "viewport": "mobile",
+      "sections": [
+        "Admin: Authenticated Summary"
+      ],
+      "width": 390,
+      "height": 844,
+      "sha256": "ab141dfc519aac84c591027057cbc4b32f5650b6421984cfbb5f0e3eb8c35d7f",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-copy-success-tablet.png": {
+      "state": "admin-copy-success",
+      "viewport": "tablet",
+      "sections": [
+        "Admin: Authenticated Summary"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "5e311170ff26217788f656ca6bf349a73dee98054695c77512af204eedebcff4",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-copy-success-wide.png": {
+      "state": "admin-copy-success",
+      "viewport": "wide",
+      "sections": [
+        "Admin: Authenticated Summary"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "f97a74bebdeef77199bacda0deb6f59edef888fbc6b0c8744fd3e8fac9dc65d2",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-copy-token-focus-desktop.png": {
+      "state": "admin-copy-token-focus",
+      "viewport": "desktop",
+      "sections": [
+        "Admin: Authenticated Summary",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "19eecfe8129df16d419e1de8571f7c15a42f57ac2223d5c2ee7fba4bc821ef34",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-copy-token-focus-mobile.png": {
+      "state": "admin-copy-token-focus",
+      "viewport": "mobile",
+      "sections": [
+        "Admin: Authenticated Summary",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 390,
+      "height": 844,
+      "sha256": "c76d8beedcec670472e4556414921ff33cce2b53bd1442f4b11192ef0aa0d52c",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-copy-token-focus-tablet.png": {
+      "state": "admin-copy-token-focus",
+      "viewport": "tablet",
+      "sections": [
+        "Admin: Authenticated Summary",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "30dabdf8e5687e2921985aa97707feb296b07058ac059f4fdc40b3b93800984b",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-copy-token-focus-wide.png": {
+      "state": "admin-copy-token-focus",
+      "viewport": "wide",
+      "sections": [
+        "Admin: Authenticated Summary",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "2047bed6557218bc96cc2263677a57053d2692305efc9fed15a1ee2c33981541",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-data-table-desktop.png": {
+      "state": "admin-data-table",
+      "viewport": "desktop",
+      "sections": [
+        "Admin: Data Table Explorer",
+        "Admin: Table Content",
+        "Interaction And Accessibility Visual States",
+        "Responsive Layout Stress Cases"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "cf4972aa1f57f5288581302177db24937b8826b66430d26b5d30446331d061c2",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-data-table-large-text-desktop.png": {
+      "state": "admin-data-table-large-text",
+      "viewport": "desktop",
+      "sections": [
+        "Responsive Layout Stress Cases"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "05d8c7f506f42852513e48831ae209b466a779433929118a091f190f5816d1d3",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-data-table-large-text-mobile.png": {
+      "state": "admin-data-table-large-text",
+      "viewport": "mobile",
+      "sections": [
+        "Responsive Layout Stress Cases"
+      ],
+      "width": 390,
+      "height": 1251,
+      "sha256": "65f24b96a58c48cfde0eb636ea0a4920512250f0d54c71d65797b8e3520e8de9",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-data-table-large-text-tablet.png": {
+      "state": "admin-data-table-large-text",
+      "viewport": "tablet",
+      "sections": [
+        "Responsive Layout Stress Cases"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "be32479d1d0ee75118850c0e00e1e48bc71a6c383c7882d3e42fca0ec68ab78e",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-data-table-large-text-wide.png": {
+      "state": "admin-data-table-large-text",
+      "viewport": "wide",
+      "sections": [
+        "Responsive Layout Stress Cases"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "97d6c0235004d0baae4bcdb9742ad68993b400ed8434441aa64aefecc8d7c376",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-data-table-mobile.png": {
+      "state": "admin-data-table",
+      "viewport": "mobile",
+      "sections": [
+        "Admin: Data Table Explorer",
+        "Admin: Table Content",
+        "Interaction And Accessibility Visual States",
+        "Responsive Layout Stress Cases"
+      ],
+      "width": 390,
+      "height": 906,
+      "sha256": "f010590f7f3a80e9c9aeb6f6e4be6015cf0c2d595b14fbd496ba91b2f9b127bf",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-data-table-stress-widths-boundary.png": {
+      "state": "admin-data-table-stress-widths",
+      "viewport": "boundary",
+      "sections": [
+        "Admin: Data Table Explorer",
+        "Admin: Table Content",
+        "Interaction And Accessibility Visual States",
+        "Responsive Layout Stress Cases"
+      ],
+      "width": 960,
+      "height": 900,
+      "sha256": "6ab456fe1f4e6b095759ad565df284c834dffb77d6b62c2f3490a2d1586f98b8",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-data-table-stress-widths-narrow.png": {
+      "state": "admin-data-table-stress-widths",
+      "viewport": "narrow",
+      "sections": [
+        "Admin: Data Table Explorer",
+        "Admin: Table Content",
+        "Interaction And Accessibility Visual States",
+        "Responsive Layout Stress Cases"
+      ],
+      "width": 320,
+      "height": 1013,
+      "sha256": "a92ef9897c8d9a59de9db4dec94f21840fbcb29bbb996549b889cfcb59ef6a39",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-data-table-tablet.png": {
+      "state": "admin-data-table",
+      "viewport": "tablet",
+      "sections": [
+        "Admin: Data Table Explorer",
+        "Admin: Table Content",
+        "Interaction And Accessibility Visual States",
+        "Responsive Layout Stress Cases"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "6b96688abb26f44636773ba626e2fdd399b98ed638a8722c89359a266eedcac5",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-data-table-wide.png": {
+      "state": "admin-data-table",
+      "viewport": "wide",
+      "sections": [
+        "Admin: Data Table Explorer",
+        "Admin: Table Content",
+        "Interaction And Accessibility Visual States",
+        "Responsive Layout Stress Cases"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "712e66467be339e7aa9e2d40de3e7289b276f01ab1e5428b9cb659cecc4a2050",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-empty-table-desktop.png": {
+      "state": "admin-empty-table",
+      "viewport": "desktop",
+      "sections": [
+        "Admin: Data Table Explorer",
+        "Admin: Table Content"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "4fdedc97d146e3fc52c8c68d4bff58316e3a3715bfce57da624aa9647927b74d",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-empty-table-mobile.png": {
+      "state": "admin-empty-table",
+      "viewport": "mobile",
+      "sections": [
+        "Admin: Data Table Explorer",
+        "Admin: Table Content"
+      ],
+      "width": 390,
+      "height": 844,
+      "sha256": "774216e99375cfe219c193e034060e658a7c0dbd2b511e41e21e369652cd41e8",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-empty-table-tablet.png": {
+      "state": "admin-empty-table",
+      "viewport": "tablet",
+      "sections": [
+        "Admin: Data Table Explorer",
+        "Admin: Table Content"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "89a05984cd1dbca4d52dd3193f331a9bf2f22539e4ca6f44c0fd7d7e705605a5",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-empty-table-wide.png": {
+      "state": "admin-empty-table",
+      "viewport": "wide",
+      "sections": [
+        "Admin: Data Table Explorer",
+        "Admin: Table Content"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "efa7123963892758976f4ee1b85a9a2ef1f8357953a8de51f6316a622a06a059",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-forget-hover-desktop.png": {
+      "state": "admin-forget-hover",
+      "viewport": "desktop",
+      "sections": [
+        "Admin: Authenticated Summary",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "6aa73ec7f5687c1aca388eceeb6869a4b3c92bd2b5912016db1272d4cbfae2fe",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-forget-hover-mobile.png": {
+      "state": "admin-forget-hover",
+      "viewport": "mobile",
+      "sections": [
+        "Admin: Authenticated Summary",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 390,
+      "height": 844,
+      "sha256": "3131500f0b34533e19962a06cad885779656c0dc4c2814811f9dd75556b72ff6",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-forget-hover-tablet.png": {
+      "state": "admin-forget-hover",
+      "viewport": "tablet",
+      "sections": [
+        "Admin: Authenticated Summary",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "a741be949e6f36a147e93d956a529b6cfc8ce3fceb1de64381cfb50104bc5629",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-forget-hover-wide.png": {
+      "state": "admin-forget-hover",
+      "viewport": "wide",
+      "sections": [
+        "Admin: Authenticated Summary",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "3c1e57c7144de79f472e7dbbccf6a20b91c5d79b7a7fc7b56b8559b863562efd",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-gate-empty-desktop.png": {
+      "state": "admin-gate-empty",
+      "viewport": "desktop",
+      "sections": [
+        "Admin: Unauthenticated Gate",
+        "Global Shell",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "ab2a87917f28308981e5f8e0a9afc2adfdea3abdb126587f1eae374133c88936",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-gate-empty-mobile.png": {
+      "state": "admin-gate-empty",
+      "viewport": "mobile",
+      "sections": [
+        "Admin: Unauthenticated Gate",
+        "Global Shell",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 390,
+      "height": 844,
+      "sha256": "6227397a3bb6b97e4f1fc8786d255df1cf98f89c4a2d5372a634588449741b88",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-gate-empty-tablet.png": {
+      "state": "admin-gate-empty",
+      "viewport": "tablet",
+      "sections": [
+        "Admin: Unauthenticated Gate",
+        "Global Shell",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "9fb3299fec22b091d5cb46b50e7164c686a6bd4c64e236813a95be707f76cf04",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-gate-empty-wide.png": {
+      "state": "admin-gate-empty",
+      "viewport": "wide",
+      "sections": [
+        "Admin: Unauthenticated Gate",
+        "Global Shell",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "caec80dba71e3c33ed442bd7c707c6ceefc85a4e76d932e7888e0704edf76f55",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-gate-focus-desktop.png": {
+      "state": "admin-gate-focus",
+      "viewport": "desktop",
+      "sections": [
+        "Admin: Unauthenticated Gate",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "b8fa136700613c4955503e0c1e0aba0388e7f168c8d4ed94e1fd5909624120c1",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-gate-focus-mobile.png": {
+      "state": "admin-gate-focus",
+      "viewport": "mobile",
+      "sections": [
+        "Admin: Unauthenticated Gate",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 390,
+      "height": 844,
+      "sha256": "ddfeff3902bd6d5b5dd7a30cfe77bbe66d881d6d18a163505e7343c4a475e7ba",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-gate-focus-tablet.png": {
+      "state": "admin-gate-focus",
+      "viewport": "tablet",
+      "sections": [
+        "Admin: Unauthenticated Gate",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "0d8a5d3c17e7bbf0baaeb06bd3c15f30ab2d268053a21df6524497b46ac785ce",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-gate-focus-wide.png": {
+      "state": "admin-gate-focus",
+      "viewport": "wide",
+      "sections": [
+        "Admin: Unauthenticated Gate",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "375d119709ee129a9ba8a3951f5bf9bf3165a792eef94127fa608d910d6dc9eb",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-gate-invalid-desktop.png": {
+      "state": "admin-gate-invalid",
+      "viewport": "desktop",
+      "sections": [
+        "Admin: Unauthenticated Gate"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "ab3f886d81d3247278ecc6415bc1f5abceefbe8282a9aaa29f9e44405a247514",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-gate-invalid-mobile.png": {
+      "state": "admin-gate-invalid",
+      "viewport": "mobile",
+      "sections": [
+        "Admin: Unauthenticated Gate"
+      ],
+      "width": 390,
+      "height": 844,
+      "sha256": "0a48ee130e1b94a49f131125aea7e112dc7a2dfff777c0c506c03730aea97ebc",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-gate-invalid-tablet.png": {
+      "state": "admin-gate-invalid",
+      "viewport": "tablet",
+      "sections": [
+        "Admin: Unauthenticated Gate"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "8b4914278187ec5711a065deef50d1153d34f2ba3f778338a109a3a8879f9389",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-gate-invalid-wide.png": {
+      "state": "admin-gate-invalid",
+      "viewport": "wide",
+      "sections": [
+        "Admin: Unauthenticated Gate"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "6e7a63fce3056fd02ec529b4c1f92a3684bcaa7a5915a52a63bb11cb09d9d4be",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-gate-loading-desktop.png": {
+      "state": "admin-gate-loading",
+      "viewport": "desktop",
+      "sections": [
+        "Admin: Unauthenticated Gate",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "4ecdec2b196acd2c028ca87850fb5bd6ec946bc6e5d90c66e97144c65167e06a",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-gate-loading-mobile.png": {
+      "state": "admin-gate-loading",
+      "viewport": "mobile",
+      "sections": [
+        "Admin: Unauthenticated Gate",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 390,
+      "height": 844,
+      "sha256": "f68d87d089cf4e42754a1b6e71433ccd7023d1739f70b96925217592b2f9446b",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-gate-loading-tablet.png": {
+      "state": "admin-gate-loading",
+      "viewport": "tablet",
+      "sections": [
+        "Admin: Unauthenticated Gate",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "22cbaecb6969bd4c1eb5d5a9e5d8504c9a5df446b3f3229f396e775d96fb8ca5",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-gate-loading-wide.png": {
+      "state": "admin-gate-loading",
+      "viewport": "wide",
+      "sections": [
+        "Admin: Unauthenticated Gate",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "a85f5931d3edaceaeb3cad7ed983e14e09b11acfaabea425abd6c4222310e980",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-gate-typed-desktop.png": {
+      "state": "admin-gate-typed",
+      "viewport": "desktop",
+      "sections": [
+        "Admin: Unauthenticated Gate",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "431006baf09599369792ae98e9340e745cbcd785ca7f86f8cae39e87e3dd222b",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-gate-typed-mobile.png": {
+      "state": "admin-gate-typed",
+      "viewport": "mobile",
+      "sections": [
+        "Admin: Unauthenticated Gate",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 390,
+      "height": 844,
+      "sha256": "37b44eadd3b84d6d5cc03d1c6ab0a0dde903db0c3a918ac2fe6b54ae2788096f",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-gate-typed-tablet.png": {
+      "state": "admin-gate-typed",
+      "viewport": "tablet",
+      "sections": [
+        "Admin: Unauthenticated Gate",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "b2ffbe663faaf7925b53ef853867ca00cbe4c7fbe44c3c17e1a242acde377704",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-gate-typed-wide.png": {
+      "state": "admin-gate-typed",
+      "viewport": "wide",
+      "sections": [
+        "Admin: Unauthenticated Gate",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "870c5fdd42db92a7208d3e52569c8fd296e85789431433b93039becfb8640fa4",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-many-row-table-desktop.png": {
+      "state": "admin-many-row-table",
+      "viewport": "desktop",
+      "sections": [
+        "Admin: Data Table Explorer",
+        "Admin: Table Content",
+        "Interaction And Accessibility Visual States",
+        "Responsive Layout Stress Cases"
+      ],
+      "width": 1280,
+      "height": 2515,
+      "sha256": "e6533f62b65d6d4005dc58015c58dc1d93fbfcf74bea13cae9b6a361408c41d9",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-many-row-table-mobile.png": {
+      "state": "admin-many-row-table",
+      "viewport": "mobile",
+      "sections": [
+        "Admin: Data Table Explorer",
+        "Admin: Table Content",
+        "Interaction And Accessibility Visual States",
+        "Responsive Layout Stress Cases"
+      ],
+      "width": 390,
+      "height": 1265,
+      "sha256": "79dab9e64a3c16f9efbec3fa74ec5474d446c15b297b24f68af1f5bd6a88b8f1",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-many-row-table-tablet.png": {
+      "state": "admin-many-row-table",
+      "viewport": "tablet",
+      "sections": [
+        "Admin: Data Table Explorer",
+        "Admin: Table Content",
+        "Interaction And Accessibility Visual States",
+        "Responsive Layout Stress Cases"
+      ],
+      "width": 768,
+      "height": 2515,
+      "sha256": "d6188d4513845bea134d9eef50884a08133c945b6b83d795ebf2d8c54063c1a2",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-many-row-table-wide.png": {
+      "state": "admin-many-row-table",
+      "viewport": "wide",
+      "sections": [
+        "Admin: Data Table Explorer",
+        "Admin: Table Content",
+        "Interaction And Accessibility Visual States",
+        "Responsive Layout Stress Cases"
+      ],
+      "width": 1440,
+      "height": 2515,
+      "sha256": "3ef12258b15642d3d0983c773036f546653d41bdf560f958228aeccdd9cb0a10",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-many-table-tabs-desktop.png": {
+      "state": "admin-many-table-tabs",
+      "viewport": "desktop",
+      "sections": [
+        "Admin: Data Table Explorer",
+        "Admin: Table Content",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "680ab2ad209be6333bef273a7f8beb4cf19e45fc87a061247c88350102310b2b",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-many-table-tabs-mobile.png": {
+      "state": "admin-many-table-tabs",
+      "viewport": "mobile",
+      "sections": [
+        "Admin: Data Table Explorer",
+        "Admin: Table Content",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 390,
+      "height": 906,
+      "sha256": "37600c39ae4a91ed9dc2dbdf7c6f3827eda8bf07960f1cbe6118365ced20970e",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-many-table-tabs-tablet.png": {
+      "state": "admin-many-table-tabs",
+      "viewport": "tablet",
+      "sections": [
+        "Admin: Data Table Explorer",
+        "Admin: Table Content",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "2711b30aad403e442761b01abe7a2a294ce611ca949a9b5e3542695366085afb",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-many-table-tabs-wide.png": {
+      "state": "admin-many-table-tabs",
+      "viewport": "wide",
+      "sections": [
+        "Admin: Data Table Explorer",
+        "Admin: Table Content",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "31b3ce783f6425c5bf197b181ae96e4d603ada6a391c453334bc04b25ac75148",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-refresh-hover-desktop.png": {
+      "state": "admin-refresh-hover",
+      "viewport": "desktop",
+      "sections": [
+        "Admin: Data Table Explorer",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "fe0456366734506ffe545ef98137bf60f0ef6819185f7ec661ef152023b4c3d6",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-refresh-hover-mobile.png": {
+      "state": "admin-refresh-hover",
+      "viewport": "mobile",
+      "sections": [
+        "Admin: Data Table Explorer",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 390,
+      "height": 906,
+      "sha256": "80b72c1a38fe0ca9d05c73ab8b9d347c50999cfaf492bc73dc4d205edf6c3e4c",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-refresh-hover-tablet.png": {
+      "state": "admin-refresh-hover",
+      "viewport": "tablet",
+      "sections": [
+        "Admin: Data Table Explorer",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "66b5c0ad0318e37761f774e6339d9234da1e9cadc8a6f91cd3c8a349bd6a06a0",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-refresh-hover-wide.png": {
+      "state": "admin-refresh-hover",
+      "viewport": "wide",
+      "sections": [
+        "Admin: Data Table Explorer",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "2ad229462ddc0bcc38badb954b22206d27945460fdbe8a0c4ccd682cca748cda",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-summary-empty-desktop.png": {
+      "state": "admin-summary-empty",
+      "viewport": "desktop",
+      "sections": [
+        "Admin: Authenticated Summary"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "dfbfb5f4c25a9fee10c43d91c315ca76b8effc3ec4edad1d11b2a78c1d0a794e",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-summary-empty-mobile.png": {
+      "state": "admin-summary-empty",
+      "viewport": "mobile",
+      "sections": [
+        "Admin: Authenticated Summary"
+      ],
+      "width": 390,
+      "height": 844,
+      "sha256": "1a5067ad091429174b7db2e8b9bcbed00a63b8ad9fb930db28ece19e9c6cbe15",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-summary-empty-tablet.png": {
+      "state": "admin-summary-empty",
+      "viewport": "tablet",
+      "sections": [
+        "Admin: Authenticated Summary"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "50e80aceec6ac3b1e25eeecec25e4dc338849c20b41be5bc85d60f9a86526a76",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-summary-empty-wide.png": {
+      "state": "admin-summary-empty",
+      "viewport": "wide",
+      "sections": [
+        "Admin: Authenticated Summary"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "1914e410158f59bf9430c36775137aaec38ff4a76999beb85ba3fd5653d45bd9",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-summary-recent-expanded-desktop.png": {
+      "state": "admin-summary-recent-expanded",
+      "viewport": "desktop",
+      "sections": [
+        "Admin: Authenticated Summary",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "77efa40f63269b03674179073af4b680e5c6fac871d7db663d499bcd8405d19c",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-summary-recent-expanded-mobile.png": {
+      "state": "admin-summary-recent-expanded",
+      "viewport": "mobile",
+      "sections": [
+        "Admin: Authenticated Summary",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 390,
+      "height": 1007,
+      "sha256": "2984ef382a769ee1afaeefee010eafd219b908100a83dcbf2e34672c0f02fb83",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-summary-recent-expanded-tablet.png": {
+      "state": "admin-summary-recent-expanded",
+      "viewport": "tablet",
+      "sections": [
+        "Admin: Authenticated Summary",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "3e93e1777bc324424dc17b929e433f284b8eb79af4c38f3925dee241223f0a17",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-summary-recent-expanded-wide.png": {
+      "state": "admin-summary-recent-expanded",
+      "viewport": "wide",
+      "sections": [
+        "Admin: Authenticated Summary",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "9e86b6ce539ed421a6188b499c7696b784b64ed347b2aed3aea33c7c03ce44c8",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-table-loading-desktop.png": {
+      "state": "admin-table-loading",
+      "viewport": "desktop",
+      "sections": [
+        "Admin: Data Table Explorer",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "1cc3335e705abd1f67312eb3833f06491ed216622cb8ee775e27f187e06478a6",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-table-loading-mobile.png": {
+      "state": "admin-table-loading",
+      "viewport": "mobile",
+      "sections": [
+        "Admin: Data Table Explorer",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 390,
+      "height": 906,
+      "sha256": "b433f80e38162a076bee53ee0978ec1aff297dec509e538790be3a6addd9542b",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-table-loading-tablet.png": {
+      "state": "admin-table-loading",
+      "viewport": "tablet",
+      "sections": [
+        "Admin: Data Table Explorer",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "cdc90bfdd2d4494eeaaa2ddef4358363c2cc701bc24f20cc50c08cdf4274dc96",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-table-loading-wide.png": {
+      "state": "admin-table-loading",
+      "viewport": "wide",
+      "sections": [
+        "Admin: Data Table Explorer",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "ae288ed43d54aa073158edb645b0217e72303e26e745829b11dd8346089c19e7",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-table-pagination-disabled-desktop.png": {
+      "state": "admin-table-pagination-disabled",
+      "viewport": "desktop",
+      "sections": [
+        "Admin: Data Table Explorer",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "cf4972aa1f57f5288581302177db24937b8826b66430d26b5d30446331d061c2",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-table-pagination-disabled-mobile.png": {
+      "state": "admin-table-pagination-disabled",
+      "viewport": "mobile",
+      "sections": [
+        "Admin: Data Table Explorer",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 390,
+      "height": 906,
+      "sha256": "f010590f7f3a80e9c9aeb6f6e4be6015cf0c2d595b14fbd496ba91b2f9b127bf",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-table-pagination-disabled-tablet.png": {
+      "state": "admin-table-pagination-disabled",
+      "viewport": "tablet",
+      "sections": [
+        "Admin: Data Table Explorer",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "6b96688abb26f44636773ba626e2fdd399b98ed638a8722c89359a266eedcac5",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-table-pagination-disabled-wide.png": {
+      "state": "admin-table-pagination-disabled",
+      "viewport": "wide",
+      "sections": [
+        "Admin: Data Table Explorer",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "712e66467be339e7aa9e2d40de3e7289b276f01ab1e5428b9cb659cecc4a2050",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-table-pagination-enabled-desktop.png": {
+      "state": "admin-table-pagination-enabled",
+      "viewport": "desktop",
+      "sections": [
+        "Admin: Data Table Explorer",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "1094e2226e4d62d30f9e26732baed2d394c2c7f48d1df376aa12d0a66402fcce",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-table-pagination-enabled-mobile.png": {
+      "state": "admin-table-pagination-enabled",
+      "viewport": "mobile",
+      "sections": [
+        "Admin: Data Table Explorer",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 390,
+      "height": 938,
+      "sha256": "62ed3a3cbc914c6f2a212d3f57996483c0dd2de11cdc121de86a16fe65372794",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-table-pagination-enabled-tablet.png": {
+      "state": "admin-table-pagination-enabled",
+      "viewport": "tablet",
+      "sections": [
+        "Admin: Data Table Explorer",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "04b6c660062c94a693d23235632f1df1e1f622cbb76094c3ebb7948d8bf00b13",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-table-pagination-enabled-wide.png": {
+      "state": "admin-table-pagination-enabled",
+      "viewport": "wide",
+      "sections": [
+        "Admin: Data Table Explorer",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "535b9e0720446e818135de6a47e3e668b64a2b29baba0bb8f4e871fd19bcaea5",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-table-tab-focus-desktop.png": {
+      "state": "admin-table-tab-focus",
+      "viewport": "desktop",
+      "sections": [
+        "Admin: Data Table Explorer"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "128123cd59d29fdde7821f5a28ff2e56adb28d1772553b1d40fe3f6ff89cdbef",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-table-tab-focus-mobile.png": {
+      "state": "admin-table-tab-focus",
+      "viewport": "mobile",
+      "sections": [
+        "Admin: Data Table Explorer"
+      ],
+      "width": 390,
+      "height": 906,
+      "sha256": "6b21d59abc7b6928ddf7270eda313e52bc719f97fbf61966e435441fc06d67af",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-table-tab-focus-tablet.png": {
+      "state": "admin-table-tab-focus",
+      "viewport": "tablet",
+      "sections": [
+        "Admin: Data Table Explorer"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "7d5a780a09d49c0e6ad05db8f873f434affbfa5b6798b28be86eaf52fcdac2f7",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-table-tab-focus-wide.png": {
+      "state": "admin-table-tab-focus",
+      "viewport": "wide",
+      "sections": [
+        "Admin: Data Table Explorer"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "5f181946959ae68775e04cb5d83776c21556c4d4a0183dcbdf55309ccbf51a43",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-unlock-focus-desktop.png": {
+      "state": "admin-unlock-focus",
+      "viewport": "desktop",
+      "sections": [
+        "Admin: Unauthenticated Gate",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "5fd89a0914fdf1d615b7cc84bca6cd485effefc988515cf9075747255bbe3939",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-unlock-focus-mobile.png": {
+      "state": "admin-unlock-focus",
+      "viewport": "mobile",
+      "sections": [
+        "Admin: Unauthenticated Gate",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 390,
+      "height": 844,
+      "sha256": "60c444f1fb11aff2c40c024add8b703248308d9fa4cd8168114aca400e49f9a5",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-unlock-focus-tablet.png": {
+      "state": "admin-unlock-focus",
+      "viewport": "tablet",
+      "sections": [
+        "Admin: Unauthenticated Gate",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "d87c84f8f2c9508b35e0a3f372054b66ae5dd14223d2791b44938706f30125e6",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "admin-unlock-focus-wide.png": {
+      "state": "admin-unlock-focus",
+      "viewport": "wide",
+      "sections": [
+        "Admin: Unauthenticated Gate",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "686870bd8018a5acd7fdb311cbb7b9fb75cd16f607661e10bbe1840c191b277d",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-active-actions-focus-desktop.png": {
+      "state": "chat-active-actions-focus",
+      "viewport": "desktop",
+      "sections": [
+        "Activity / Research Jobs",
+        "Home Chat: Submission And Research",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "b6594454c841b7d1070d118fd088ec60ca18591edfacc6cb204c2f0744599018",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-active-actions-focus-mobile.png": {
+      "state": "chat-active-actions-focus",
+      "viewport": "mobile",
+      "sections": [
+        "Activity / Research Jobs",
+        "Home Chat: Submission And Research",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 390,
+      "height": 844,
+      "sha256": "fca1cd3e2d25861faded6b37dfa1cbb1969148a5f02a253711ae2392488fc425",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-active-actions-focus-tablet.png": {
+      "state": "chat-active-actions-focus",
+      "viewport": "tablet",
+      "sections": [
+        "Activity / Research Jobs",
+        "Home Chat: Submission And Research",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "32add1f02ecbbc60dd0dde9877f5f1979e3d0ffc0a85c4a8d0280e485e9f9db1",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-active-actions-focus-wide.png": {
+      "state": "chat-active-actions-focus",
+      "viewport": "wide",
+      "sections": [
+        "Activity / Research Jobs",
+        "Home Chat: Submission And Research",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "36483ff7d3e58a3ca977cb3ead9ac7954ad672180e8ac2f2a3ecc63ce3c2f9f9",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-active-research-desktop.png": {
+      "state": "chat-active-research",
+      "viewport": "desktop",
+      "sections": [
+        "Activity / Research Jobs",
+        "Home Chat: Submission And Research"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "08a5feb89626a2f0eebbbe5661f1286b63dcabee688d610af7a113b045c1a481",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-active-research-mobile.png": {
+      "state": "chat-active-research",
+      "viewport": "mobile",
+      "sections": [
+        "Activity / Research Jobs",
+        "Home Chat: Submission And Research"
+      ],
+      "width": 390,
+      "height": 844,
+      "sha256": "9f9b6f8dcf660567f525f10bbef96fff68ee21adf41ebd6bcd4f06b0ed57df61",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-active-research-tablet.png": {
+      "state": "chat-active-research",
+      "viewport": "tablet",
+      "sections": [
+        "Activity / Research Jobs",
+        "Home Chat: Submission And Research"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "93f0945a0413dc195768e1b09574b187c40de029d4c234620ffbfbcfdb6e082b",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-active-research-wide.png": {
+      "state": "chat-active-research",
+      "viewport": "wide",
+      "sections": [
+        "Activity / Research Jobs",
+        "Home Chat: Submission And Research"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "3a49feb06c65b9b6e3f6bf38c3b7524143baf93ddf3310d58d71f9c40d0d1dd5",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-cancelled-research-desktop.png": {
+      "state": "chat-cancelled-research",
+      "viewport": "desktop",
+      "sections": [
+        "Activity / Research Jobs",
+        "Home Chat: Submission And Research"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "a7b207269ab3c75e87f88c82f6e3cfc4d7b5bc765b0348c80a32175b798e0e8c",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-cancelled-research-mobile.png": {
+      "state": "chat-cancelled-research",
+      "viewport": "mobile",
+      "sections": [
+        "Activity / Research Jobs",
+        "Home Chat: Submission And Research"
+      ],
+      "width": 390,
+      "height": 844,
+      "sha256": "1b1868ef1c3d0fb0701f19d6e3717cc7d3ae7ab1263282d369c8851ec753edc4",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-cancelled-research-tablet.png": {
+      "state": "chat-cancelled-research",
+      "viewport": "tablet",
+      "sections": [
+        "Activity / Research Jobs",
+        "Home Chat: Submission And Research"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "4e3cbc192b16a22ebafe608fb607e528782d1c8f892e73a0ea175fd79da2e17e",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-cancelled-research-wide.png": {
+      "state": "chat-cancelled-research",
+      "viewport": "wide",
+      "sections": [
+        "Activity / Research Jobs",
+        "Home Chat: Submission And Research"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "cdb5e1b58b18a086b90da36c922445a8f98d256e580aca12523c172aa1105fbf",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-candidate-warning-desktop.png": {
+      "state": "chat-candidate-warning",
+      "viewport": "desktop",
+      "sections": [
+        "Answer Result States"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "0017d99e3b746a4f5bbfd8d5666e7b21d1e381a31a06a2c7d67a8b97bee2ba9d",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-candidate-warning-mobile.png": {
+      "state": "chat-candidate-warning",
+      "viewport": "mobile",
+      "sections": [
+        "Answer Result States"
+      ],
+      "width": 390,
+      "height": 976,
+      "sha256": "28d86be830e65d80cd258e3a5154fa85ea93b60d4001521205cb97b46c9d669b",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-candidate-warning-tablet.png": {
+      "state": "chat-candidate-warning",
+      "viewport": "tablet",
+      "sections": [
+        "Answer Result States"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "d3fc00892dc8cb59b36f3a14ce844c764cfc52c44d76f0a12ce32dd279dfd5b0",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-candidate-warning-wide.png": {
+      "state": "chat-candidate-warning",
+      "viewport": "wide",
+      "sections": [
+        "Answer Result States"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "0d783de1b3799facd5e9d8a2c9db12817b842ad33b08a49875535c2f9ed744ad",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-caveats-expanded-desktop.png": {
+      "state": "chat-caveats-expanded",
+      "viewport": "desktop",
+      "sections": [
+        "Answer Result States",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "bb8e200ec2e1d3da0cb45f9611f68c066efc6322fee4cb53cdd832bfb3f33e8b",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-caveats-expanded-mobile.png": {
+      "state": "chat-caveats-expanded",
+      "viewport": "mobile",
+      "sections": [
+        "Answer Result States",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 390,
+      "height": 996,
+      "sha256": "5da60eca618d4467cb776c66326ce440f003e337bd97ef4442b3dbcb3583d837",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-caveats-expanded-tablet.png": {
+      "state": "chat-caveats-expanded",
+      "viewport": "tablet",
+      "sections": [
+        "Answer Result States",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "c969bd7e3487a95faeaefe34b0b04f78c92ad61c5e4e7f808c634a9ec3f7df13",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-caveats-expanded-wide.png": {
+      "state": "chat-caveats-expanded",
+      "viewport": "wide",
+      "sections": [
+        "Answer Result States",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "f1a17ecc3594fbefaeaa924713ee1444042709ba2ed96a6ce1930f361ad1fc79",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-evidence-expanded-desktop.png": {
+      "state": "chat-evidence-expanded",
+      "viewport": "desktop",
+      "sections": [
+        "Evidence Details",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "cd890ae536f78f6b7113c6e923b03e5fcec2e8516f61cec14edfd7d4a0f31d77",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-evidence-expanded-mobile.png": {
+      "state": "chat-evidence-expanded",
+      "viewport": "mobile",
+      "sections": [
+        "Evidence Details",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 390,
+      "height": 996,
+      "sha256": "82b3f2907b6c4a589202443a3d9ec5ec0ff9a800be1574e3217a5cf35aab4234",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-evidence-expanded-tablet.png": {
+      "state": "chat-evidence-expanded",
+      "viewport": "tablet",
+      "sections": [
+        "Evidence Details",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "1a8ae21906dbb9bbe973ff795371ef775562085c1f456055234d05399cee2d55",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-evidence-expanded-wide.png": {
+      "state": "chat-evidence-expanded",
+      "viewport": "wide",
+      "sections": [
+        "Evidence Details",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "1080ad14960a24ca81f2d963d333db26df5d6e55b7d941e273f75193e665569b",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-failure-desktop.png": {
+      "state": "chat-failure",
+      "viewport": "desktop",
+      "sections": [
+        "Activity / Research Jobs",
+        "Chat Messages",
+        "Failure And Error States",
+        "Home Chat: Submission And Research"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "731318360847955839af9b90069d268f810488e1818ffacbae4023deb8cc8fbc",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-failure-details-expanded-desktop.png": {
+      "state": "chat-failure-details-expanded",
+      "viewport": "desktop",
+      "sections": [
+        "Admin: Unauthenticated Gate",
+        "Failure And Error States",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "0527fd77e57263c289a13a2a7953a38ed102ad6b98336acee619c0c82ffa9ab4",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-failure-details-expanded-mobile.png": {
+      "state": "chat-failure-details-expanded",
+      "viewport": "mobile",
+      "sections": [
+        "Admin: Unauthenticated Gate",
+        "Failure And Error States",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 390,
+      "height": 844,
+      "sha256": "89be19e4fdef901f06a3fa7e26f785f0aec428d74d5e0f17f7e599d90acb8974",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-failure-details-expanded-tablet.png": {
+      "state": "chat-failure-details-expanded",
+      "viewport": "tablet",
+      "sections": [
+        "Admin: Unauthenticated Gate",
+        "Failure And Error States",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "6d35ddd1dc4e8aaef41b491b0749743f66751ad9f798fa32817e6959e4408cc3",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-failure-details-expanded-wide.png": {
+      "state": "chat-failure-details-expanded",
+      "viewport": "wide",
+      "sections": [
+        "Admin: Unauthenticated Gate",
+        "Failure And Error States",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "faba8b8dac8e62e0a7363de31d101825290273005ed864be7a45f1ccec2ace5c",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-failure-mobile.png": {
+      "state": "chat-failure",
+      "viewport": "mobile",
+      "sections": [
+        "Activity / Research Jobs",
+        "Chat Messages",
+        "Failure And Error States",
+        "Home Chat: Submission And Research"
+      ],
+      "width": 390,
+      "height": 844,
+      "sha256": "622ade90a7e432db04315dcdacc1c4269baab7e8b41342983e25a214037124ac",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-failure-tablet.png": {
+      "state": "chat-failure",
+      "viewport": "tablet",
+      "sections": [
+        "Activity / Research Jobs",
+        "Chat Messages",
+        "Failure And Error States",
+        "Home Chat: Submission And Research"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "d0802fe7d0b322212cca676e99720c503ae4a915b8a12a904acec9c1a79fcac4",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-failure-wide.png": {
+      "state": "chat-failure",
+      "viewport": "wide",
+      "sections": [
+        "Activity / Research Jobs",
+        "Chat Messages",
+        "Failure And Error States",
+        "Home Chat: Submission And Research"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "bfaed25a0eca0a1265f7d998fc9325ba021195195939e06d18466712398d46da",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-job-link-focus-desktop.png": {
+      "state": "chat-job-link-focus",
+      "viewport": "desktop",
+      "sections": [
+        "Activity / Research Jobs",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1280,
+      "height": 932,
+      "sha256": "f4853655083f032b722adac182313c9cae66236bf75e6711574e4d3989dc6b41",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-job-link-focus-mobile.png": {
+      "state": "chat-job-link-focus",
+      "viewport": "mobile",
+      "sections": [
+        "Activity / Research Jobs",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 390,
+      "height": 1466,
+      "sha256": "1d639fbeea171e947a5e6db60872e6153580c01bc815483a8ffaebb7688161db",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-job-link-focus-tablet.png": {
+      "state": "chat-job-link-focus",
+      "viewport": "tablet",
+      "sections": [
+        "Activity / Research Jobs",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "d10de6f14c5f63404a29b6757790ec9508cb825cb1fce69826e1e2ff608f93b8",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-job-link-focus-wide.png": {
+      "state": "chat-job-link-focus",
+      "viewport": "wide",
+      "sections": [
+        "Activity / Research Jobs",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "ecfb4f7b6d19d15b4bf6d3e847511e343ba8ebec2917f7a7d335ab3a6f828802",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-job-link-hover-desktop.png": {
+      "state": "chat-job-link-hover",
+      "viewport": "desktop",
+      "sections": [
+        "Activity / Research Jobs",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1280,
+      "height": 932,
+      "sha256": "6e59f436a4deb06253db20a54310e1501e754df64278ae0e3e89f6299d033303",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-job-link-hover-mobile.png": {
+      "state": "chat-job-link-hover",
+      "viewport": "mobile",
+      "sections": [
+        "Activity / Research Jobs",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 390,
+      "height": 1466,
+      "sha256": "25524651e2d749f5811a64ef6eaf6d11e919b9abc2b31cecde36bb79cc405fb8",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-job-link-hover-tablet.png": {
+      "state": "chat-job-link-hover",
+      "viewport": "tablet",
+      "sections": [
+        "Activity / Research Jobs",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "ee71dde94c3f90083f9f365eb9d691faa1de3f2a03d14f4bfd21383d23603504",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-job-link-hover-wide.png": {
+      "state": "chat-job-link-hover",
+      "viewport": "wide",
+      "sections": [
+        "Activity / Research Jobs",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "ed803c8ae011e82c8abc338171e94c18f037f7437fc29adc6e739fb7838ea794",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-long-answer-desktop.png": {
+      "state": "chat-long-answer",
+      "viewport": "desktop",
+      "sections": [
+        "Answer Result States",
+        "Chat Messages",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "68265efc22239faefda647b26a926e065fd400dfd90b2b4c26311543f38747cf",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-long-answer-large-text-desktop.png": {
+      "state": "chat-long-answer-large-text",
+      "viewport": "desktop",
+      "sections": [
+        "Responsive Layout Stress Cases"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "a9d40db2b932d5847be9f859a5972a7b4e9beb83008fe5edff2e32bfafd79563",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-long-answer-large-text-mobile.png": {
+      "state": "chat-long-answer-large-text",
+      "viewport": "mobile",
+      "sections": [
+        "Responsive Layout Stress Cases"
+      ],
+      "width": 390,
+      "height": 1147,
+      "sha256": "2e253b76ae0aff8863254467c7e968414af53eec066d74da4ab707745921a5b2",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-long-answer-large-text-tablet.png": {
+      "state": "chat-long-answer-large-text",
+      "viewport": "tablet",
+      "sections": [
+        "Responsive Layout Stress Cases"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "37ff4c2f37137a849a3ff7ac37086c23a7b7b84154c38f3916cd4228025b89b5",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-long-answer-large-text-wide.png": {
+      "state": "chat-long-answer-large-text",
+      "viewport": "wide",
+      "sections": [
+        "Responsive Layout Stress Cases"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "bfc4076f8d2fd02820f3b2bd001200cc807a217f8a673f62cd158516195516d7",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-long-answer-mobile.png": {
+      "state": "chat-long-answer",
+      "viewport": "mobile",
+      "sections": [
+        "Answer Result States",
+        "Chat Messages",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 390,
+      "height": 996,
+      "sha256": "67abaea927d01620830f279208105904d4dd7a1e295d85d9ff34051e05475e0a",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-long-answer-tablet.png": {
+      "state": "chat-long-answer",
+      "viewport": "tablet",
+      "sections": [
+        "Answer Result States",
+        "Chat Messages",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "1b7f7429a7e1b89eb05989001adbebb405f917ab5f21d38b353024de023496b5",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-long-answer-wide.png": {
+      "state": "chat-long-answer",
+      "viewport": "wide",
+      "sections": [
+        "Answer Result States",
+        "Chat Messages",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "1bf98b2ef5acd9b68cb7a7cb02301b0dbf5b49f4c508fb48d9128039e47ce6a4",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-many-job-statuses-desktop.png": {
+      "state": "chat-many-job-statuses",
+      "viewport": "desktop",
+      "sections": [
+        "Activity / Research Jobs",
+        "Failure And Error States"
+      ],
+      "width": 1280,
+      "height": 932,
+      "sha256": "28ebe08bc7c677938c1a5852a2255e6da76cac80d71b3aac5e634e8b92af070b",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-many-job-statuses-mobile.png": {
+      "state": "chat-many-job-statuses",
+      "viewport": "mobile",
+      "sections": [
+        "Activity / Research Jobs",
+        "Failure And Error States"
+      ],
+      "width": 390,
+      "height": 1466,
+      "sha256": "ddebb0638ec2bedcedf27cea488aa315af05f9120e5ad909d104939be4761fe0",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-many-job-statuses-tablet.png": {
+      "state": "chat-many-job-statuses",
+      "viewport": "tablet",
+      "sections": [
+        "Activity / Research Jobs",
+        "Failure And Error States"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "7773d0853617c2fed54532a83a9fc012b01cb6e79ff17e932367c6eef83f96c8",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-many-job-statuses-wide.png": {
+      "state": "chat-many-job-statuses",
+      "viewport": "wide",
+      "sections": [
+        "Activity / Research Jobs",
+        "Failure And Error States"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "e4bbc09eb118463f179be6c6bdbf36a6e6adbe1006b05b64a256922e8b51c80d",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-missing-fields-desktop.png": {
+      "state": "chat-missing-fields",
+      "viewport": "desktop",
+      "sections": [
+        "Answer Result States"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "2e71a5b557b707d213df3bcc8cf8f50e48a18ad0e16b578a867fbf2e6078fe67",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-missing-fields-mobile.png": {
+      "state": "chat-missing-fields",
+      "viewport": "mobile",
+      "sections": [
+        "Answer Result States"
+      ],
+      "width": 390,
+      "height": 976,
+      "sha256": "81caa363c226108d268861779d2e7ab4c69a5723fa0fe6d095bc4d17e86ac9e1",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-missing-fields-tablet.png": {
+      "state": "chat-missing-fields",
+      "viewport": "tablet",
+      "sections": [
+        "Answer Result States"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "198b1d0a35593a7dc6b8466ff3d5d8596f85502e1874fb0c79f7398f0df13ae7",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-missing-fields-wide.png": {
+      "state": "chat-missing-fields",
+      "viewport": "wide",
+      "sections": [
+        "Answer Result States"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "408a31a65e6817e1ae705900e51980874b3ae2d2aa833004f7ae2d40f670674a",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-multi-result-answer-desktop.png": {
+      "state": "chat-multi-result-answer",
+      "viewport": "desktop",
+      "sections": [
+        "Answer Result States",
+        "Chat Messages"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "96f8908567d143e4c7be994a9a847efdaaa8d2c31820749d83425fb44419b43b",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-multi-result-answer-mobile.png": {
+      "state": "chat-multi-result-answer",
+      "viewport": "mobile",
+      "sections": [
+        "Answer Result States",
+        "Chat Messages"
+      ],
+      "width": 390,
+      "height": 976,
+      "sha256": "64499dbc605a1c2ac23fd0b71f5b6e8702945cca9e6dd1156b8b9acfe44d58bd",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-multi-result-answer-tablet.png": {
+      "state": "chat-multi-result-answer",
+      "viewport": "tablet",
+      "sections": [
+        "Answer Result States",
+        "Chat Messages"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "916e1887662689cf698f70981782eb52f00a397a2c83e1881529d3cc3431b100",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-multi-result-answer-wide.png": {
+      "state": "chat-multi-result-answer",
+      "viewport": "wide",
+      "sections": [
+        "Answer Result States",
+        "Chat Messages"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "a4de953b3bbb3169a06f8a43c87d690989ffea96c3e7eb2962eb3bddfd13bad6",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-multiple-evidence-expanded-desktop.png": {
+      "state": "chat-multiple-evidence-expanded",
+      "viewport": "desktop",
+      "sections": [
+        "Evidence Details"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "d1470de9186fb1dcdafa429089224a4e9baffc17f1d079848c8a986cf297ac9a",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-multiple-evidence-expanded-mobile.png": {
+      "state": "chat-multiple-evidence-expanded",
+      "viewport": "mobile",
+      "sections": [
+        "Evidence Details"
+      ],
+      "width": 390,
+      "height": 996,
+      "sha256": "91d84b74608037f63d19539407dec3e0a506013fe9baf81ccb3a1c59720ceb02",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-multiple-evidence-expanded-tablet.png": {
+      "state": "chat-multiple-evidence-expanded",
+      "viewport": "tablet",
+      "sections": [
+        "Evidence Details"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "f245d989e8ae194eeec500bf72354fafb590b56750030eb7c662ca31809de84a",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-multiple-evidence-expanded-wide.png": {
+      "state": "chat-multiple-evidence-expanded",
+      "viewport": "wide",
+      "sections": [
+        "Evidence Details"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "3984276eadfc1007c81e536ef750f9c087e7528a7edf7a974f8d94a73a19f32b",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-no-next-actions-desktop.png": {
+      "state": "chat-no-next-actions",
+      "viewport": "desktop",
+      "sections": [
+        "Answer Result States",
+        "Chat Messages"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "3b189ba04036c8a1cabe38c52eccca5ca077af7805d6478d71fe456c777d83d5",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-no-next-actions-mobile.png": {
+      "state": "chat-no-next-actions",
+      "viewport": "mobile",
+      "sections": [
+        "Answer Result States",
+        "Chat Messages"
+      ],
+      "width": 390,
+      "height": 976,
+      "sha256": "33f6245ed029bdbc778c0d7cad265dec10bbecd8927e48cc11a03c2ced39db71",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-no-next-actions-tablet.png": {
+      "state": "chat-no-next-actions",
+      "viewport": "tablet",
+      "sections": [
+        "Answer Result States",
+        "Chat Messages"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "2b3cf852ec9d0990035328c81d8da5f499c02519630786d3e68afcd05d043d6a",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-no-next-actions-wide.png": {
+      "state": "chat-no-next-actions",
+      "viewport": "wide",
+      "sections": [
+        "Answer Result States",
+        "Chat Messages"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "34c29b0b109a04c4f2ef92a1a86c9c1b895e6e096ef8d58645582862d54ff7b2",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-offline-with-messages-desktop.png": {
+      "state": "chat-offline-with-messages",
+      "viewport": "desktop",
+      "sections": [
+        "Activity / Research Jobs",
+        "Global Shell",
+        "Home Chat: Submission And Research"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "2f8542808e1aceba664d7359e49bc72d35d33f275554e2432e06c2ed7341dcd2",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-offline-with-messages-mobile.png": {
+      "state": "chat-offline-with-messages",
+      "viewport": "mobile",
+      "sections": [
+        "Activity / Research Jobs",
+        "Global Shell",
+        "Home Chat: Submission And Research"
+      ],
+      "width": 390,
+      "height": 860,
+      "sha256": "3eaa6b08dbc031c19c7647312ebf8e1bc309e9513465899eb083dfbfa7001e89",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-offline-with-messages-tablet.png": {
+      "state": "chat-offline-with-messages",
+      "viewport": "tablet",
+      "sections": [
+        "Activity / Research Jobs",
+        "Global Shell",
+        "Home Chat: Submission And Research"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "a19b7fc44f671b2411606f8aa5292cfab5586ccac3d77eb92c4a20602528f3c1",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-offline-with-messages-wide.png": {
+      "state": "chat-offline-with-messages",
+      "viewport": "wide",
+      "sections": [
+        "Activity / Research Jobs",
+        "Global Shell",
+        "Home Chat: Submission And Research"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "e7b38c6ea6e4b499a6035dbb85d8e7dbeb2598f9429c2d835b41ede92a23da17",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-punctuation-url-message-desktop.png": {
+      "state": "chat-punctuation-url-message",
+      "viewport": "desktop",
+      "sections": [
+        "Chat Messages"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "5ea8f42818530af96e8a88fafa8985fe401e1b79e1a0084a8c464b3c191173cc",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-punctuation-url-message-mobile.png": {
+      "state": "chat-punctuation-url-message",
+      "viewport": "mobile",
+      "sections": [
+        "Chat Messages"
+      ],
+      "width": 390,
+      "height": 844,
+      "sha256": "86dc4a1c0fd367e2746e91495358ce2d331f46f056e3e71f38a98eb48613185b",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-punctuation-url-message-tablet.png": {
+      "state": "chat-punctuation-url-message",
+      "viewport": "tablet",
+      "sections": [
+        "Chat Messages"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "3928dbd94b9b6dae01e0dfeede24f686b66eb2d4792c56b20f876973385827d2",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-punctuation-url-message-wide.png": {
+      "state": "chat-punctuation-url-message",
+      "viewport": "wide",
+      "sections": [
+        "Chat Messages"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "cc92fe746fead2ec988e8694b8131ddb39b8115bc1e2b5da4734917998a1dd1d",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-queued-polling-desktop.png": {
+      "state": "chat-queued-polling",
+      "viewport": "desktop",
+      "sections": [
+        "Activity / Research Jobs"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "3a49d7cfa87d25ba7bedd544cdaafe27b8c4d29a6407ed31174263d8522126c4",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-queued-polling-mobile.png": {
+      "state": "chat-queued-polling",
+      "viewport": "mobile",
+      "sections": [
+        "Activity / Research Jobs"
+      ],
+      "width": 390,
+      "height": 844,
+      "sha256": "6b6fb89e4a0681c7d3cdfa96537d71b9eaa8c33837f12899a57b792c7921fba8",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-queued-polling-tablet.png": {
+      "state": "chat-queued-polling",
+      "viewport": "tablet",
+      "sections": [
+        "Activity / Research Jobs"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "92e214e51f000f6fc79db81594702d0ff413b902a53dea936c70b42fc733ca28",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-queued-polling-wide.png": {
+      "state": "chat-queued-polling",
+      "viewport": "wide",
+      "sections": [
+        "Activity / Research Jobs"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "ec72348cc95c1bf4cae1630736aa934d4b6fc2831a844c6a2014eac5af3a812e",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-reconnecting-with-messages-desktop.png": {
+      "state": "chat-reconnecting-with-messages",
+      "viewport": "desktop",
+      "sections": [
+        "Activity / Research Jobs",
+        "Global Shell",
+        "Home Chat: Submission And Research"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "5aaeab5d0a7c7e2fa0834ae7f9f2c6b2ba6cc7d998cc961c1c4aa3142cf23ad9",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-reconnecting-with-messages-mobile.png": {
+      "state": "chat-reconnecting-with-messages",
+      "viewport": "mobile",
+      "sections": [
+        "Activity / Research Jobs",
+        "Global Shell",
+        "Home Chat: Submission And Research"
+      ],
+      "width": 390,
+      "height": 844,
+      "sha256": "0881877591992924c3340bd036bd4f7d2cbd206cd408484f13b30c6faf59c6ce",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-reconnecting-with-messages-tablet.png": {
+      "state": "chat-reconnecting-with-messages",
+      "viewport": "tablet",
+      "sections": [
+        "Activity / Research Jobs",
+        "Global Shell",
+        "Home Chat: Submission And Research"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "cfd783a2223a118c190bb0604883dd0748a525135bac32c71ccd527a5afff13c",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-reconnecting-with-messages-wide.png": {
+      "state": "chat-reconnecting-with-messages",
+      "viewport": "wide",
+      "sections": [
+        "Activity / Research Jobs",
+        "Global Shell",
+        "Home Chat: Submission And Research"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "10877ec117fc707c109194088e475aa6d44d76ebd0282240448f4f280a114042",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-running-polling-desktop.png": {
+      "state": "chat-running-polling",
+      "viewport": "desktop",
+      "sections": [
+        "Activity / Research Jobs",
+        "Home Chat: Submission And Research"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "457800e20b066d4bc3d49f01e6a892f2a10c55af1c3aa666a7ed7786a2417a8b",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-running-polling-mobile.png": {
+      "state": "chat-running-polling",
+      "viewport": "mobile",
+      "sections": [
+        "Activity / Research Jobs",
+        "Home Chat: Submission And Research"
+      ],
+      "width": 390,
+      "height": 866,
+      "sha256": "54e77c94a04dd8480c7b1720d79a50800472cf40b5a0b8ee3ee0ef7f343885dc",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-running-polling-tablet.png": {
+      "state": "chat-running-polling",
+      "viewport": "tablet",
+      "sections": [
+        "Activity / Research Jobs",
+        "Home Chat: Submission And Research"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "7048f13468ebdfe813674689ef1569b8ae5f2f09248ad76888678b0f2819c755",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-running-polling-wide.png": {
+      "state": "chat-running-polling",
+      "viewport": "wide",
+      "sections": [
+        "Activity / Research Jobs",
+        "Home Chat: Submission And Research"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "1b3beda4a613545fa43f3a0cecfe68e787e44371a86dce89bdda533e9bb15f82",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-scroll-pressure-bottom-desktop.png": {
+      "state": "chat-scroll-pressure-bottom",
+      "viewport": "desktop",
+      "sections": [
+        "Chat Messages",
+        "Responsive Layout Stress Cases"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "37ec9778378f842066a77e1634d8639c77ae8d30a0e599194b2d7060f2da12d4",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-scroll-pressure-bottom-mobile.png": {
+      "state": "chat-scroll-pressure-bottom",
+      "viewport": "mobile",
+      "sections": [
+        "Chat Messages",
+        "Responsive Layout Stress Cases"
+      ],
+      "width": 390,
+      "height": 956,
+      "sha256": "d78d222d3c3ea4f7d7a53f0afc4a93d6b2c720db1076d390c48a62bbbc68a770",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-scroll-pressure-bottom-tablet.png": {
+      "state": "chat-scroll-pressure-bottom",
+      "viewport": "tablet",
+      "sections": [
+        "Chat Messages",
+        "Responsive Layout Stress Cases"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "8fcfd1fe31e41e2331ec228394eb857eac2619ec4e6a07fc562f4a7621883232",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-scroll-pressure-bottom-wide.png": {
+      "state": "chat-scroll-pressure-bottom",
+      "viewport": "wide",
+      "sections": [
+        "Chat Messages",
+        "Responsive Layout Stress Cases"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "076a123fc96c07cba5c64e5c1edd9e6ddca6e34e08582200b3093cff2cc10a97",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-scroll-pressure-desktop.png": {
+      "state": "chat-scroll-pressure",
+      "viewport": "desktop",
+      "sections": [
+        "Activity / Research Jobs",
+        "Chat Messages",
+        "Interaction And Accessibility Visual States",
+        "Responsive Layout Stress Cases"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "37ec9778378f842066a77e1634d8639c77ae8d30a0e599194b2d7060f2da12d4",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-scroll-pressure-mobile.png": {
+      "state": "chat-scroll-pressure",
+      "viewport": "mobile",
+      "sections": [
+        "Activity / Research Jobs",
+        "Chat Messages",
+        "Interaction And Accessibility Visual States",
+        "Responsive Layout Stress Cases"
+      ],
+      "width": 390,
+      "height": 956,
+      "sha256": "d78d222d3c3ea4f7d7a53f0afc4a93d6b2c720db1076d390c48a62bbbc68a770",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-scroll-pressure-tablet.png": {
+      "state": "chat-scroll-pressure",
+      "viewport": "tablet",
+      "sections": [
+        "Activity / Research Jobs",
+        "Chat Messages",
+        "Interaction And Accessibility Visual States",
+        "Responsive Layout Stress Cases"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "8fcfd1fe31e41e2331ec228394eb857eac2619ec4e6a07fc562f4a7621883232",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-scroll-pressure-top-desktop.png": {
+      "state": "chat-scroll-pressure-top",
+      "viewport": "desktop",
+      "sections": [
+        "Chat Messages",
+        "Responsive Layout Stress Cases"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "9078fc142e03c42b0ccf75a7678e3438b378d174fe6a04f2fc590dc52ed58098",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-scroll-pressure-top-mobile.png": {
+      "state": "chat-scroll-pressure-top",
+      "viewport": "mobile",
+      "sections": [
+        "Chat Messages",
+        "Responsive Layout Stress Cases"
+      ],
+      "width": 390,
+      "height": 956,
+      "sha256": "18dfa81a665214961a962649d4a14fc99c92e31b8abbcf7ca06a7949a663157e",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-scroll-pressure-top-tablet.png": {
+      "state": "chat-scroll-pressure-top",
+      "viewport": "tablet",
+      "sections": [
+        "Chat Messages",
+        "Responsive Layout Stress Cases"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "20a5c3979fe245dbf60111ca2fbf0a8316a18af877a44b03959c3b28c08fe200",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-scroll-pressure-top-wide.png": {
+      "state": "chat-scroll-pressure-top",
+      "viewport": "wide",
+      "sections": [
+        "Chat Messages",
+        "Responsive Layout Stress Cases"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "bddf3bc2343b888365d8a757021e4454aa95b5e6f0bc0153c7d0ef6b3e2ae583",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-scroll-pressure-wide.png": {
+      "state": "chat-scroll-pressure",
+      "viewport": "wide",
+      "sections": [
+        "Activity / Research Jobs",
+        "Chat Messages",
+        "Interaction And Accessibility Visual States",
+        "Responsive Layout Stress Cases"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "076a123fc96c07cba5c64e5c1edd9e6ddca6e34e08582200b3093cff2cc10a97",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-source-link-focus-desktop.png": {
+      "state": "chat-source-link-focus",
+      "viewport": "desktop",
+      "sections": [
+        "Evidence Details",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "a208f9739bfd19a0aa1bcf9351401e1880eeab91d7b9774f56b1de0c55f88bf1",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-source-link-focus-mobile.png": {
+      "state": "chat-source-link-focus",
+      "viewport": "mobile",
+      "sections": [
+        "Evidence Details",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 390,
+      "height": 996,
+      "sha256": "f922d16f993c0371d4dc9c297c109ebae99cb3c5c7482701d1e6e05e3305144e",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-source-link-focus-tablet.png": {
+      "state": "chat-source-link-focus",
+      "viewport": "tablet",
+      "sections": [
+        "Evidence Details",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "d053d36a41ecb7e6ae48dad28f327e8b64bd217866afb5cf10afb2a27e464ea1",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-source-link-focus-wide.png": {
+      "state": "chat-source-link-focus",
+      "viewport": "wide",
+      "sections": [
+        "Evidence Details",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "2159cf525c5b3d9c7fc11b551e0a5a1d6355e2f84b576c618a9962b44972b14a",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-source-link-hover-desktop.png": {
+      "state": "chat-source-link-hover",
+      "viewport": "desktop",
+      "sections": [
+        "Evidence Details",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "d5594c13165b1a7a80278de940b2ac84b2df440551ffa9ef81d23a1010c7123d",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-source-link-hover-mobile.png": {
+      "state": "chat-source-link-hover",
+      "viewport": "mobile",
+      "sections": [
+        "Evidence Details",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 390,
+      "height": 996,
+      "sha256": "eb67f2904497ee547131b115efa4967548ce78b340a3566d862022c473215383",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-source-link-hover-tablet.png": {
+      "state": "chat-source-link-hover",
+      "viewport": "tablet",
+      "sections": [
+        "Evidence Details",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "977c05e15db849badb4f266f9e4207f6a46b8bf0bb44a242852bce975d6b2cdb",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-source-link-hover-wide.png": {
+      "state": "chat-source-link-hover",
+      "viewport": "wide",
+      "sections": [
+        "Evidence Details",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "68624f53b93442b1b030b323d058f5eacb67e0b3fa89bdf40908627e5cbc23e4",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-submitted-user-only-desktop.png": {
+      "state": "chat-submitted-user-only",
+      "viewport": "desktop",
+      "sections": [
+        "Chat Messages",
+        "Home Chat: Submission And Research"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "1dc8590b700bfe3506b2a4758080a8bdde55356b8461549ebeeef00a22d98cb4",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-submitted-user-only-mobile.png": {
+      "state": "chat-submitted-user-only",
+      "viewport": "mobile",
+      "sections": [
+        "Chat Messages",
+        "Home Chat: Submission And Research"
+      ],
+      "width": 390,
+      "height": 844,
+      "sha256": "7361afce7384c3083dca998cbe94b689ebdace017afaace4e465838dfa542446",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-submitted-user-only-tablet.png": {
+      "state": "chat-submitted-user-only",
+      "viewport": "tablet",
+      "sections": [
+        "Chat Messages",
+        "Home Chat: Submission And Research"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "bf082ff6ef54821ca1d4619611dcb202cd4a99eefeff7f2f33084a679a8d85b7",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-submitted-user-only-wide.png": {
+      "state": "chat-submitted-user-only",
+      "viewport": "wide",
+      "sections": [
+        "Chat Messages",
+        "Home Chat: Submission And Research"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "371a5d41c093ec3476753b6763b84d13d31c5054f551ec79c5dcee6912669b10",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-success-answer-desktop.png": {
+      "state": "chat-success-answer",
+      "viewport": "desktop",
+      "sections": [
+        "Activity / Research Jobs",
+        "Answer Result States",
+        "Chat Messages",
+        "Evidence Details",
+        "Home Chat: Submission And Research",
+        "Interaction And Accessibility Visual States",
+        "Responsive Layout Stress Cases"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "b38be4e536d05e48072e88089c1a34288f2ff5c880afbaeefc753d6d0e560055",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-success-answer-mobile.png": {
+      "state": "chat-success-answer",
+      "viewport": "mobile",
+      "sections": [
+        "Activity / Research Jobs",
+        "Answer Result States",
+        "Chat Messages",
+        "Evidence Details",
+        "Home Chat: Submission And Research",
+        "Interaction And Accessibility Visual States",
+        "Responsive Layout Stress Cases"
+      ],
+      "width": 390,
+      "height": 996,
+      "sha256": "01a932b8ad28f1dc2f3d17a989f7a71f7c28a940f221d87547c64051e3f2a806",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-success-answer-tablet.png": {
+      "state": "chat-success-answer",
+      "viewport": "tablet",
+      "sections": [
+        "Activity / Research Jobs",
+        "Answer Result States",
+        "Chat Messages",
+        "Evidence Details",
+        "Home Chat: Submission And Research",
+        "Interaction And Accessibility Visual States",
+        "Responsive Layout Stress Cases"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "d0ba21a79f1810689a2c050f74d20ea76007f0a17d209efeb854ead2cf41dfdf",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-success-answer-wide.png": {
+      "state": "chat-success-answer",
+      "viewport": "wide",
+      "sections": [
+        "Activity / Research Jobs",
+        "Answer Result States",
+        "Chat Messages",
+        "Evidence Details",
+        "Home Chat: Submission And Research",
+        "Interaction And Accessibility Visual States",
+        "Responsive Layout Stress Cases"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "98b46bd8936103983b026613cb1798da9dea8f1563f1107a6c9375f7b9dbd2ab",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-success-stress-widths-boundary.png": {
+      "state": "chat-success-stress-widths",
+      "viewport": "boundary",
+      "sections": [
+        "Answer Result States",
+        "Interaction And Accessibility Visual States",
+        "Responsive Layout Stress Cases"
+      ],
+      "width": 960,
+      "height": 900,
+      "sha256": "85064ebaabc3ceefbbdfe9ede972fa9889049b2b432a0f1ba2cb9dd63c72a09f",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-success-stress-widths-narrow.png": {
+      "state": "chat-success-stress-widths",
+      "viewport": "narrow",
+      "sections": [
+        "Answer Result States",
+        "Interaction And Accessibility Visual States",
+        "Responsive Layout Stress Cases"
+      ],
+      "width": 320,
+      "height": 945,
+      "sha256": "c13e694dec98364e7de17362ecd3786778c56db761ff6f1c3e550b82ae909292",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-system-looking-only-desktop.png": {
+      "state": "chat-system-looking-only",
+      "viewport": "desktop",
+      "sections": [
+        "Chat Messages",
+        "Home Chat: Submission And Research"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "91459670ab344763504399d635ef44212bc30f98a7dbf14409c46734053706b8",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-system-looking-only-mobile.png": {
+      "state": "chat-system-looking-only",
+      "viewport": "mobile",
+      "sections": [
+        "Chat Messages",
+        "Home Chat: Submission And Research"
+      ],
+      "width": 390,
+      "height": 844,
+      "sha256": "59b7a65363470d76b85a67a547834deb1085b17de14e66c3605300020c8be139",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-system-looking-only-tablet.png": {
+      "state": "chat-system-looking-only",
+      "viewport": "tablet",
+      "sections": [
+        "Chat Messages",
+        "Home Chat: Submission And Research"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "a2e83046d53ad4c0388c7bcdae3a7940edd0da980a50e1e4d3173be490780c2b",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-system-looking-only-wide.png": {
+      "state": "chat-system-looking-only",
+      "viewport": "wide",
+      "sections": [
+        "Chat Messages",
+        "Home Chat: Submission And Research"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "1b53290f8a0a8ac5c4167c2141913ffef9ebe0e74ee54f253363a5ca64f44569",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-unsupported-failure-desktop.png": {
+      "state": "chat-unsupported-failure",
+      "viewport": "desktop",
+      "sections": [
+        "Chat Messages",
+        "Failure And Error States"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "827581f8babd28b772ce301a9931a333a71644d4028f897568a6ab54e4512e2d",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-unsupported-failure-mobile.png": {
+      "state": "chat-unsupported-failure",
+      "viewport": "mobile",
+      "sections": [
+        "Chat Messages",
+        "Failure And Error States"
+      ],
+      "width": 390,
+      "height": 844,
+      "sha256": "5d943174c460c8c32f6954d9bc4f2ee52e425982e2c9e155ee4d0f2e4fce5bb2",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-unsupported-failure-tablet.png": {
+      "state": "chat-unsupported-failure",
+      "viewport": "tablet",
+      "sections": [
+        "Chat Messages",
+        "Failure And Error States"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "64a2ae46417e714028ab1558778c7e16a608c6aa7e1679b8d1b1664eb5760f0f",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "chat-unsupported-failure-wide.png": {
+      "state": "chat-unsupported-failure",
+      "viewport": "wide",
+      "sections": [
+        "Chat Messages",
+        "Failure And Error States"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "317e867398c73255272f51ffdcdb6739d120b94c38c6de9ac0d150ef81a6c36a",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "global-admin-connecting-desktop.png": {
+      "state": "global-admin-connecting",
+      "viewport": "desktop",
+      "sections": [
+        "Global Shell"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "7329429d39c7678d52e2237981be9a3d2915a6dd32809c467c9215f9f712da62",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "global-admin-connecting-mobile.png": {
+      "state": "global-admin-connecting",
+      "viewport": "mobile",
+      "sections": [
+        "Global Shell"
+      ],
+      "width": 390,
+      "height": 844,
+      "sha256": "9d85f9444e7fa052ee6c33844ebbebcf69458dce0feb61a4bdd126d0e7f43259",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "global-admin-connecting-tablet.png": {
+      "state": "global-admin-connecting",
+      "viewport": "tablet",
+      "sections": [
+        "Global Shell"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "1d51a25b3dd6cda7d8bd27b0857778a227fdb98deb1201192a6c3031007923a7",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "global-admin-connecting-wide.png": {
+      "state": "global-admin-connecting",
+      "viewport": "wide",
+      "sections": [
+        "Global Shell"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "d5b8101e20702b36c45bdd6fd3f6f6035e3bbb570cc17359581da6d61945ccc6",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "global-admin-offline-desktop.png": {
+      "state": "global-admin-offline",
+      "viewport": "desktop",
+      "sections": [
+        "Global Shell"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "ef0f8684f70d69e1966b72c5a8a937ab5893920864ba302702fd7a03b000d368",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "global-admin-offline-mobile.png": {
+      "state": "global-admin-offline",
+      "viewport": "mobile",
+      "sections": [
+        "Global Shell"
+      ],
+      "width": 390,
+      "height": 844,
+      "sha256": "5b992bc440177125fc7d31f82f217d3e4462befd55a659d13b7d204bd7655568",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "global-admin-offline-tablet.png": {
+      "state": "global-admin-offline",
+      "viewport": "tablet",
+      "sections": [
+        "Global Shell"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "e2df7d1a3892a07244f8f7efd2d0588335394114061e7ec9ae3b5dab66812bb3",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "global-admin-offline-wide.png": {
+      "state": "global-admin-offline",
+      "viewport": "wide",
+      "sections": [
+        "Global Shell"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "bdcce9cb64a9cd2322395f100297b1bba85acd1627abb62d609f4414c744ce74",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "global-home-connecting-desktop.png": {
+      "state": "global-home-connecting",
+      "viewport": "desktop",
+      "sections": [
+        "Global Shell",
+        "Home Chat: Empty State"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "061caf6663c9505d2d7800e7a6dc1a5df26abdd6f560b7cb05b89e865ffe7aac",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "global-home-connecting-mobile.png": {
+      "state": "global-home-connecting",
+      "viewport": "mobile",
+      "sections": [
+        "Global Shell",
+        "Home Chat: Empty State"
+      ],
+      "width": 390,
+      "height": 844,
+      "sha256": "cc496c227f626f87cc030612e27c833ed17a70b66604d38b5c411db1fb681895",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "global-home-connecting-tablet.png": {
+      "state": "global-home-connecting",
+      "viewport": "tablet",
+      "sections": [
+        "Global Shell",
+        "Home Chat: Empty State"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "174c7fc61d4146df319c009dfb95a24beeb4b445ece0a81f7acd9cec3f7b6322",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "global-home-connecting-wide.png": {
+      "state": "global-home-connecting",
+      "viewport": "wide",
+      "sections": [
+        "Global Shell",
+        "Home Chat: Empty State"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "2a14473bcd9c52ffead96aa86fb65cfd6dbdfbd1991e1c636bac04feaa542415",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "global-home-offline-desktop.png": {
+      "state": "global-home-offline",
+      "viewport": "desktop",
+      "sections": [
+        "Global Shell",
+        "Home Chat: Empty State"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "98cbdf1dc6d0edbc9fdfd229034f9d9d914e93d8b14ec99a3b462cfeee9aa79f",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "global-home-offline-mobile.png": {
+      "state": "global-home-offline",
+      "viewport": "mobile",
+      "sections": [
+        "Global Shell",
+        "Home Chat: Empty State"
+      ],
+      "width": 390,
+      "height": 844,
+      "sha256": "6c57a4c24bf7f9855e62aa9f795c04fdab2dd8fb0235e89cf90d347b12a2cf07",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "global-home-offline-tablet.png": {
+      "state": "global-home-offline",
+      "viewport": "tablet",
+      "sections": [
+        "Global Shell",
+        "Home Chat: Empty State"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "95bb5cccd410aa4837fc9b05cbcd4cb084b63afa62b97d0e5cd04df77c21233c",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "global-home-offline-wide.png": {
+      "state": "global-home-offline",
+      "viewport": "wide",
+      "sections": [
+        "Global Shell",
+        "Home Chat: Empty State"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "9c39af55b76771a1a8251cb977dc7520edb3043371d12f08c14a5619456d51ab",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "home-busy-disabled-desktop.png": {
+      "state": "home-busy-disabled",
+      "viewport": "desktop",
+      "sections": [
+        "Home Chat: Empty State",
+        "Home Chat: Submission And Research",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "06c339a856a2b5c15c0135a1838527e06b57c76720901c2661ee8b01e6b49e05",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "home-busy-disabled-mobile.png": {
+      "state": "home-busy-disabled",
+      "viewport": "mobile",
+      "sections": [
+        "Home Chat: Empty State",
+        "Home Chat: Submission And Research",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 390,
+      "height": 844,
+      "sha256": "e5ff642fd1fbcba4345bfd30c7fb6d4a745819e656bc0e36ecbc7bfe27108671",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "home-busy-disabled-tablet.png": {
+      "state": "home-busy-disabled",
+      "viewport": "tablet",
+      "sections": [
+        "Home Chat: Empty State",
+        "Home Chat: Submission And Research",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "e85b1fad0aaf6dd36f53917d109e53dd5f0603dc77ac480f4eb41e7a08844f64",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "home-busy-disabled-wide.png": {
+      "state": "home-busy-disabled",
+      "viewport": "wide",
+      "sections": [
+        "Home Chat: Empty State",
+        "Home Chat: Submission And Research",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "483fed1926538b9f7bc22d99e163495c4c3f45672696ceb9bde80b894344c366",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "home-empty-desktop.png": {
+      "state": "home-empty",
+      "viewport": "desktop",
+      "sections": [
+        "Activity / Research Jobs",
+        "Global Shell",
+        "Home Chat: Empty State",
+        "Interaction And Accessibility Visual States",
+        "Responsive Layout Stress Cases"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "583ca33ce15bcd70c885c8798b4b0fae9f0410636963d369ba7b7f64b7b78875",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "home-empty-large-text-desktop.png": {
+      "state": "home-empty-large-text",
+      "viewport": "desktop",
+      "sections": [
+        "Responsive Layout Stress Cases"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "8ee662689abb4fd7dbd881414ee049fbc683355930902cf40fd71944909928b7",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "home-empty-large-text-mobile.png": {
+      "state": "home-empty-large-text",
+      "viewport": "mobile",
+      "sections": [
+        "Responsive Layout Stress Cases"
+      ],
+      "width": 390,
+      "height": 844,
+      "sha256": "f89365bfa2989fc7b8ed059564f8fd06fb158061719102acac6cda914a73d1af",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "home-empty-large-text-tablet.png": {
+      "state": "home-empty-large-text",
+      "viewport": "tablet",
+      "sections": [
+        "Responsive Layout Stress Cases"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "792beadd678b5d4b8667f2ef1ac5ee9f41c9f5c762d2cf77ac2c1a2081705fa0",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "home-empty-large-text-wide.png": {
+      "state": "home-empty-large-text",
+      "viewport": "wide",
+      "sections": [
+        "Responsive Layout Stress Cases"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "7ef79d81953373325b41a983ed69935d138df6bc8b4e06e8418307301f7ff891",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "home-empty-mobile.png": {
+      "state": "home-empty",
+      "viewport": "mobile",
+      "sections": [
+        "Activity / Research Jobs",
+        "Global Shell",
+        "Home Chat: Empty State",
+        "Interaction And Accessibility Visual States",
+        "Responsive Layout Stress Cases"
+      ],
+      "width": 390,
+      "height": 844,
+      "sha256": "596c3443c02e1cbc812ae816d544c1e9a1e94d3a2e9e6d82aeb2efc48aca66ec",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "home-empty-stress-widths-boundary.png": {
+      "state": "home-empty-stress-widths",
+      "viewport": "boundary",
+      "sections": [
+        "Home Chat: Empty State",
+        "Interaction And Accessibility Visual States",
+        "Responsive Layout Stress Cases"
+      ],
+      "width": 960,
+      "height": 900,
+      "sha256": "0cca20690ff778bc7e0ed910548d796019f812998156358768061c606a60be11",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "home-empty-stress-widths-narrow.png": {
+      "state": "home-empty-stress-widths",
+      "viewport": "narrow",
+      "sections": [
+        "Home Chat: Empty State",
+        "Interaction And Accessibility Visual States",
+        "Responsive Layout Stress Cases"
+      ],
+      "width": 320,
+      "height": 740,
+      "sha256": "5a2153f50aa1f6aff0da172f9c5b13179847cd44fc91f28c31daa1a57fbb4562",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "home-empty-tablet.png": {
+      "state": "home-empty",
+      "viewport": "tablet",
+      "sections": [
+        "Activity / Research Jobs",
+        "Global Shell",
+        "Home Chat: Empty State",
+        "Interaction And Accessibility Visual States",
+        "Responsive Layout Stress Cases"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "afe5a22b60b0ddf08fde5c8a652de5816716100143eb56baaa6b7ddb3b9a8b14",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "home-empty-wide.png": {
+      "state": "home-empty",
+      "viewport": "wide",
+      "sections": [
+        "Activity / Research Jobs",
+        "Global Shell",
+        "Home Chat: Empty State",
+        "Interaction And Accessibility Visual States",
+        "Responsive Layout Stress Cases"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "e0c5f2efb636f9109080ce367e625050a073ec93dfba1c121b192a87e4e963cd",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "home-error-banner-desktop.png": {
+      "state": "home-error-banner",
+      "viewport": "desktop",
+      "sections": [
+        "Admin: Unauthenticated Gate",
+        "Failure And Error States",
+        "Global Shell"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "0f6dbf1feab603cb54383caca2a36e7d091a4c1608386b1275da378b52e5695b",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "home-error-banner-mobile.png": {
+      "state": "home-error-banner",
+      "viewport": "mobile",
+      "sections": [
+        "Admin: Unauthenticated Gate",
+        "Failure And Error States",
+        "Global Shell"
+      ],
+      "width": 390,
+      "height": 844,
+      "sha256": "eb9ba8573e38c045bad83e78644f53cd44bf1577e26d6d014d48eb49684cde07",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "home-error-banner-tablet.png": {
+      "state": "home-error-banner",
+      "viewport": "tablet",
+      "sections": [
+        "Admin: Unauthenticated Gate",
+        "Failure And Error States",
+        "Global Shell"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "efaf8979eaedd988cea5dcce8c01a202a2d1dde10b4a89875ef2e0062f7a3f96",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "home-error-banner-wide.png": {
+      "state": "home-error-banner",
+      "viewport": "wide",
+      "sections": [
+        "Admin: Unauthenticated Gate",
+        "Failure And Error States",
+        "Global Shell"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "8088ed82a2a06dafe2280c0b60d290564fbd4d63d4cf58dd65d549fa0b9c8b14",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "home-example-focus-desktop.png": {
+      "state": "home-example-focus",
+      "viewport": "desktop",
+      "sections": [
+        "Home Chat: Empty State",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "b7ade9085b953dd596cb0499a943ef1fbd1e995b3db996a442abb54b8612e343",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "home-example-focus-mobile.png": {
+      "state": "home-example-focus",
+      "viewport": "mobile",
+      "sections": [
+        "Home Chat: Empty State",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 390,
+      "height": 844,
+      "sha256": "c865d5ac57d5fe26227eb9cf8d1b0fd386042c99f3e1e12f726a587f6e023824",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "home-example-focus-tablet.png": {
+      "state": "home-example-focus",
+      "viewport": "tablet",
+      "sections": [
+        "Home Chat: Empty State",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "af28f3aed40621e970fd1453ddcd7aa6db0254973ac33fc463871646c0161112",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "home-example-focus-wide.png": {
+      "state": "home-example-focus",
+      "viewport": "wide",
+      "sections": [
+        "Home Chat: Empty State",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "5fccda0e0207752692c2c9fab46913201aa4280db81b608802b7596172a81738",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "home-example-hover-desktop.png": {
+      "state": "home-example-hover",
+      "viewport": "desktop",
+      "sections": [
+        "Home Chat: Empty State",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "f69c8496156cd1f0d0e121faf521f346d6c168c383bab3dfb14f74c1e2dd382e",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "home-example-hover-mobile.png": {
+      "state": "home-example-hover",
+      "viewport": "mobile",
+      "sections": [
+        "Home Chat: Empty State",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 390,
+      "height": 844,
+      "sha256": "47d06c6f60fe51ed6f352d98d5fa4f9d109ea197fe70497cade85a918bfab227",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "home-example-hover-tablet.png": {
+      "state": "home-example-hover",
+      "viewport": "tablet",
+      "sections": [
+        "Home Chat: Empty State",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "bc11dd529bc784232fcd1c4be7b705b361bf958b143cd35540ca4cba59977834",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "home-example-hover-wide.png": {
+      "state": "home-example-hover",
+      "viewport": "wide",
+      "sections": [
+        "Home Chat: Empty State",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "27e3b64d1a264fe3cc1a0b998e7d41bacec7948ee0972f43637b5a21f7ca5591",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "home-input-focused-desktop.png": {
+      "state": "home-input-focused",
+      "viewport": "desktop",
+      "sections": [
+        "Home Chat: Empty State",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "b1993c04494143501501271c9a1d784d616103e65e32eb82409694d552c07549",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "home-input-focused-mobile.png": {
+      "state": "home-input-focused",
+      "viewport": "mobile",
+      "sections": [
+        "Home Chat: Empty State",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 390,
+      "height": 844,
+      "sha256": "89f2940d653aec080d6ab1a6eaeb478c95faaa0968021387230aa8844737c21e",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "home-input-focused-tablet.png": {
+      "state": "home-input-focused",
+      "viewport": "tablet",
+      "sections": [
+        "Home Chat: Empty State",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "56db31dd93212801524db0eab08071925fbc01b1d28fb5d48c32136b9b3b9166",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "home-input-focused-wide.png": {
+      "state": "home-input-focused",
+      "viewport": "wide",
+      "sections": [
+        "Home Chat: Empty State",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "148c08492ddb8dcb3041d3a6ae41331283fc5c1be7263b860424269cb13a3ac1",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "home-new-chat-focus-desktop.png": {
+      "state": "home-new-chat-focus",
+      "viewport": "desktop",
+      "sections": [
+        "Global Shell",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "be4892c2c6ed7f3f7324ed9e61003e3bcfed99e1795567a12cfd1f2f0a1c1849",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "home-new-chat-focus-mobile.png": {
+      "state": "home-new-chat-focus",
+      "viewport": "mobile",
+      "sections": [
+        "Global Shell",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 390,
+      "height": 844,
+      "sha256": "a964085ef63ebb930baeadd282ed83c075b37eebe35eb9641b4019459e0333b8",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "home-new-chat-focus-tablet.png": {
+      "state": "home-new-chat-focus",
+      "viewport": "tablet",
+      "sections": [
+        "Global Shell",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "d7241a6fa643ddf3253c2c797ef8819b6bcbd3740c1f837baf5995096628eca0",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "home-new-chat-focus-wide.png": {
+      "state": "home-new-chat-focus",
+      "viewport": "wide",
+      "sections": [
+        "Global Shell",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "811e53cb5512ad0aa5e184d9eb78c00f75f21cff47a4f7d327330fd6c4222f3d",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "home-new-chat-hover-desktop.png": {
+      "state": "home-new-chat-hover",
+      "viewport": "desktop",
+      "sections": [
+        "Global Shell",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "bbe2ffc642f2dfea3c70c350f8ea4d3170967210faca83fc32b8f3edc9b112d0",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "home-new-chat-hover-mobile.png": {
+      "state": "home-new-chat-hover",
+      "viewport": "mobile",
+      "sections": [
+        "Global Shell",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 390,
+      "height": 844,
+      "sha256": "65258afe47b256629ddc0f222947353cc77a078a0dac27d73067147bb18724a5",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "home-new-chat-hover-tablet.png": {
+      "state": "home-new-chat-hover",
+      "viewport": "tablet",
+      "sections": [
+        "Global Shell",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "58d322fbb7fa200f82dd8e1b00280d3b362738d6859951148b0ea890cbaf7847",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "home-new-chat-hover-wide.png": {
+      "state": "home-new-chat-hover",
+      "viewport": "wide",
+      "sections": [
+        "Global Shell",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "265454b989420c9f99956fb6abc87274f0df0e6294bc3af64c90beccf0fc8e39",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "home-typed-query-desktop.png": {
+      "state": "home-typed-query",
+      "viewport": "desktop",
+      "sections": [
+        "Home Chat: Empty State",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1280,
+      "height": 900,
+      "sha256": "9e7cb9df0593a874e1e4ec1faa070d14cf3ed4ec490764c261b24fba9bef5353",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "home-typed-query-mobile.png": {
+      "state": "home-typed-query",
+      "viewport": "mobile",
+      "sections": [
+        "Home Chat: Empty State",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 390,
+      "height": 844,
+      "sha256": "3ec16aeb1e07d07585cd71f95fd7ef21614b338a11557bca286d9aa12a2e2830",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "home-typed-query-tablet.png": {
+      "state": "home-typed-query",
+      "viewport": "tablet",
+      "sections": [
+        "Home Chat: Empty State",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 768,
+      "height": 1024,
+      "sha256": "8cc7f91acaf62a9ee98c0a7b2546c1563daca6a69a5b3134645c39738d337d47",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    },
+    "home-typed-query-wide.png": {
+      "state": "home-typed-query",
+      "viewport": "wide",
+      "sections": [
+        "Home Chat: Empty State",
+        "Interaction And Accessibility Visual States"
+      ],
+      "width": 1440,
+      "height": 1000,
+      "sha256": "fa825ab3251ff3557f4bca1140285e01ca2dc854b7f44a5f1c718b7847beaf82",
+      "status": "pending",
+      "note": "",
+      "reviewed_at": "",
+      "reviewed_by": ""
+    }
+  }
+}

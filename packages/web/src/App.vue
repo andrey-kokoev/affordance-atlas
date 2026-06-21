@@ -56,6 +56,31 @@ type SessionJob = (typeof jobs.value)[number];
 type SessionMessage = (typeof messages.value)[number];
 type AssistantMessage = Extract<SessionMessage, { role: "assistant" }>;
 
+type VisualFixture = {
+  connected?: boolean;
+  connecting?: boolean;
+  error?: string | null;
+  input?: string;
+  busy?: boolean;
+  messages?: SessionMessage[];
+  jobs?: SessionJob[];
+  highlightedJobId?: string | null;
+  admin?: {
+    authenticated?: boolean;
+    loading?: boolean;
+    error?: string | null;
+    copyMessage?: string | null;
+    tokenInput?: string;
+    savedToken?: string;
+    summary?: AdminSummary | null;
+    tables?: AdminTable[];
+    selectedTable?: string;
+    tableRows?: AdminTableRows | null;
+    tableLoading?: boolean;
+    tableOffset?: number;
+  };
+};
+
 const nowMs = ref(Date.now());
 const highlightedJobId = ref<string | null>(null);
 const canSend = computed(() => connected.value && !busy.value && !working.value && input.value.trim().length > 0);
@@ -287,6 +312,38 @@ function clearAdminToken(): void {
   adminCopyMessage.value = null;
 }
 
+function applyVisualFixture(fixture: VisualFixture): void {
+  (window as unknown as Record<string, unknown>).__affordanceAtlasVisualFixtureActive = true;
+  if (fixture.connected !== undefined) connected.value = fixture.connected;
+  if (fixture.connecting !== undefined) connecting.value = fixture.connecting;
+  if (fixture.error !== undefined) error.value = fixture.error;
+  if (fixture.input !== undefined) input.value = fixture.input;
+  if (fixture.busy !== undefined) busy.value = fixture.busy;
+  if (fixture.messages) messages.value = fixture.messages;
+  if (fixture.jobs) jobs.value = fixture.jobs;
+  if (fixture.highlightedJobId !== undefined) highlightedJobId.value = fixture.highlightedJobId;
+
+  const admin = fixture.admin;
+  if (admin) {
+    if (admin.authenticated !== undefined) adminAuthenticated.value = admin.authenticated;
+    if (admin.loading !== undefined) adminLoading.value = admin.loading;
+    if (admin.error !== undefined) adminError.value = admin.error;
+    if (admin.copyMessage !== undefined) adminCopyMessage.value = admin.copyMessage;
+    if (admin.tokenInput !== undefined) adminTokenInput.value = admin.tokenInput;
+    if (admin.savedToken !== undefined) savedAdminToken.value = admin.savedToken;
+    if (admin.summary !== undefined) adminSummary.value = admin.summary;
+    if (admin.tables !== undefined) adminTables.value = admin.tables;
+    if (admin.selectedTable !== undefined) selectedAdminTable.value = admin.selectedTable;
+    if (admin.tableRows !== undefined) adminTableRows.value = admin.tableRows;
+    if (admin.tableLoading !== undefined) adminTableLoading.value = admin.tableLoading;
+    if (admin.tableOffset !== undefined) adminTableOffset.value = admin.tableOffset;
+  }
+}
+
+if (typeof window !== "undefined") {
+  (window as unknown as Record<string, unknown>).__applyAffordanceAtlasVisualFixture = applyVisualFixture;
+}
+
 let clockTimer: ReturnType<typeof window.setInterval> | null = null;
 
 onMounted(() => {
@@ -413,31 +470,31 @@ const exampleQueries = [
 </script>
 
 <template>
-    <div :class="['app', isAdminPage ? 'admin-shell' : '']">
-      <header>
-        <h1>Affordance Atlas</h1>
-        <div class="header-actions">
-          <a v-if="isAdminPage" class="secondary-button" href="/">
+    <div :class="['mx-auto min-h-screen bg-surface p-4 font-sans text-text max-md:px-3 max-md:py-2', isAdminPage ? 'max-w-[1440px]' : 'max-w-[960px]']">
+      <header class="mb-4 flex flex-wrap items-center justify-between gap-4 max-md:mb-3 max-md:items-start max-md:gap-1.5">
+        <h1 class="m-0 text-xl max-md:text-lg">Affordance Atlas</h1>
+        <div class="flex items-center gap-3 max-md:w-full max-md:justify-start max-md:gap-2">
+          <a v-if="isAdminPage" class="inline-flex cursor-pointer items-center justify-center rounded-md border border-border-strong bg-surface px-3 py-2 text-sm text-text no-underline hover:bg-surface-muted max-md:px-2 max-md:py-1.5" href="/">
             Back to app
           </a>
-          <button v-if="!isAdminPage" data-testid="new-chat-button" class="secondary-button" type="button" @click="handleNewChat">
+          <button v-if="!isAdminPage" data-testid="new-chat-button" class="inline-flex cursor-pointer items-center justify-center rounded-md border border-border-strong bg-surface px-3 py-2 text-sm text-text hover:bg-surface-muted max-md:px-2 max-md:py-1.5" type="button" @click="handleNewChat">
             New chat
           </button>
-          <span data-testid="connection-status" :class="['status', connected ? 'online' : 'offline']">
+          <span data-testid="connection-status" :class="['rounded-full px-2 py-1 text-sm max-md:text-xs', connecting ? 'bg-info-soft text-info' : connected ? 'bg-success-soft text-success' : 'bg-danger-soft text-danger']">
             {{ connecting ? "Connecting..." : connected ? "Online" : "Offline" }}
           </span>
         </div>
       </header>
 
-      <section v-if="isAdminPage" class="admin-page" aria-label="Admin">
-        <div class="admin-panel">
-          <div class="admin-heading">
-            <h2>Admin</h2>
-            <p class="muted">Enter the admin bearer token to unlock operational status.</p>
+      <section v-if="isAdminPage" :class="['mx-auto', adminAuthenticated ? 'max-w-[1280px]' : 'max-w-[720px]']" aria-label="Admin">
+        <div class="rounded-md bg-surface-subtle p-3 shadow-panel">
+          <div class="grid gap-1">
+            <h2 class="m-0">Admin</h2>
+            <p class="muted text-sm text-muted">{{ adminAuthenticated ? "Operational status and table data for the current worker." : "Enter the admin bearer token to unlock operational status." }}</p>
           </div>
 
-          <form v-if="!adminAuthenticated" class="admin-token-form" @submit.prevent="validateAdminToken()">
-            <label for="admin-token">Bearer token</label>
+          <form v-if="!adminAuthenticated" class="mt-4 grid gap-2" @submit.prevent="validateAdminToken()">
+            <label for="admin-token" class="text-xs font-semibold text-text-subtle">Bearer token</label>
             <input
               id="admin-token"
               v-model="adminTokenInput"
@@ -445,119 +502,120 @@ const exampleQueries = [
               type="password"
               autocomplete="current-password"
               placeholder="Paste admin bearer token"
+              class="rounded-md border border-border-strong p-3"
             />
-            <button data-testid="admin-token-submit" type="submit" :disabled="adminLoading || adminTokenInput.trim().length === 0">
+            <button data-testid="admin-token-submit" class="inline-flex cursor-pointer items-center justify-center rounded-md border-0 bg-primary px-3 py-2 text-sm text-primary-text disabled:cursor-not-allowed disabled:bg-surface-muted disabled:text-muted" type="submit" :disabled="adminLoading || adminTokenInput.trim().length === 0">
               {{ adminLoading ? "Verifying..." : "Unlock admin" }}
             </button>
           </form>
 
-          <div v-else class="admin-authenticated">
-            <div class="admin-token-row">
+          <div v-else>
+            <div class="flex flex-wrap items-center justify-between gap-3 border-b border-border pb-3">
               <div>
-                <p class="label">Saved bearer token</p>
-                <code data-testid="admin-token-mask">{{ "*".repeat(Math.min(savedAdminToken.length, 24)) }}</code>
+                <p class="text-xs font-semibold text-text-subtle">Saved bearer token</p>
+                <code data-testid="admin-token-mask" class="mt-1 block text-text">{{ "*".repeat(Math.min(savedAdminToken.length, 24)) }}</code>
               </div>
-              <div class="admin-actions">
-                <button type="button" @click="copyAdminToken('raw')">Copy token</button>
-                <button type="button" @click="copyAdminToken('bearer')">Copy header</button>
-                <button type="button" @click="clearAdminToken">Forget token</button>
+              <div class="flex flex-wrap gap-2">
+                <button type="button" class="inline-flex cursor-pointer items-center justify-center rounded-md border-0 bg-primary px-3 py-2 text-sm text-primary-text hover:bg-primary-strong" @click="copyAdminToken('raw')">Copy token</button>
+                <button type="button" class="inline-flex cursor-pointer items-center justify-center rounded-md border-0 bg-primary px-3 py-2 text-sm text-primary-text hover:bg-primary-strong" @click="copyAdminToken('bearer')">Copy header</button>
+                <button type="button" class="inline-flex cursor-pointer items-center justify-center rounded-md border border-danger bg-surface px-3 py-2 text-sm text-danger hover:bg-danger-soft" @click="clearAdminToken">Forget token</button>
               </div>
             </div>
-            <p v-if="adminCopyMessage" data-testid="admin-copy-message" class="muted">{{ adminCopyMessage }}</p>
+            <p v-if="adminCopyMessage" data-testid="admin-copy-message" class="text-sm text-muted">{{ adminCopyMessage }}</p>
 
-            <div class="admin-summary" data-testid="admin-summary">
+            <div class="mt-3 grid gap-3" data-testid="admin-summary">
               <div>
-                <h3>Research Jobs</h3>
-                <p class="muted">Updated {{ adminSummary ? formatDateTime(adminSummary.generated_at) : "" }}</p>
+                <h3 class="m-0">Research Jobs</h3>
+                <p class="text-sm text-muted">Updated {{ adminSummary ? formatDateTime(adminSummary.generated_at) : "" }}</p>
               </div>
-              <div class="status-grid">
-                <div v-for="row in adminSummary?.status_counts ?? []" :key="row.status" class="status-card">
-                  <span>{{ row.status }}</span>
-                  <strong>{{ row.count }}</strong>
+              <div class="grid grid-cols-[repeat(auto-fit,minmax(120px,1fr))] gap-2 max-md:grid-cols-[repeat(auto-fit,minmax(96px,1fr))]">
+                <div v-for="row in adminSummary?.status_counts ?? []" :key="row.status" class="rounded-md bg-surface p-2 shadow-card">
+                  <span class="block text-xs text-muted">{{ row.status }}</span>
+                  <strong class="mt-1 block text-lg">{{ row.count }}</strong>
                 </div>
               </div>
-              <details class="recent-jobs">
-                <summary>Recent Jobs</summary>
-                <ol v-if="adminSummary && adminSummary.recent_jobs.length > 0">
-                  <li v-for="job in adminSummary.recent_jobs" :key="job.research_job_id">
+              <details>
+                <summary class="cursor-pointer py-1 text-sm font-bold text-text-subtle">Recent Jobs</summary>
+                <ol v-if="adminSummary && adminSummary.recent_jobs.length > 0" class="m-0 mt-2 pl-5">
+                  <li v-for="job in adminSummary.recent_jobs" :key="job.research_job_id" class="mb-3">
                     <strong>{{ job.status }}</strong>
-                    <span>{{ job.original_user_query }}</span>
-                    <small>{{ formatDateTime(job.created_at) }}</small>
-                    <p v-if="job.error_message" class="error-text">{{ job.error_message }}</p>
+                    <span class="mt-0.5 block">{{ job.original_user_query }}</span>
+                    <small class="block text-xs text-muted">{{ formatDateTime(job.created_at) }}</small>
+                    <p v-if="job.error_message" class="m-0 mt-1 text-sm text-danger">{{ job.error_message }}</p>
                   </li>
                 </ol>
-                <p v-else class="muted">No jobs found.</p>
+                <p v-else class="text-sm text-muted">No jobs found.</p>
               </details>
 
-              <div class="admin-table-explorer" data-testid="admin-table-explorer">
-                <div class="admin-table-header">
+              <div class="grid gap-2 border-t border-border pt-3" data-testid="admin-table-explorer">
+                <div class="flex flex-wrap items-center justify-between gap-2">
                   <div>
-                    <h3>Data Tables</h3>
-                    <p class="muted">Browse allowlisted D1 tables.</p>
+                    <h3 class="m-0">Data Tables</h3>
+                    <p class="text-sm text-muted">Browse allowlisted D1 tables.</p>
                   </div>
-                  <button type="button" :disabled="adminTableLoading" @click="loadAdminTableRows()">
+                  <button type="button" class="inline-flex cursor-pointer items-center justify-center rounded-md border border-border-strong bg-surface px-3 py-2 text-sm text-text hover:bg-surface-muted disabled:cursor-not-allowed disabled:opacity-55" :disabled="adminTableLoading" @click="loadAdminTableRows()">
                     {{ adminTableLoading ? "Loading..." : "Refresh" }}
                   </button>
                 </div>
 
-                <div class="admin-table-tabs" role="tablist" aria-label="Admin data tables">
+                <div class="flex gap-1.5 overflow-x-auto pb-1" role="tablist" aria-label="Admin data tables">
                   <button
                     v-for="table in adminTables"
                     :key="table.name"
                     type="button"
                     role="tab"
                     :aria-selected="selectedAdminTable === table.name"
-                    :class="['admin-table-tab', selectedAdminTable === table.name ? 'active' : '']"
+                    :class="['inline-flex cursor-pointer items-center gap-1.5 whitespace-nowrap rounded-md border px-2 py-1.5 text-sm', selectedAdminTable === table.name ? 'border-primary bg-primary-soft text-primary-strong' : 'border-border-strong bg-surface text-text']"
                     @click="selectAdminTable(table.name)"
                   >
                     <span>{{ table.label }}</span>
-                    <small>{{ table.count }}</small>
+                    <small class="text-muted">{{ table.count }}</small>
                   </button>
                 </div>
 
-                <div v-if="adminTableRows" class="admin-table-meta">
+                <div v-if="adminTableRows" class="flex flex-wrap items-center justify-between gap-2">
                   <span>{{ adminTableRows.table.label }}</span>
-                  <span>{{ adminTableRows.offset + 1 }}-{{ Math.min(adminTableRows.offset + adminTableRows.rows.length, adminTableRows.table.count) }} of {{ adminTableRows.table.count }}</span>
-                  <div class="admin-table-pager">
-                    <button type="button" :disabled="!canPageAdminBack || adminTableLoading" @click="pageAdminTable('previous')">Previous</button>
-                    <button type="button" :disabled="!canPageAdminForward || adminTableLoading" @click="pageAdminTable('next')">Next</button>
+                  <span>{{ adminTableRows.table.count === 0 ? "0 of 0" : `${adminTableRows.offset + 1}-${Math.min(adminTableRows.offset + adminTableRows.rows.length, adminTableRows.table.count)} of ${adminTableRows.table.count}` }}</span>
+                  <div class="flex gap-2">
+                    <button type="button" class="inline-flex cursor-pointer items-center justify-center rounded-md border border-border-strong bg-surface px-3 py-2 text-sm text-text hover:bg-surface-muted disabled:cursor-not-allowed disabled:opacity-55" :disabled="!canPageAdminBack || adminTableLoading" @click="pageAdminTable('previous')">Previous</button>
+                    <button type="button" class="inline-flex cursor-pointer items-center justify-center rounded-md border border-border-strong bg-surface px-3 py-2 text-sm text-text hover:bg-surface-muted disabled:cursor-not-allowed disabled:opacity-55" :disabled="!canPageAdminForward || adminTableLoading" @click="pageAdminTable('next')">Next</button>
                   </div>
                 </div>
 
-                <div class="admin-table-wrap">
-                  <table v-if="adminTableRows && adminTableRows.rows.length > 0" data-testid="admin-data-table" class="admin-data-table">
+                <div class="max-h-[68vh] w-full overflow-x-auto overflow-y-auto rounded-md border border-border bg-surface max-md:max-h-[58vh]">
+                  <table v-if="adminTableRows && adminTableRows.rows.length > 0" data-testid="admin-data-table" class="min-w-max table-fixed border-collapse text-xs leading-[1.3]">
                     <thead>
                       <tr>
-                        <th v-for="column in selectedAdminColumns" :key="column">{{ column }}</th>
+                        <th v-for="column in selectedAdminColumns" :key="column" class="sticky top-0 z-[1] w-[300px] min-w-[300px] max-w-[440px] whitespace-nowrap border-b border-border bg-surface-subtle px-3 py-2.5 text-left align-top font-semibold">{{ column }}</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr v-for="(row, rowIndex) in adminTableRows.rows" :key="rowIndex">
-                        <td v-for="column in selectedAdminColumns" :key="column">
-                          <span class="cell-value" :title="formatCellValue(row[column])">{{ formatCellValue(row[column]) }}</span>
+                        <td v-for="column in selectedAdminColumns" :key="column" class="w-[300px] min-w-[300px] max-w-[440px] whitespace-pre-wrap border-b border-border px-3 py-2.5 text-left align-top leading-[1.45] [overflow-wrap:anywhere]">
+                          <span class="line-clamp-3 overflow-hidden" :title="formatCellValue(row[column])">{{ formatCellValue(row[column]) }}</span>
                         </td>
                       </tr>
                     </tbody>
                   </table>
-                  <p v-else class="muted">No rows for this table.</p>
+                  <p v-else class="text-sm text-muted">No rows for this table.</p>
                 </div>
               </div>
             </div>
           </div>
 
-          <p v-if="adminError" data-testid="admin-error" class="error-text">{{ adminError }}</p>
+          <p v-if="adminError" data-testid="admin-error" class="m-0 mt-1 text-sm text-danger">{{ adminError }}</p>
         </div>
       </section>
 
-      <main v-else>
-        <section :class="['chat', hasMessages ? 'has-messages' : 'is-empty']" aria-label="Chat">
-          <div ref="messagesEl" data-testid="messages-container" class="messages" aria-live="polite" aria-relevant="additions text">
-          <div v-if="!hasMessages" class="empty-state">
-            <h2>Ask when and where something is available</h2>
-            <p class="muted">Live research examples; Atlas will verify sources before answering.</p>
-            <ul class="examples">
+      <main v-else class="grid grid-cols-[1fr_280px] gap-4 max-md:grid-cols-1 max-md:gap-3">
+        <section class="flex min-h-0 flex-col gap-3 max-md:min-h-auto" aria-label="Chat">
+          <div ref="messagesEl" data-testid="messages-container" class="flex max-h-[min(72vh,46rem)] flex-col gap-3 overflow-y-auto p-1 max-md:p-0" aria-live="polite" aria-relevant="additions text">
+          <div v-if="!hasMessages" class="px-4 py-5 text-center text-text-subtle max-md:px-1 max-md:py-3">
+            <h2 class="m-0 mb-3 text-lg">Ask when and where something is available</h2>
+            <p class="text-sm text-muted">Live research examples; Atlas will verify sources before answering.</p>
+            <ul class="m-0 mt-2 flex list-none flex-col gap-2 p-0">
               <li v-for="q in exampleQueries" :key="q">
-                <button type="button" @click="askExample(q)">{{ q }}</button>
+                <button type="button" class="inline-flex cursor-pointer items-center justify-center rounded-full border border-info-border bg-primary-soft px-3 py-2 text-sm text-info hover:bg-info-soft" @click="askExample(q)">{{ q }}</button>
               </li>
             </ul>
           </div>
@@ -567,836 +625,153 @@ const exampleQueries = [
             :id="messageDomId(idx)"
             :key="messageKey(msg, idx)"
             :data-testid="`message-${msg.role}`"
-            :class="['message', msg.role]"
+            :class="['flex', msg.role === 'user' ? 'justify-end' : '']"
           >
-            <div class="bubble">
-              <div class="meta">
+            <div class="max-w-[80%] rounded-lg px-4 py-3 max-md:max-w-full" :class="msg.role === 'user' ? 'bg-primary text-primary-text' : msg.role === 'system' ? 'bg-info-muted text-info' : 'bg-surface-muted'">
+              <div class="mb-1 flex justify-between gap-4 text-xs opacity-70">
                 <strong>{{ msg.role === "user" ? "You" : msg.role === "assistant" ? "Atlas" : "System" }}</strong>
                 <time v-if="msg.createdAt">{{ formatTime(msg.createdAt) }}</time>
               </div>
               <template v-if="msg.role === 'assistant' && msg.answer">
-                <p :class="['answer-lede', answerHasOnlyUnverifiedResults(msg.answer) ? 'unverified' : '']">{{ answerLead(msg.answer) }}</p>
+                <p :class="['m-0 mt-1 mb-2 text-base', answerHasOnlyUnverifiedResults(msg.answer) ? 'font-bold text-warning' : '']">{{ answerLead(msg.answer) }}</p>
                 <section
                   v-for="result in msg.answer.results"
                   :key="result.result_id"
                   data-testid="answer-result"
-                  :class="['answer-flat', resultQuality(result).unverified ? 'unverified-result' : '']"
+                  :class="['mt-2 grid gap-2 border-t border-border-strong pt-2', resultQuality(result).unverified ? 'border-warning-border' : '']"
                 >
-                  <div v-if="resultQuality(result).unverified" class="result-warning" role="status">
-                    <div class="result-warning-heading">
+                  <div v-if="resultQuality(result).unverified" class="rounded-md border border-warning-border bg-warning-soft p-2 text-warning-strong" role="status">
+                    <div class="flex flex-wrap items-baseline gap-x-2 gap-y-1">
                       <strong>{{ resultQuality(result).confidenceLabel }}</strong>
-                      <span>Source found; schedule not verified.</span>
+                      <span class="text-xs">Source found; schedule not verified.</span>
                     </div>
-                    <ul>
+                    <ul class="m-0 mt-1 pl-4 text-xs">
                       <li v-for="problem in resultQuality(result).problems" :key="problem">{{ problem }}</li>
                     </ul>
                   </div>
 
-                  <div class="answer-facts">
-                    <div>
-                      <span class="fact-label">Place</span>
+                  <div class="grid grid-cols-[repeat(auto-fit,minmax(160px,1fr))] gap-2 max-md:grid-cols-1">
+                    <div class="grid gap-0.5">
+                      <span class="text-xs font-bold uppercase tracking-[0.04em] text-muted">Place</span>
                       <strong>{{ resultQuality(result).safePlace ?? "Not verified" }}</strong>
-                      <span v-if="result.place_address && resultQuality(result).safePlace" class="fact-detail">{{ result.place_address }}</span>
+                      <span v-if="result.place_address && resultQuality(result).safePlace" class="text-sm text-muted">{{ result.place_address }}</span>
                     </div>
-                    <div>
-                      <span class="fact-label">Available for</span>
+                    <div class="grid gap-0.5">
+                      <span class="text-xs font-bold uppercase tracking-[0.04em] text-muted">Available for</span>
                       <strong>{{ result.affordance_label }}</strong>
                     </div>
-                    <div>
-                      <span class="fact-label">When</span>
-                      <strong class="recurrence">{{ resultQuality(result).safeWhen ?? "Not verified" }}</strong>
+                    <div class="grid gap-0.5">
+                      <span class="text-xs font-bold uppercase tracking-[0.04em] text-muted">When</span>
+                      <strong class="font-medium text-info">{{ resultQuality(result).safeWhen ?? "Not verified" }}</strong>
                     </div>
-                    <div>
-                      <span class="fact-label">Confidence:</span>
+                    <div class="grid gap-0.5">
+                      <span class="text-xs font-bold uppercase tracking-[0.04em] text-muted">Confidence:</span>
                       <strong>{{ resultQuality(result).confidenceLabel }}</strong>
                     </div>
                   </div>
 
-                  <details class="evidence-details">
-                    <summary>Sources and evidence ({{ result.evidence.length }})</summary>
-                    <div v-for="item in result.evidence" :key="item.evidence_item_id" data-testid="answer-evidence" class="evidence-row">
-                      <div>
-                        <span class="fact-label">Source</span>
-                        <a data-testid="answer-source-link" :href="item.source_url" target="_blank" rel="noreferrer">{{ item.source_title || item.source_url }}</a>
-                        <span class="fact-detail">Retrieved {{ formatDateTime(item.retrieved_at) }}</span>
+                  <details class="border-t border-border pt-2 text-sm">
+                    <summary class="cursor-pointer py-1 font-semibold text-text-subtle">Sources and evidence ({{ result.evidence.length }})</summary>
+                    <div v-for="item in result.evidence" :key="item.evidence_item_id" data-testid="answer-evidence" class="grid gap-1.5 border-y border-border py-2 text-sm">
+                      <div class="grid gap-0.5">
+                        <span class="text-xs font-bold uppercase tracking-[0.04em] text-muted">Source</span>
+                        <a data-testid="answer-source-link" :href="item.source_url" target="_blank" rel="noreferrer" class="text-primary-strong [overflow-wrap:anywhere] hover:underline focus-visible:underline">{{ item.source_title || item.source_url }}</a>
+                        <span class="text-sm text-muted">Retrieved {{ formatDateTime(item.retrieved_at) }}</span>
                       </div>
-                      <p v-if="item.evidence_span" class="evidence-span">{{ item.evidence_span }}</p>
-                      <p class="evidence-text">{{ item.extracted_text }}</p>
+                      <p v-if="item.evidence_span" class="m-0 text-text-subtle">{{ item.evidence_span }}</p>
+                      <p class="m-0 text-text">{{ item.extracted_text }}</p>
                     </div>
                   </details>
 
-                  <details v-if="result.caveats.length > 0" class="caveat-details">
-                    <summary>Caveats</summary>
-                    <p class="caveats">{{ result.caveats.join(" ") }}</p>
+                  <details v-if="result.caveats.length > 0" class="border-t border-border pt-2 text-sm">
+                    <summary class="cursor-pointer py-1 font-semibold text-text-subtle">Caveats</summary>
+                    <p class="mt-2 text-sm text-warning">{{ result.caveats.join(" ") }}</p>
                   </details>
                 </section>
-                <p v-if="msg.answer.next_actions.length > 0" class="next-actions">
+                <p v-if="msg.answer.next_actions.length > 0" class="mt-2 text-sm text-text-subtle">
                   Next: {{ msg.answer.next_actions.map((a) => a.label).join("; ") }}
                 </p>
               </template>
-              <p v-else>{{ msg.content }}</p>
+              <p v-else class="m-0 [overflow-wrap:anywhere]">{{ msg.content }}</p>
             </div>
           </div>
 
-          <div v-if="primaryActiveJob" data-testid="working-indicator" class="message system active-research" role="status" aria-live="polite">
-            <div class="bubble">
-              <div class="meta">
+          <div v-if="primaryActiveJob" data-testid="working-indicator" class="flex" role="status" aria-live="polite">
+            <div class="max-w-[80%] rounded-lg bg-info-muted px-4 py-3 text-info max-md:max-w-full">
+              <div class="mb-1 flex justify-between gap-4 text-xs opacity-70">
                 <strong>Atlas</strong>
                 <time>{{ formatElapsedSince(primaryActiveJob.created_at) }}</time>
               </div>
-              <div class="research-status">
+              <div class="grid gap-1">
                 <strong>{{ jobPhase(primaryActiveJob) }}</strong>
-                <p>{{ primaryActiveJob.query_snapshot.original_user_query }}</p>
-                <small>Research can take a minute when Atlas has to verify live sources.</small>
+                <p class="m-0 text-text-subtle">{{ primaryActiveJob.query_snapshot.original_user_query }}</p>
+                <small class="text-info">Research can take a minute when Atlas has to verify live sources.</small>
               </div>
-              <div class="research-actions">
-                <button type="button" @click="focusJob(primaryActiveJob)">View job</button>
-                <button type="button" @click="handleCancelActiveJob">Cancel research</button>
+              <div class="mt-3 flex flex-wrap gap-2">
+                <button type="button" class="inline-flex cursor-pointer items-center justify-center rounded-md border border-info-border bg-surface px-3 py-2 text-sm text-info hover:bg-info-muted" @click="focusJob(primaryActiveJob)">View job</button>
+                <button type="button" class="inline-flex cursor-pointer items-center justify-center rounded-md border border-info-border bg-surface px-3 py-2 text-sm text-info hover:bg-info-muted" @click="handleCancelActiveJob">Cancel research</button>
               </div>
             </div>
           </div>
         </div>
 
-        <form class="input-row" @submit.prevent="handleSubmit">
+        <form class="grid grid-cols-[1fr_auto] gap-2 max-md:grid-cols-1" @submit.prevent="handleSubmit">
             <input
               v-model="input"
               data-testid="chat-input"
               type="text"
               :placeholder="inputPlaceholder"
               :disabled="!connected || busy || working"
+              class="rounded-md border border-border-strong p-3"
             />
-            <button data-testid="send-button" type="submit" :disabled="!canSend">
+            <button data-testid="send-button" class="inline-flex cursor-pointer items-center justify-center rounded-md border-0 bg-primary px-3 py-2 text-sm text-primary-text disabled:cursor-not-allowed disabled:bg-surface-muted disabled:text-muted" type="submit" :disabled="!canSend">
             {{ sendLabel }}
           </button>
         </form>
       </section>
 
-      <aside class="jobs" aria-label="Research jobs">
-        <h2>Activity</h2>
-        <ul v-if="jobs.length > 0">
+      <aside class="self-start rounded-md bg-surface-subtle p-3 shadow-panel max-md:rounded-none max-md:border-t max-md:border-border max-md:bg-transparent max-md:px-0 max-md:pb-0 max-md:pt-2 max-md:shadow-none" aria-label="Research jobs">
+        <h2 class="m-0 mb-2 text-sm max-md:mb-1.5">Activity</h2>
+        <ul v-if="jobs.length > 0" class="m-0 flex list-none flex-col gap-2 p-0 max-md:gap-1.5">
           <li
             v-for="job in jobs"
             :key="job.job_id"
             :data-job-id="job.job_id"
             data-testid="job-list-item"
-            :class="['job', job.status, highlightedJobId === job.job_id ? 'highlighted' : '']"
+            :class="['rounded-md bg-surface p-2 shadow-card transition-shadow max-md:px-2 max-md:py-2', highlightedJobId === job.job_id ? '[box-shadow:var(--focus-ring),var(--shadow-card)]' : '']"
           >
-            <button type="button" class="job-link" @click="focusJob(job)">
-              <strong>{{ job.query_snapshot.original_user_query }}</strong>
-              <span data-testid="job-status-badge" class="badge">{{ job.status }}</span>
+            <button type="button" class="block w-full cursor-pointer border-0 bg-transparent p-0 text-left text-inherit" @click="focusJob(job)">
+              <strong class="hover:underline">{{ job.query_snapshot.original_user_query }}</strong>
+              <span
+                data-testid="job-status-badge"
+                :class="[
+                  'ml-2 rounded-sm px-1.5 py-0.5 text-xs uppercase',
+                  job.status === 'completed' ? 'bg-success-soft text-success' : '',
+                  job.status === 'failed' ? 'bg-danger-soft text-danger' : '',
+                  job.status === 'cancelled' ? 'bg-border text-text-subtle' : '',
+                  job.status === 'running' ? 'bg-info-soft text-info' : '',
+                  job.status === 'queued' ? 'bg-border text-text-subtle' : '',
+                ]"
+              >{{ job.status }}</span>
             </button>
-            <p v-if="job.status === 'completed'" data-testid="job-outcome" class="job-outcome">
+            <p v-if="job.status === 'completed'" data-testid="job-outcome" class="m-0 mt-1 text-sm text-success">
               Answer: {{ answerPreviewForJob(job) ?? "shown in chat" }}. Select this job to jump to it.
             </p>
-            <p v-else-if="job.status === 'cancelled'" data-testid="job-outcome" class="job-outcome">Research canceled.</p>
-            <p v-else-if="job.status === 'queued' || job.status === 'running'" class="job-outcome">{{ jobPhase(job) }} for {{ formatElapsedSince(job.created_at) }}.</p>
-            <div v-if="job.error_message && job.status !== 'cancelled'" class="job-error">
-              <p class="error-text">{{ friendlyFailure(job) }}</p>
-              <details>
-                <summary>Technical details</summary>
-                <p>{{ job.error_message }}</p>
+            <p v-else-if="job.status === 'cancelled'" data-testid="job-outcome" class="m-0 mt-1 text-sm text-muted">Research canceled.</p>
+            <p v-else-if="job.status === 'queued' || job.status === 'running'" class="m-0 mt-1 text-sm text-info">{{ jobPhase(job) }} for {{ formatElapsedSince(job.created_at) }}.</p>
+            <div v-if="job.error_message && job.status !== 'cancelled'">
+              <p class="m-0 mt-1 text-sm text-danger">{{ friendlyFailure(job) }}</p>
+              <details class="mt-1.5 text-xs text-muted">
+                <summary class="cursor-pointer py-1 font-semibold text-text-subtle">Technical details</summary>
+                <p class="m-0 mt-1.5 [overflow-wrap:anywhere]">{{ job.error_message }}</p>
               </details>
             </div>
           </li>
         </ul>
-        <p v-else class="muted">No research jobs yet.</p>
+        <p v-else class="text-sm text-muted">No research jobs yet.</p>
       </aside>
     </main>
 
-    <div v-if="error" data-testid="error-banner" class="error-banner" role="alert">{{ error }}</div>
+    <div v-if="error" data-testid="error-banner" class="mt-4 rounded-md bg-danger-soft p-3 text-danger" role="alert">{{ error }}</div>
   </div>
 </template>
-
-<style scoped>
-.app {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 1rem;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: #ffffff;
-  color: #111827;
-  min-height: 100vh;
-}
-.app.admin-shell {
-  max-width: 1440px;
-}
-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 1rem;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-h1 {
-  margin: 0;
-  font-size: 1.5rem;
-}
-.header-actions {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-.secondary-button {
-  text-decoration: none;
-  padding: 0.45rem 0.75rem;
-  border: 1px solid #d1d5db;
-  border-radius: 0.5rem;
-  background: #ffffff;
-  color: #111827;
-  cursor: pointer;
-  font-size: 0.875rem;
-}
-.secondary-button:hover {
-  background: #f3f4f6;
-}
-.admin-page {
-  max-width: 1280px;
-  margin: 0 auto;
-}
-.admin-panel {
-  border: 1px solid #e5e7eb;
-  border-radius: 0.5rem;
-  padding: 0.875rem;
-  background: #f9fafb;
-}
-.admin-heading h2,
-.admin-summary h3 {
-  margin: 0;
-}
-.admin-token-form {
-  display: grid;
-  gap: 0.5rem;
-  margin-top: 1rem;
-}
-.admin-token-form label,
-.label {
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: #374151;
-}
-.admin-token-form input {
-  padding: 0.75rem;
-  border: 1px solid #d1d5db;
-  border-radius: 0.5rem;
-}
-.admin-token-form button,
-.admin-actions button {
-  padding: 0.6rem 0.8rem;
-  border: none;
-  border-radius: 0.5rem;
-  background: #111827;
-  color: #ffffff;
-  cursor: pointer;
-}
-.admin-token-form button:disabled {
-  background: #9ca3af;
-  cursor: not-allowed;
-}
-.admin-token-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-  padding-bottom: 0.75rem;
-  border-bottom: 1px solid #e5e7eb;
-}
-.admin-token-row code {
-  display: block;
-  margin-top: 0.25rem;
-  color: #111827;
-}
-.admin-actions {
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
-.admin-summary {
-  display: grid;
-  gap: 0.75rem;
-  margin-top: 0.75rem;
-}
-.status-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 0.5rem;
-}
-.status-card {
-  border: 1px solid #e5e7eb;
-  border-radius: 0.5rem;
-  padding: 0.6rem;
-  background: #ffffff;
-}
-.status-card span,
-.recent-jobs small {
-  display: block;
-  color: #6b7280;
-  font-size: 0.8125rem;
-}
-.status-card strong {
-  display: block;
-  margin-top: 0.25rem;
-  font-size: 1.25rem;
-}
-.recent-jobs summary {
-  cursor: pointer;
-  font-size: 0.9rem;
-  font-weight: 700;
-}
-.recent-jobs ol {
-  margin: 0.5rem 0 0;
-  padding-left: 1.25rem;
-}
-.recent-jobs li {
-  margin-bottom: 0.75rem;
-}
-.recent-jobs li > span {
-  display: block;
-  margin-top: 0.15rem;
-}
-.admin-table-explorer {
-  display: grid;
-  gap: 0.6rem;
-  border-top: 1px solid #e5e7eb;
-  padding-top: 0.75rem;
-}
-.admin-table-header,
-.admin-table-meta {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
-.admin-table-header button,
-.admin-table-pager button {
-  padding: 0.38rem 0.6rem;
-  border: 1px solid #d1d5db;
-  border-radius: 0.5rem;
-  background: #ffffff;
-  color: #111827;
-  cursor: pointer;
-}
-.admin-table-header button:disabled,
-.admin-table-pager button:disabled {
-  opacity: 0.55;
-  cursor: not-allowed;
-}
-.admin-table-tabs {
-  display: flex;
-  gap: 0.35rem;
-  overflow-x: auto;
-  padding-bottom: 0.25rem;
-}
-.admin-table-tab {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  white-space: nowrap;
-  padding: 0.35rem 0.5rem;
-  border: 1px solid #d1d5db;
-  border-radius: 0.5rem;
-  background: #ffffff;
-  color: #111827;
-  cursor: pointer;
-}
-.admin-table-tab.active {
-  border-color: #2563eb;
-  background: #eff6ff;
-  color: #1d4ed8;
-}
-.admin-table-tab small {
-  color: #6b7280;
-}
-.admin-table-pager {
-  display: flex;
-  gap: 0.5rem;
-}
-.admin-table-wrap {
-  width: 100%;
-  max-height: min(76vh, 780px);
-  overflow-x: auto;
-  overflow-y: auto;
-  border: 1px solid #e5e7eb;
-  border-radius: 0.5rem;
-  background: #ffffff;
-}
-.admin-data-table {
-  min-width: max-content;
-  table-layout: fixed;
-  border-collapse: collapse;
-  font-size: 0.8rem;
-  line-height: 1.3;
-}
-.admin-data-table th,
-.admin-data-table td {
-  width: 220px;
-  min-width: 220px;
-  max-width: 360px;
-  padding: 0.45rem 0.6rem;
-  border-bottom: 1px solid #e5e7eb;
-  text-align: left;
-  vertical-align: top;
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
-}
-.admin-data-table th {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  background: #f9fafb;
-  font-weight: 600;
-  white-space: nowrap;
-}
-.cell-value {
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-.status {
-  font-size: 0.875rem;
-  padding: 0.25rem 0.5rem;
-  border-radius: 9999px;
-}
-.status.online {
-  background: #dcfce7;
-  color: #166534;
-}
-.status.offline {
-  background: #fee2e2;
-  color: #991b1b;
-}
-main {
-  display: grid;
-  grid-template-columns: 1fr 280px;
-  gap: 1rem;
-}
-.chat {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  min-height: 0;
-}
-.messages {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  overflow-y: auto;
-  max-height: min(72vh, 46rem);
-  padding: 0.25rem;
-}
-.chat.is-empty .messages {
-  overflow: visible;
-  max-height: none;
-  padding-block: 0.5rem;
-}
-.empty-state {
-  text-align: center;
-  padding: 1.25rem 1rem;
-  color: #374151;
-}
-.empty-state h2 {
-  margin: 0 0 0.75rem;
-  font-size: 1.25rem;
-}
-.examples {
-  list-style: none;
-  padding: 0;
-  margin: 0.5rem 0 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-.examples button {
-  background: #eff6ff;
-  border: 1px solid #bfdbfe;
-  color: #1e40af;
-  padding: 0.5rem 0.75rem;
-  border-radius: 9999px;
-  cursor: pointer;
-  font-size: 0.875rem;
-}
-.examples button:hover {
-  background: #dbeafe;
-}
-.message {
-  display: flex;
-}
-.message.user {
-  justify-content: flex-end;
-}
-.bubble {
-  max-width: 80%;
-  padding: 0.75rem 1rem;
-  border-radius: 0.75rem;
-  background: #f3f4f6;
-}
-.message.user .bubble {
-  background: #2563eb;
-  color: white;
-}
-.message.system .bubble {
-  background: #fef3c7;
-  color: #92400e;
-}
-.active-research .bubble {
-  width: min(100%, 34rem);
-}
-.research-status {
-  display: grid;
-  gap: 0.25rem;
-}
-.research-status p {
-  margin: 0;
-  color: #78350f;
-}
-.research-status small {
-  color: #92400e;
-}
-.research-actions {
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-  margin-top: 0.75rem;
-}
-.research-actions button {
-  border: 1px solid #d97706;
-  border-radius: 0.5rem;
-  background: #ffffff;
-  color: #92400e;
-  cursor: pointer;
-  padding: 0.45rem 0.7rem;
-}
-.meta {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  font-size: 0.75rem;
-  margin-bottom: 0.25rem;
-  opacity: 0.7;
-}
-.input-row {
-  display: flex;
-  gap: 0.5rem;
-}
-.input-row input {
-  flex: 1;
-  padding: 0.75rem;
-  border: 1px solid #d1d5db;
-  border-radius: 0.5rem;
-}
-.input-row button {
-  padding: 0.75rem 1.25rem;
-  border: none;
-  border-radius: 0.5rem;
-  background: #2563eb;
-  color: white;
-  cursor: pointer;
-}
-.input-row button:disabled {
-  background: #93c5fd;
-  cursor: not-allowed;
-}
-.jobs {
-  background: #f9fafb;
-  padding: 0.75rem;
-  border-radius: 0.5rem;
-  align-self: start;
-}
-.jobs h2 {
-  margin: 0 0 0.5rem;
-  font-size: 0.95rem;
-}
-.jobs ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-.job {
-  padding: 0.5rem;
-  border-radius: 0.5rem;
-  background: white;
-  border: 1px solid #e5e7eb;
-  transition: border-color 0.15s ease, box-shadow 0.15s ease;
-}
-.job.highlighted {
-  border-color: #2563eb;
-  box-shadow: 0 0 0 3px #bfdbfe;
-}
-.job-link {
-  display: block;
-  width: 100%;
-  padding: 0;
-  border: 0;
-  background: transparent;
-  color: inherit;
-  cursor: pointer;
-  text-align: left;
-}
-.job-link:hover strong {
-  text-decoration: underline;
-}
-.badge {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  margin-left: 0.5rem;
-  padding: 0.125rem 0.375rem;
-  border-radius: 0.25rem;
-  background: #e5e7eb;
-}
-.job.completed .badge {
-  background: #dcfce7;
-  color: #166534;
-}
-.job.failed .badge {
-  background: #fee2e2;
-  color: #991b1b;
-}
-.job.cancelled .badge {
-  background: #e5e7eb;
-  color: #374151;
-}
-.job.running .badge {
-  background: #dbeafe;
-  color: #1e40af;
-}
-.muted {
-  color: #6b7280;
-  font-size: 0.875rem;
-}
-.answer-lede {
-  margin: 0.2rem 0 0.55rem;
-  font-size: 1rem;
-}
-.answer-lede.unverified {
-  font-weight: 700;
-  color: #92400e;
-}
-.result-warning {
-  border: 1px solid #f59e0b;
-  border-radius: 0.5rem;
-  background: #fffbeb;
-  color: #78350f;
-  padding: 0.5rem 0.6rem;
-}
-.result-warning-heading {
-  display: flex;
-  align-items: baseline;
-  flex-wrap: wrap;
-  gap: 0.25rem 0.5rem;
-}
-.result-warning-heading span {
-  font-size: 0.8125rem;
-}
-.result-warning ul {
-  margin: 0.25rem 0 0;
-}
-.result-warning ul {
-  padding-left: 1rem;
-  font-size: 0.8125rem;
-}
-.unverified-result {
-  border-top-color: #f59e0b;
-}
-.answer-flat {
-  display: grid;
-  gap: 0.55rem;
-  margin-top: 0.55rem;
-  padding-top: 0.55rem;
-  border-top: 1px solid #d1d5db;
-}
-.answer-facts {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 0.55rem;
-}
-.answer-facts > div,
-.evidence-row > div {
-  display: grid;
-  gap: 0.15rem;
-}
-.fact-label {
-  color: #6b7280;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-.fact-detail {
-  color: #6b7280;
-  font-size: 0.875rem;
-}
-.recurrence {
-  color: #1e40af;
-  font-weight: 500;
-}
-.caveats {
-  font-size: 0.875rem;
-  color: #92400e;
-  margin: 0.5rem 0 0;
-}
-.evidence-details,
-.caveat-details {
-  border-top: 1px solid #e5e7eb;
-  padding-top: 0.5rem;
-  font-size: 0.875rem;
-}
-.evidence-details summary,
-.caveat-details summary,
-.job-error summary {
-  color: #374151;
-  cursor: pointer;
-  font-weight: 600;
-}
-.evidence-row {
-  display: grid;
-  gap: 0.35rem;
-  padding: 0.6rem 0;
-  border-top: 1px solid #e5e7eb;
-  border-bottom: 1px solid #e5e7eb;
-  font-size: 0.875rem;
-}
-.evidence-row a {
-  color: #1d4ed8;
-  overflow-wrap: anywhere;
-}
-.evidence-span {
-  color: #374151;
-  margin: 0;
-}
-.evidence-text {
-  margin: 0;
-  color: #111827;
-}
-.next-actions {
-  font-size: 0.875rem;
-  color: #374151;
-  margin-top: 0.5rem;
-}
-.error-banner {
-  margin-top: 1rem;
-  padding: 0.75rem;
-  background: #fee2e2;
-  color: #991b1b;
-  border-radius: 0.5rem;
-}
-.error-text {
-  color: #991b1b;
-  font-size: 0.875rem;
-  margin: 0.25rem 0 0;
-}
-.job-error details {
-  margin-top: 0.35rem;
-  color: #6b7280;
-  font-size: 0.8125rem;
-}
-.job-error details p {
-  margin: 0.35rem 0 0;
-  overflow-wrap: anywhere;
-}
-.job-outcome {
-  color: #166534;
-  font-size: 0.875rem;
-  margin: 0.25rem 0 0;
-}
-@media (max-width: 768px) {
-  .app {
-    padding: 0.5rem 0.75rem;
-  }
-  header {
-    align-items: flex-start;
-    gap: 0.4rem;
-    margin-bottom: 0.75rem;
-  }
-  h1 {
-    font-size: 1.25rem;
-  }
-  main {
-    grid-template-columns: 1fr;
-    gap: 0.75rem;
-  }
-  .header-actions {
-    width: 100%;
-    justify-content: flex-start;
-    gap: 0.5rem;
-  }
-  .secondary-button {
-    padding: 0.35rem 0.55rem;
-  }
-  .status {
-    font-size: 0.8125rem;
-    padding: 0.2rem 0.45rem;
-  }
-  .chat {
-    min-height: auto;
-  }
-  .messages {
-    padding: 0;
-  }
-  .chat.is-empty .messages {
-    padding-block: 0;
-  }
-  .empty-state {
-    padding: 0.75rem 0.25rem;
-  }
-  .bubble {
-    max-width: 100%;
-  }
-  .answer-facts {
-    grid-template-columns: 1fr;
-    gap: 0.5rem;
-  }
-  .input-row {
-    align-items: stretch;
-  }
-  .input-row button {
-    padding-inline: 1rem;
-  }
-  .jobs {
-    padding: 0.5rem 0 0;
-    border-top: 1px solid #e5e7eb;
-    border-radius: 0;
-    background: transparent;
-  }
-  .jobs h2 {
-    margin-bottom: 0.35rem;
-    font-size: 0.875rem;
-  }
-  .jobs ul {
-    gap: 0.4rem;
-  }
-  .job {
-    padding: 0.45rem 0.5rem;
-  }
-  .admin-panel {
-    padding: 0.75rem;
-  }
-  .admin-summary {
-    gap: 0.75rem;
-  }
-  .status-grid {
-    grid-template-columns: repeat(auto-fit, minmax(96px, 1fr));
-  }
-  .status-card {
-    padding: 0.55rem;
-  }
-  .admin-table-explorer {
-    gap: 0.55rem;
-    padding-top: 0.75rem;
-  }
-  .admin-table-tabs {
-    gap: 0.35rem;
-  }
-  .admin-table-tab {
-    padding: 0.35rem 0.5rem;
-  }
-  .admin-table-wrap {
-    max-height: 72vh;
-  }
-}
-</style>

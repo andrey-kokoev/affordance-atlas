@@ -1,0 +1,2361 @@
+{
+  "schema": "affordance-atlas.visual-review-chat-progression.v1",
+  "generated_at": "2026-06-21T02:05:12.020Z",
+  "source_report": "e2e-snapshots\\visual-review-report.json",
+  "contact_sheet": "e2e-snapshots\\index.html",
+  "visual_sheet": "e2e-snapshots\\visual-review-chat-progression.html",
+  "screenshot_directory": "e2e-snapshots\\visual",
+  "strict_gate": "pnpm --filter @affordance-atlas/web audit:visual:manual",
+  "summary": {
+    "required_stages": 18,
+    "complete_stages": 18,
+    "expected_files": 84,
+    "missing_stages": 0,
+    "missing_files": 0,
+    "missing_states": 0,
+    "complete": true
+  },
+  "stages": [
+    {
+      "order": 1,
+      "key": "empty-start",
+      "label": "Empty start before query",
+      "complete": true,
+      "states": [
+        "home-empty"
+      ],
+      "missingStates": [],
+      "missingFiles": [],
+      "files": [
+        {
+          "order": 1,
+          "file": "home-empty-mobile.png",
+          "present": true,
+          "state": "home-empty",
+          "viewport": "mobile",
+          "width": 390,
+          "height": 844,
+          "sha256": "596c3443c02e1cbc812ae816d544c1e9a1e94d3a2e9e6d82aeb2efc48aca66ec",
+          "anchor": "shot-home-empty-mobile-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-home-empty-mobile-png",
+          "screenshotHref": "e2e-snapshots\\visual\\home-empty-mobile.png",
+          "coverageSections": [
+            "Activity / Research Jobs",
+            "Global Shell",
+            "Home Chat: Empty State",
+            "Interaction And Accessibility Visual States",
+            "Responsive Layout Stress Cases"
+          ],
+          "coverageItems": [
+            "Home route header, online",
+            "New chat button normal, hover, focus-visible",
+            "Connection status badges: online, connecting, offline",
+            "Empty chat initial state",
+            "Example query buttons normal, hover, focus-visible",
+            "Long example query wrapping",
+            "Empty activity sidebar",
+            "Mobile empty activity section below composer",
+            "No jobs state",
+            "Activity sidebar on desktop",
+            "Activity section on mobile",
+            "Placeholder text contrast",
+            "No horizontal page overflow at every target viewport",
+            "No overlapping text or controls",
+            "390px mobile width",
+            "768px tablet breakpoint",
+            "1280px desktop",
+            "1440px wide desktop"
+          ]
+        },
+        {
+          "order": 2,
+          "file": "home-empty-tablet.png",
+          "present": true,
+          "state": "home-empty",
+          "viewport": "tablet",
+          "width": 768,
+          "height": 1024,
+          "sha256": "afe5a22b60b0ddf08fde5c8a652de5816716100143eb56baaa6b7ddb3b9a8b14",
+          "anchor": "shot-home-empty-tablet-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-home-empty-tablet-png",
+          "screenshotHref": "e2e-snapshots\\visual\\home-empty-tablet.png",
+          "coverageSections": [
+            "Activity / Research Jobs",
+            "Global Shell",
+            "Home Chat: Empty State",
+            "Interaction And Accessibility Visual States",
+            "Responsive Layout Stress Cases"
+          ],
+          "coverageItems": [
+            "Home route header, online",
+            "New chat button normal, hover, focus-visible",
+            "Connection status badges: online, connecting, offline",
+            "Empty chat initial state",
+            "Example query buttons normal, hover, focus-visible",
+            "Long example query wrapping",
+            "Empty activity sidebar",
+            "Mobile empty activity section below composer",
+            "No jobs state",
+            "Activity sidebar on desktop",
+            "Activity section on mobile",
+            "Placeholder text contrast",
+            "No horizontal page overflow at every target viewport",
+            "No overlapping text or controls",
+            "390px mobile width",
+            "768px tablet breakpoint",
+            "1280px desktop",
+            "1440px wide desktop"
+          ]
+        },
+        {
+          "order": 3,
+          "file": "home-empty-desktop.png",
+          "present": true,
+          "state": "home-empty",
+          "viewport": "desktop",
+          "width": 1280,
+          "height": 900,
+          "sha256": "583ca33ce15bcd70c885c8798b4b0fae9f0410636963d369ba7b7f64b7b78875",
+          "anchor": "shot-home-empty-desktop-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-home-empty-desktop-png",
+          "screenshotHref": "e2e-snapshots\\visual\\home-empty-desktop.png",
+          "coverageSections": [
+            "Activity / Research Jobs",
+            "Global Shell",
+            "Home Chat: Empty State",
+            "Interaction And Accessibility Visual States",
+            "Responsive Layout Stress Cases"
+          ],
+          "coverageItems": [
+            "Home route header, online",
+            "New chat button normal, hover, focus-visible",
+            "Connection status badges: online, connecting, offline",
+            "Empty chat initial state",
+            "Example query buttons normal, hover, focus-visible",
+            "Long example query wrapping",
+            "Empty activity sidebar",
+            "Mobile empty activity section below composer",
+            "No jobs state",
+            "Activity sidebar on desktop",
+            "Activity section on mobile",
+            "Placeholder text contrast",
+            "No horizontal page overflow at every target viewport",
+            "No overlapping text or controls",
+            "390px mobile width",
+            "768px tablet breakpoint",
+            "1280px desktop",
+            "1440px wide desktop"
+          ]
+        },
+        {
+          "order": 4,
+          "file": "home-empty-wide.png",
+          "present": true,
+          "state": "home-empty",
+          "viewport": "wide",
+          "width": 1440,
+          "height": 1000,
+          "sha256": "e0c5f2efb636f9109080ce367e625050a073ec93dfba1c121b192a87e4e963cd",
+          "anchor": "shot-home-empty-wide-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-home-empty-wide-png",
+          "screenshotHref": "e2e-snapshots\\visual\\home-empty-wide.png",
+          "coverageSections": [
+            "Activity / Research Jobs",
+            "Global Shell",
+            "Home Chat: Empty State",
+            "Interaction And Accessibility Visual States",
+            "Responsive Layout Stress Cases"
+          ],
+          "coverageItems": [
+            "Home route header, online",
+            "New chat button normal, hover, focus-visible",
+            "Connection status badges: online, connecting, offline",
+            "Empty chat initial state",
+            "Example query buttons normal, hover, focus-visible",
+            "Long example query wrapping",
+            "Empty activity sidebar",
+            "Mobile empty activity section below composer",
+            "No jobs state",
+            "Activity sidebar on desktop",
+            "Activity section on mobile",
+            "Placeholder text contrast",
+            "No horizontal page overflow at every target viewport",
+            "No overlapping text or controls",
+            "390px mobile width",
+            "768px tablet breakpoint",
+            "1280px desktop",
+            "1440px wide desktop"
+          ]
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "key": "typed-query",
+      "label": "Typed query before submission",
+      "complete": true,
+      "states": [
+        "home-typed-query"
+      ],
+      "missingStates": [],
+      "missingFiles": [],
+      "files": [
+        {
+          "order": 1,
+          "file": "home-typed-query-mobile.png",
+          "present": true,
+          "state": "home-typed-query",
+          "viewport": "mobile",
+          "width": 390,
+          "height": 844,
+          "sha256": "3ec16aeb1e07d07585cd71f95fd7ef21614b338a11557bca286d9aa12a2e2830",
+          "anchor": "shot-home-typed-query-mobile-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-home-typed-query-mobile-png",
+          "screenshotHref": "e2e-snapshots\\visual\\home-typed-query-mobile.png",
+          "coverageSections": [
+            "Home Chat: Empty State",
+            "Interaction And Accessibility Visual States"
+          ],
+          "coverageItems": [
+            "Empty chat with typed valid query",
+            "Text selection/readability in inputs"
+          ]
+        },
+        {
+          "order": 2,
+          "file": "home-typed-query-tablet.png",
+          "present": true,
+          "state": "home-typed-query",
+          "viewport": "tablet",
+          "width": 768,
+          "height": 1024,
+          "sha256": "8cc7f91acaf62a9ee98c0a7b2546c1563daca6a69a5b3134645c39738d337d47",
+          "anchor": "shot-home-typed-query-tablet-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-home-typed-query-tablet-png",
+          "screenshotHref": "e2e-snapshots\\visual\\home-typed-query-tablet.png",
+          "coverageSections": [
+            "Home Chat: Empty State",
+            "Interaction And Accessibility Visual States"
+          ],
+          "coverageItems": [
+            "Empty chat with typed valid query",
+            "Text selection/readability in inputs"
+          ]
+        },
+        {
+          "order": 3,
+          "file": "home-typed-query-desktop.png",
+          "present": true,
+          "state": "home-typed-query",
+          "viewport": "desktop",
+          "width": 1280,
+          "height": 900,
+          "sha256": "9e7cb9df0593a874e1e4ec1faa070d14cf3ed4ec490764c261b24fba9bef5353",
+          "anchor": "shot-home-typed-query-desktop-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-home-typed-query-desktop-png",
+          "screenshotHref": "e2e-snapshots\\visual\\home-typed-query-desktop.png",
+          "coverageSections": [
+            "Home Chat: Empty State",
+            "Interaction And Accessibility Visual States"
+          ],
+          "coverageItems": [
+            "Empty chat with typed valid query",
+            "Text selection/readability in inputs"
+          ]
+        },
+        {
+          "order": 4,
+          "file": "home-typed-query-wide.png",
+          "present": true,
+          "state": "home-typed-query",
+          "viewport": "wide",
+          "width": 1440,
+          "height": 1000,
+          "sha256": "fa825ab3251ff3557f4bca1140285e01ca2dc854b7f44a5f1c718b7847beaf82",
+          "anchor": "shot-home-typed-query-wide-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-home-typed-query-wide-png",
+          "screenshotHref": "e2e-snapshots\\visual\\home-typed-query-wide.png",
+          "coverageSections": [
+            "Home Chat: Empty State",
+            "Interaction And Accessibility Visual States"
+          ],
+          "coverageItems": [
+            "Empty chat with typed valid query",
+            "Text selection/readability in inputs"
+          ]
+        }
+      ]
+    },
+    {
+      "order": 3,
+      "key": "submitted-user-message",
+      "label": "Submitted user message only",
+      "complete": true,
+      "states": [
+        "chat-submitted-user-only"
+      ],
+      "missingStates": [],
+      "missingFiles": [],
+      "files": [
+        {
+          "order": 1,
+          "file": "chat-submitted-user-only-mobile.png",
+          "present": true,
+          "state": "chat-submitted-user-only",
+          "viewport": "mobile",
+          "width": 390,
+          "height": 844,
+          "sha256": "7361afce7384c3083dca998cbe94b689ebdace017afaace4e465838dfa542446",
+          "anchor": "shot-chat-submitted-user-only-mobile-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-submitted-user-only-mobile-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-submitted-user-only-mobile.png",
+          "coverageSections": [
+            "Chat Messages",
+            "Home Chat: Submission And Research"
+          ],
+          "coverageItems": [
+            "Query submitted with user message visible",
+            "Busy/submitting state with controls disabled",
+            "User message, short text"
+          ]
+        },
+        {
+          "order": 2,
+          "file": "chat-submitted-user-only-tablet.png",
+          "present": true,
+          "state": "chat-submitted-user-only",
+          "viewport": "tablet",
+          "width": 768,
+          "height": 1024,
+          "sha256": "bf082ff6ef54821ca1d4619611dcb202cd4a99eefeff7f2f33084a679a8d85b7",
+          "anchor": "shot-chat-submitted-user-only-tablet-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-submitted-user-only-tablet-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-submitted-user-only-tablet.png",
+          "coverageSections": [
+            "Chat Messages",
+            "Home Chat: Submission And Research"
+          ],
+          "coverageItems": [
+            "Query submitted with user message visible",
+            "Busy/submitting state with controls disabled",
+            "User message, short text"
+          ]
+        },
+        {
+          "order": 3,
+          "file": "chat-submitted-user-only-desktop.png",
+          "present": true,
+          "state": "chat-submitted-user-only",
+          "viewport": "desktop",
+          "width": 1280,
+          "height": 900,
+          "sha256": "1dc8590b700bfe3506b2a4758080a8bdde55356b8461549ebeeef00a22d98cb4",
+          "anchor": "shot-chat-submitted-user-only-desktop-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-submitted-user-only-desktop-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-submitted-user-only-desktop.png",
+          "coverageSections": [
+            "Chat Messages",
+            "Home Chat: Submission And Research"
+          ],
+          "coverageItems": [
+            "Query submitted with user message visible",
+            "Busy/submitting state with controls disabled",
+            "User message, short text"
+          ]
+        },
+        {
+          "order": 4,
+          "file": "chat-submitted-user-only-wide.png",
+          "present": true,
+          "state": "chat-submitted-user-only",
+          "viewport": "wide",
+          "width": 1440,
+          "height": 1000,
+          "sha256": "371a5d41c093ec3476753b6763b84d13d31c5054f551ec79c5dcee6912669b10",
+          "anchor": "shot-chat-submitted-user-only-wide-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-submitted-user-only-wide-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-submitted-user-only-wide.png",
+          "coverageSections": [
+            "Chat Messages",
+            "Home Chat: Submission And Research"
+          ],
+          "coverageItems": [
+            "Query submitted with user message visible",
+            "Busy/submitting state with controls disabled",
+            "User message, short text"
+          ]
+        }
+      ]
+    },
+    {
+      "order": 4,
+      "key": "system-lookup-message",
+      "label": "System lookup message",
+      "complete": true,
+      "states": [
+        "chat-system-looking-only"
+      ],
+      "missingStates": [],
+      "missingFiles": [],
+      "files": [
+        {
+          "order": 1,
+          "file": "chat-system-looking-only-mobile.png",
+          "present": true,
+          "state": "chat-system-looking-only",
+          "viewport": "mobile",
+          "width": 390,
+          "height": 844,
+          "sha256": "59b7a65363470d76b85a67a547834deb1085b17de14e66c3605300020c8be139",
+          "anchor": "shot-chat-system-looking-only-mobile-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-system-looking-only-mobile-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-system-looking-only-mobile.png",
+          "coverageSections": [
+            "Chat Messages",
+            "Home Chat: Submission And Research"
+          ],
+          "coverageItems": [
+            "System “looking that up” message",
+            "Busy/submitting state with controls disabled",
+            "System message"
+          ]
+        },
+        {
+          "order": 2,
+          "file": "chat-system-looking-only-tablet.png",
+          "present": true,
+          "state": "chat-system-looking-only",
+          "viewport": "tablet",
+          "width": 768,
+          "height": 1024,
+          "sha256": "a2e83046d53ad4c0388c7bcdae3a7940edd0da980a50e1e4d3173be490780c2b",
+          "anchor": "shot-chat-system-looking-only-tablet-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-system-looking-only-tablet-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-system-looking-only-tablet.png",
+          "coverageSections": [
+            "Chat Messages",
+            "Home Chat: Submission And Research"
+          ],
+          "coverageItems": [
+            "System “looking that up” message",
+            "Busy/submitting state with controls disabled",
+            "System message"
+          ]
+        },
+        {
+          "order": 3,
+          "file": "chat-system-looking-only-desktop.png",
+          "present": true,
+          "state": "chat-system-looking-only",
+          "viewport": "desktop",
+          "width": 1280,
+          "height": 900,
+          "sha256": "91459670ab344763504399d635ef44212bc30f98a7dbf14409c46734053706b8",
+          "anchor": "shot-chat-system-looking-only-desktop-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-system-looking-only-desktop-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-system-looking-only-desktop.png",
+          "coverageSections": [
+            "Chat Messages",
+            "Home Chat: Submission And Research"
+          ],
+          "coverageItems": [
+            "System “looking that up” message",
+            "Busy/submitting state with controls disabled",
+            "System message"
+          ]
+        },
+        {
+          "order": 4,
+          "file": "chat-system-looking-only-wide.png",
+          "present": true,
+          "state": "chat-system-looking-only",
+          "viewport": "wide",
+          "width": 1440,
+          "height": 1000,
+          "sha256": "1b53290f8a0a8ac5c4167c2141913ffef9ebe0e74ee54f253363a5ca64f44569",
+          "anchor": "shot-chat-system-looking-only-wide-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-system-looking-only-wide-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-system-looking-only-wide.png",
+          "coverageSections": [
+            "Chat Messages",
+            "Home Chat: Submission And Research"
+          ],
+          "coverageItems": [
+            "System “looking that up” message",
+            "Busy/submitting state with controls disabled",
+            "System message"
+          ]
+        }
+      ]
+    },
+    {
+      "order": 5,
+      "key": "queued-polling",
+      "label": "Queued polling state",
+      "complete": true,
+      "states": [
+        "chat-queued-polling"
+      ],
+      "missingStates": [],
+      "missingFiles": [],
+      "files": [
+        {
+          "order": 1,
+          "file": "chat-queued-polling-mobile.png",
+          "present": true,
+          "state": "chat-queued-polling",
+          "viewport": "mobile",
+          "width": 390,
+          "height": 844,
+          "sha256": "6b6fb89e4a0681c7d3cdfa96537d71b9eaa8c33837f12899a57b792c7921fba8",
+          "anchor": "shot-chat-queued-polling-mobile-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-queued-polling-mobile-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-queued-polling-mobile.png",
+          "coverageSections": [
+            "Activity / Research Jobs"
+          ],
+          "coverageItems": [
+            "Queued job",
+            "Job outcome for queued/running elapsed state"
+          ]
+        },
+        {
+          "order": 2,
+          "file": "chat-queued-polling-tablet.png",
+          "present": true,
+          "state": "chat-queued-polling",
+          "viewport": "tablet",
+          "width": 768,
+          "height": 1024,
+          "sha256": "92e214e51f000f6fc79db81594702d0ff413b902a53dea936c70b42fc733ca28",
+          "anchor": "shot-chat-queued-polling-tablet-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-queued-polling-tablet-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-queued-polling-tablet.png",
+          "coverageSections": [
+            "Activity / Research Jobs"
+          ],
+          "coverageItems": [
+            "Queued job",
+            "Job outcome for queued/running elapsed state"
+          ]
+        },
+        {
+          "order": 3,
+          "file": "chat-queued-polling-desktop.png",
+          "present": true,
+          "state": "chat-queued-polling",
+          "viewport": "desktop",
+          "width": 1280,
+          "height": 900,
+          "sha256": "3a49d7cfa87d25ba7bedd544cdaafe27b8c4d29a6407ed31174263d8522126c4",
+          "anchor": "shot-chat-queued-polling-desktop-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-queued-polling-desktop-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-queued-polling-desktop.png",
+          "coverageSections": [
+            "Activity / Research Jobs"
+          ],
+          "coverageItems": [
+            "Queued job",
+            "Job outcome for queued/running elapsed state"
+          ]
+        },
+        {
+          "order": 4,
+          "file": "chat-queued-polling-wide.png",
+          "present": true,
+          "state": "chat-queued-polling",
+          "viewport": "wide",
+          "width": 1440,
+          "height": 1000,
+          "sha256": "ec72348cc95c1bf4cae1630736aa934d4b6fc2831a844c6a2014eac5af3a812e",
+          "anchor": "shot-chat-queued-polling-wide-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-queued-polling-wide-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-queued-polling-wide.png",
+          "coverageSections": [
+            "Activity / Research Jobs"
+          ],
+          "coverageItems": [
+            "Queued job",
+            "Job outcome for queued/running elapsed state"
+          ]
+        }
+      ]
+    },
+    {
+      "order": 6,
+      "key": "running-polling",
+      "label": "Running polling state",
+      "complete": true,
+      "states": [
+        "chat-running-polling"
+      ],
+      "missingStates": [],
+      "missingFiles": [],
+      "files": [
+        {
+          "order": 1,
+          "file": "chat-running-polling-mobile.png",
+          "present": true,
+          "state": "chat-running-polling",
+          "viewport": "mobile",
+          "width": 390,
+          "height": 866,
+          "sha256": "54e77c94a04dd8480c7b1720d79a50800472cf40b5a0b8ee3ee0ef7f343885dc",
+          "anchor": "shot-chat-running-polling-mobile-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-running-polling-mobile-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-running-polling-mobile.png",
+          "coverageSections": [
+            "Activity / Research Jobs",
+            "Home Chat: Submission And Research"
+          ],
+          "coverageItems": [
+            "Active research elapsed-time display",
+            "Running job",
+            "Job outcome for queued/running elapsed state"
+          ]
+        },
+        {
+          "order": 2,
+          "file": "chat-running-polling-tablet.png",
+          "present": true,
+          "state": "chat-running-polling",
+          "viewport": "tablet",
+          "width": 768,
+          "height": 1024,
+          "sha256": "7048f13468ebdfe813674689ef1569b8ae5f2f09248ad76888678b0f2819c755",
+          "anchor": "shot-chat-running-polling-tablet-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-running-polling-tablet-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-running-polling-tablet.png",
+          "coverageSections": [
+            "Activity / Research Jobs",
+            "Home Chat: Submission And Research"
+          ],
+          "coverageItems": [
+            "Active research elapsed-time display",
+            "Running job",
+            "Job outcome for queued/running elapsed state"
+          ]
+        },
+        {
+          "order": 3,
+          "file": "chat-running-polling-desktop.png",
+          "present": true,
+          "state": "chat-running-polling",
+          "viewport": "desktop",
+          "width": 1280,
+          "height": 900,
+          "sha256": "457800e20b066d4bc3d49f01e6a892f2a10c55af1c3aa666a7ed7786a2417a8b",
+          "anchor": "shot-chat-running-polling-desktop-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-running-polling-desktop-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-running-polling-desktop.png",
+          "coverageSections": [
+            "Activity / Research Jobs",
+            "Home Chat: Submission And Research"
+          ],
+          "coverageItems": [
+            "Active research elapsed-time display",
+            "Running job",
+            "Job outcome for queued/running elapsed state"
+          ]
+        },
+        {
+          "order": 4,
+          "file": "chat-running-polling-wide.png",
+          "present": true,
+          "state": "chat-running-polling",
+          "viewport": "wide",
+          "width": 1440,
+          "height": 1000,
+          "sha256": "1b3beda4a613545fa43f3a0cecfe68e787e44371a86dce89bdda533e9bb15f82",
+          "anchor": "shot-chat-running-polling-wide-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-running-polling-wide-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-running-polling-wide.png",
+          "coverageSections": [
+            "Activity / Research Jobs",
+            "Home Chat: Submission And Research"
+          ],
+          "coverageItems": [
+            "Active research elapsed-time display",
+            "Running job",
+            "Job outcome for queued/running elapsed state"
+          ]
+        }
+      ]
+    },
+    {
+      "order": 7,
+      "key": "active-research",
+      "label": "Active research indicator and actions",
+      "complete": true,
+      "states": [
+        "chat-active-research",
+        "chat-active-actions-focus"
+      ],
+      "missingStates": [],
+      "missingFiles": [],
+      "files": [
+        {
+          "order": 1,
+          "file": "chat-active-research-mobile.png",
+          "present": true,
+          "state": "chat-active-research",
+          "viewport": "mobile",
+          "width": 390,
+          "height": 844,
+          "sha256": "9f9b6f8dcf660567f525f10bbef96fff68ee21adf41ebd6bcd4f06b0ed57df61",
+          "anchor": "shot-chat-active-research-mobile-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-active-research-mobile-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-active-research-mobile.png",
+          "coverageSections": [
+            "Activity / Research Jobs",
+            "Home Chat: Submission And Research"
+          ],
+          "coverageItems": [
+            "Active research indicator",
+            "Active research actions: View job, Cancel research",
+            "Active research elapsed-time display",
+            "Running job",
+            "Job outcome for queued/running elapsed state"
+          ]
+        },
+        {
+          "order": 2,
+          "file": "chat-active-research-tablet.png",
+          "present": true,
+          "state": "chat-active-research",
+          "viewport": "tablet",
+          "width": 768,
+          "height": 1024,
+          "sha256": "93f0945a0413dc195768e1b09574b187c40de029d4c234620ffbfbcfdb6e082b",
+          "anchor": "shot-chat-active-research-tablet-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-active-research-tablet-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-active-research-tablet.png",
+          "coverageSections": [
+            "Activity / Research Jobs",
+            "Home Chat: Submission And Research"
+          ],
+          "coverageItems": [
+            "Active research indicator",
+            "Active research actions: View job, Cancel research",
+            "Active research elapsed-time display",
+            "Running job",
+            "Job outcome for queued/running elapsed state"
+          ]
+        },
+        {
+          "order": 3,
+          "file": "chat-active-research-desktop.png",
+          "present": true,
+          "state": "chat-active-research",
+          "viewport": "desktop",
+          "width": 1280,
+          "height": 900,
+          "sha256": "08a5feb89626a2f0eebbbe5661f1286b63dcabee688d610af7a113b045c1a481",
+          "anchor": "shot-chat-active-research-desktop-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-active-research-desktop-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-active-research-desktop.png",
+          "coverageSections": [
+            "Activity / Research Jobs",
+            "Home Chat: Submission And Research"
+          ],
+          "coverageItems": [
+            "Active research indicator",
+            "Active research actions: View job, Cancel research",
+            "Active research elapsed-time display",
+            "Running job",
+            "Job outcome for queued/running elapsed state"
+          ]
+        },
+        {
+          "order": 4,
+          "file": "chat-active-research-wide.png",
+          "present": true,
+          "state": "chat-active-research",
+          "viewport": "wide",
+          "width": 1440,
+          "height": 1000,
+          "sha256": "3a49feb06c65b9b6e3f6bf38c3b7524143baf93ddf3310d58d71f9c40d0d1dd5",
+          "anchor": "shot-chat-active-research-wide-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-active-research-wide-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-active-research-wide.png",
+          "coverageSections": [
+            "Activity / Research Jobs",
+            "Home Chat: Submission And Research"
+          ],
+          "coverageItems": [
+            "Active research indicator",
+            "Active research actions: View job, Cancel research",
+            "Active research elapsed-time display",
+            "Running job",
+            "Job outcome for queued/running elapsed state"
+          ]
+        },
+        {
+          "order": 5,
+          "file": "chat-active-actions-focus-mobile.png",
+          "present": true,
+          "state": "chat-active-actions-focus",
+          "viewport": "mobile",
+          "width": 390,
+          "height": 844,
+          "sha256": "fca1cd3e2d25861faded6b37dfa1cbb1969148a5f02a253711ae2392488fc425",
+          "anchor": "shot-chat-active-actions-focus-mobile-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-active-actions-focus-mobile-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-active-actions-focus-mobile.png",
+          "coverageSections": [
+            "Activity / Research Jobs",
+            "Home Chat: Submission And Research",
+            "Interaction And Accessibility Visual States"
+          ],
+          "coverageItems": [
+            "Active research actions: View job, Cancel research",
+            "Highlighted/focused job",
+            "Keyboard focus-visible on all buttons",
+            "No text clipped inside buttons"
+          ]
+        },
+        {
+          "order": 6,
+          "file": "chat-active-actions-focus-tablet.png",
+          "present": true,
+          "state": "chat-active-actions-focus",
+          "viewport": "tablet",
+          "width": 768,
+          "height": 1024,
+          "sha256": "32add1f02ecbbc60dd0dde9877f5f1979e3d0ffc0a85c4a8d0280e485e9f9db1",
+          "anchor": "shot-chat-active-actions-focus-tablet-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-active-actions-focus-tablet-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-active-actions-focus-tablet.png",
+          "coverageSections": [
+            "Activity / Research Jobs",
+            "Home Chat: Submission And Research",
+            "Interaction And Accessibility Visual States"
+          ],
+          "coverageItems": [
+            "Active research actions: View job, Cancel research",
+            "Highlighted/focused job",
+            "Keyboard focus-visible on all buttons",
+            "No text clipped inside buttons"
+          ]
+        },
+        {
+          "order": 7,
+          "file": "chat-active-actions-focus-desktop.png",
+          "present": true,
+          "state": "chat-active-actions-focus",
+          "viewport": "desktop",
+          "width": 1280,
+          "height": 900,
+          "sha256": "b6594454c841b7d1070d118fd088ec60ca18591edfacc6cb204c2f0744599018",
+          "anchor": "shot-chat-active-actions-focus-desktop-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-active-actions-focus-desktop-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-active-actions-focus-desktop.png",
+          "coverageSections": [
+            "Activity / Research Jobs",
+            "Home Chat: Submission And Research",
+            "Interaction And Accessibility Visual States"
+          ],
+          "coverageItems": [
+            "Active research actions: View job, Cancel research",
+            "Highlighted/focused job",
+            "Keyboard focus-visible on all buttons",
+            "No text clipped inside buttons"
+          ]
+        },
+        {
+          "order": 8,
+          "file": "chat-active-actions-focus-wide.png",
+          "present": true,
+          "state": "chat-active-actions-focus",
+          "viewport": "wide",
+          "width": 1440,
+          "height": 1000,
+          "sha256": "36483ff7d3e58a3ca977cb3ead9ac7954ad672180e8ac2f2a3ecc63ce3c2f9f9",
+          "anchor": "shot-chat-active-actions-focus-wide-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-active-actions-focus-wide-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-active-actions-focus-wide.png",
+          "coverageSections": [
+            "Activity / Research Jobs",
+            "Home Chat: Submission And Research",
+            "Interaction And Accessibility Visual States"
+          ],
+          "coverageItems": [
+            "Active research actions: View job, Cancel research",
+            "Highlighted/focused job",
+            "Keyboard focus-visible on all buttons",
+            "No text clipped inside buttons"
+          ]
+        }
+      ]
+    },
+    {
+      "order": 8,
+      "key": "reconnecting-during-research",
+      "label": "Reconnecting while research is visible",
+      "complete": true,
+      "states": [
+        "chat-reconnecting-with-messages"
+      ],
+      "missingStates": [],
+      "missingFiles": [],
+      "files": [
+        {
+          "order": 1,
+          "file": "chat-reconnecting-with-messages-mobile.png",
+          "present": true,
+          "state": "chat-reconnecting-with-messages",
+          "viewport": "mobile",
+          "width": 390,
+          "height": 844,
+          "sha256": "0881877591992924c3340bd036bd4f7d2cbd206cd408484f13b30c6faf59c6ce",
+          "anchor": "shot-chat-reconnecting-with-messages-mobile-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-reconnecting-with-messages-mobile-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-reconnecting-with-messages-mobile.png",
+          "coverageSections": [
+            "Activity / Research Jobs",
+            "Global Shell",
+            "Home Chat: Submission And Research"
+          ],
+          "coverageItems": [
+            "Home route header, connecting",
+            "Connection status badges: online, connecting, offline",
+            "System “looking that up” message",
+            "Busy/submitting state with controls disabled",
+            "Active research indicator",
+            "Job outcome for queued/running elapsed state"
+          ]
+        },
+        {
+          "order": 2,
+          "file": "chat-reconnecting-with-messages-tablet.png",
+          "present": true,
+          "state": "chat-reconnecting-with-messages",
+          "viewport": "tablet",
+          "width": 768,
+          "height": 1024,
+          "sha256": "cfd783a2223a118c190bb0604883dd0748a525135bac32c71ccd527a5afff13c",
+          "anchor": "shot-chat-reconnecting-with-messages-tablet-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-reconnecting-with-messages-tablet-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-reconnecting-with-messages-tablet.png",
+          "coverageSections": [
+            "Activity / Research Jobs",
+            "Global Shell",
+            "Home Chat: Submission And Research"
+          ],
+          "coverageItems": [
+            "Home route header, connecting",
+            "Connection status badges: online, connecting, offline",
+            "System “looking that up” message",
+            "Busy/submitting state with controls disabled",
+            "Active research indicator",
+            "Job outcome for queued/running elapsed state"
+          ]
+        },
+        {
+          "order": 3,
+          "file": "chat-reconnecting-with-messages-desktop.png",
+          "present": true,
+          "state": "chat-reconnecting-with-messages",
+          "viewport": "desktop",
+          "width": 1280,
+          "height": 900,
+          "sha256": "5aaeab5d0a7c7e2fa0834ae7f9f2c6b2ba6cc7d998cc961c1c4aa3142cf23ad9",
+          "anchor": "shot-chat-reconnecting-with-messages-desktop-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-reconnecting-with-messages-desktop-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-reconnecting-with-messages-desktop.png",
+          "coverageSections": [
+            "Activity / Research Jobs",
+            "Global Shell",
+            "Home Chat: Submission And Research"
+          ],
+          "coverageItems": [
+            "Home route header, connecting",
+            "Connection status badges: online, connecting, offline",
+            "System “looking that up” message",
+            "Busy/submitting state with controls disabled",
+            "Active research indicator",
+            "Job outcome for queued/running elapsed state"
+          ]
+        },
+        {
+          "order": 4,
+          "file": "chat-reconnecting-with-messages-wide.png",
+          "present": true,
+          "state": "chat-reconnecting-with-messages",
+          "viewport": "wide",
+          "width": 1440,
+          "height": 1000,
+          "sha256": "10877ec117fc707c109194088e475aa6d44d76ebd0282240448f4f280a114042",
+          "anchor": "shot-chat-reconnecting-with-messages-wide-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-reconnecting-with-messages-wide-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-reconnecting-with-messages-wide.png",
+          "coverageSections": [
+            "Activity / Research Jobs",
+            "Global Shell",
+            "Home Chat: Submission And Research"
+          ],
+          "coverageItems": [
+            "Home route header, connecting",
+            "Connection status badges: online, connecting, offline",
+            "System “looking that up” message",
+            "Busy/submitting state with controls disabled",
+            "Active research indicator",
+            "Job outcome for queued/running elapsed state"
+          ]
+        }
+      ]
+    },
+    {
+      "order": 9,
+      "key": "offline-during-research",
+      "label": "Offline while research is visible",
+      "complete": true,
+      "states": [
+        "chat-offline-with-messages"
+      ],
+      "missingStates": [],
+      "missingFiles": [],
+      "files": [
+        {
+          "order": 1,
+          "file": "chat-offline-with-messages-mobile.png",
+          "present": true,
+          "state": "chat-offline-with-messages",
+          "viewport": "mobile",
+          "width": 390,
+          "height": 860,
+          "sha256": "3eaa6b08dbc031c19c7647312ebf8e1bc309e9513465899eb083dfbfa7001e89",
+          "anchor": "shot-chat-offline-with-messages-mobile-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-offline-with-messages-mobile-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-offline-with-messages-mobile.png",
+          "coverageSections": [
+            "Activity / Research Jobs",
+            "Global Shell",
+            "Home Chat: Submission And Research"
+          ],
+          "coverageItems": [
+            "Home route header, offline",
+            "Connection status badges: online, connecting, offline",
+            "Busy/submitting state with controls disabled",
+            "Active research indicator",
+            "Job outcome for queued/running elapsed state"
+          ]
+        },
+        {
+          "order": 2,
+          "file": "chat-offline-with-messages-tablet.png",
+          "present": true,
+          "state": "chat-offline-with-messages",
+          "viewport": "tablet",
+          "width": 768,
+          "height": 1024,
+          "sha256": "a19b7fc44f671b2411606f8aa5292cfab5586ccac3d77eb92c4a20602528f3c1",
+          "anchor": "shot-chat-offline-with-messages-tablet-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-offline-with-messages-tablet-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-offline-with-messages-tablet.png",
+          "coverageSections": [
+            "Activity / Research Jobs",
+            "Global Shell",
+            "Home Chat: Submission And Research"
+          ],
+          "coverageItems": [
+            "Home route header, offline",
+            "Connection status badges: online, connecting, offline",
+            "Busy/submitting state with controls disabled",
+            "Active research indicator",
+            "Job outcome for queued/running elapsed state"
+          ]
+        },
+        {
+          "order": 3,
+          "file": "chat-offline-with-messages-desktop.png",
+          "present": true,
+          "state": "chat-offline-with-messages",
+          "viewport": "desktop",
+          "width": 1280,
+          "height": 900,
+          "sha256": "2f8542808e1aceba664d7359e49bc72d35d33f275554e2432e06c2ed7341dcd2",
+          "anchor": "shot-chat-offline-with-messages-desktop-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-offline-with-messages-desktop-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-offline-with-messages-desktop.png",
+          "coverageSections": [
+            "Activity / Research Jobs",
+            "Global Shell",
+            "Home Chat: Submission And Research"
+          ],
+          "coverageItems": [
+            "Home route header, offline",
+            "Connection status badges: online, connecting, offline",
+            "Busy/submitting state with controls disabled",
+            "Active research indicator",
+            "Job outcome for queued/running elapsed state"
+          ]
+        },
+        {
+          "order": 4,
+          "file": "chat-offline-with-messages-wide.png",
+          "present": true,
+          "state": "chat-offline-with-messages",
+          "viewport": "wide",
+          "width": 1440,
+          "height": 1000,
+          "sha256": "e7b38c6ea6e4b499a6035dbb85d8e7dbeb2598f9429c2d835b41ede92a23da17",
+          "anchor": "shot-chat-offline-with-messages-wide-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-offline-with-messages-wide-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-offline-with-messages-wide.png",
+          "coverageSections": [
+            "Activity / Research Jobs",
+            "Global Shell",
+            "Home Chat: Submission And Research"
+          ],
+          "coverageItems": [
+            "Home route header, offline",
+            "Connection status badges: online, connecting, offline",
+            "Busy/submitting state with controls disabled",
+            "Active research indicator",
+            "Job outcome for queued/running elapsed state"
+          ]
+        }
+      ]
+    },
+    {
+      "order": 10,
+      "key": "cancelled-research",
+      "label": "Cancelled research state",
+      "complete": true,
+      "states": [
+        "chat-cancelled-research"
+      ],
+      "missingStates": [],
+      "missingFiles": [],
+      "files": [
+        {
+          "order": 1,
+          "file": "chat-cancelled-research-mobile.png",
+          "present": true,
+          "state": "chat-cancelled-research",
+          "viewport": "mobile",
+          "width": 390,
+          "height": 844,
+          "sha256": "1b1868ef1c3d0fb0701f19d6e3717cc7d3ae7ab1263282d369c8851ec753edc4",
+          "anchor": "shot-chat-cancelled-research-mobile-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-cancelled-research-mobile-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-cancelled-research-mobile.png",
+          "coverageSections": [
+            "Activity / Research Jobs",
+            "Home Chat: Submission And Research"
+          ],
+          "coverageItems": [
+            "Cancelled active research state",
+            "Recovery to enabled composer after research finishes/fails/cancels",
+            "Cancelled job"
+          ]
+        },
+        {
+          "order": 2,
+          "file": "chat-cancelled-research-tablet.png",
+          "present": true,
+          "state": "chat-cancelled-research",
+          "viewport": "tablet",
+          "width": 768,
+          "height": 1024,
+          "sha256": "4e3cbc192b16a22ebafe608fb607e528782d1c8f892e73a0ea175fd79da2e17e",
+          "anchor": "shot-chat-cancelled-research-tablet-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-cancelled-research-tablet-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-cancelled-research-tablet.png",
+          "coverageSections": [
+            "Activity / Research Jobs",
+            "Home Chat: Submission And Research"
+          ],
+          "coverageItems": [
+            "Cancelled active research state",
+            "Recovery to enabled composer after research finishes/fails/cancels",
+            "Cancelled job"
+          ]
+        },
+        {
+          "order": 3,
+          "file": "chat-cancelled-research-desktop.png",
+          "present": true,
+          "state": "chat-cancelled-research",
+          "viewport": "desktop",
+          "width": 1280,
+          "height": 900,
+          "sha256": "a7b207269ab3c75e87f88c82f6e3cfc4d7b5bc765b0348c80a32175b798e0e8c",
+          "anchor": "shot-chat-cancelled-research-desktop-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-cancelled-research-desktop-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-cancelled-research-desktop.png",
+          "coverageSections": [
+            "Activity / Research Jobs",
+            "Home Chat: Submission And Research"
+          ],
+          "coverageItems": [
+            "Cancelled active research state",
+            "Recovery to enabled composer after research finishes/fails/cancels",
+            "Cancelled job"
+          ]
+        },
+        {
+          "order": 4,
+          "file": "chat-cancelled-research-wide.png",
+          "present": true,
+          "state": "chat-cancelled-research",
+          "viewport": "wide",
+          "width": 1440,
+          "height": 1000,
+          "sha256": "cdb5e1b58b18a086b90da36c922445a8f98d256e580aca12523c172aa1105fbf",
+          "anchor": "shot-chat-cancelled-research-wide-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-cancelled-research-wide-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-cancelled-research-wide.png",
+          "coverageSections": [
+            "Activity / Research Jobs",
+            "Home Chat: Submission And Research"
+          ],
+          "coverageItems": [
+            "Cancelled active research state",
+            "Recovery to enabled composer after research finishes/fails/cancels",
+            "Cancelled job"
+          ]
+        }
+      ]
+    },
+    {
+      "order": 11,
+      "key": "success-answer",
+      "label": "Verified success answer",
+      "complete": true,
+      "states": [
+        "chat-success-answer"
+      ],
+      "missingStates": [],
+      "missingFiles": [],
+      "files": [
+        {
+          "order": 1,
+          "file": "chat-success-answer-mobile.png",
+          "present": true,
+          "state": "chat-success-answer",
+          "viewport": "mobile",
+          "width": 390,
+          "height": 996,
+          "sha256": "01a932b8ad28f1dc2f3d17a989f7a71f7c28a940f221d87547c64051e3f2a806",
+          "anchor": "shot-chat-success-answer-mobile-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-success-answer-mobile-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-success-answer-mobile.png",
+          "coverageSections": [
+            "Activity / Research Jobs",
+            "Answer Result States",
+            "Chat Messages",
+            "Evidence Details",
+            "Home Chat: Submission And Research",
+            "Interaction And Accessibility Visual States",
+            "Responsive Layout Stress Cases"
+          ],
+          "coverageItems": [
+            "Recovery to enabled composer after research finishes/fails/cancels",
+            "User message, short text",
+            "System message",
+            "Assistant success answer with one result",
+            "Assistant answer with next actions",
+            "Message timestamp alignment across roles",
+            "Verified/high-confidence result",
+            "Result with place address",
+            "Multiple fact cards in desktop grid",
+            "Fact cards on mobile single column",
+            "Caveats present and collapsed",
+            "Evidence details collapsed",
+            "Completed job",
+            "Job outcome for completed answer",
+            "No horizontal page overflow at every target viewport",
+            "390px mobile width",
+            "768px tablet breakpoint",
+            "1280px desktop",
+            "1440px wide desktop"
+          ]
+        },
+        {
+          "order": 2,
+          "file": "chat-success-answer-tablet.png",
+          "present": true,
+          "state": "chat-success-answer",
+          "viewport": "tablet",
+          "width": 768,
+          "height": 1024,
+          "sha256": "d0ba21a79f1810689a2c050f74d20ea76007f0a17d209efeb854ead2cf41dfdf",
+          "anchor": "shot-chat-success-answer-tablet-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-success-answer-tablet-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-success-answer-tablet.png",
+          "coverageSections": [
+            "Activity / Research Jobs",
+            "Answer Result States",
+            "Chat Messages",
+            "Evidence Details",
+            "Home Chat: Submission And Research",
+            "Interaction And Accessibility Visual States",
+            "Responsive Layout Stress Cases"
+          ],
+          "coverageItems": [
+            "Recovery to enabled composer after research finishes/fails/cancels",
+            "User message, short text",
+            "System message",
+            "Assistant success answer with one result",
+            "Assistant answer with next actions",
+            "Message timestamp alignment across roles",
+            "Verified/high-confidence result",
+            "Result with place address",
+            "Multiple fact cards in desktop grid",
+            "Fact cards on mobile single column",
+            "Caveats present and collapsed",
+            "Evidence details collapsed",
+            "Completed job",
+            "Job outcome for completed answer",
+            "No horizontal page overflow at every target viewport",
+            "390px mobile width",
+            "768px tablet breakpoint",
+            "1280px desktop",
+            "1440px wide desktop"
+          ]
+        },
+        {
+          "order": 3,
+          "file": "chat-success-answer-desktop.png",
+          "present": true,
+          "state": "chat-success-answer",
+          "viewport": "desktop",
+          "width": 1280,
+          "height": 900,
+          "sha256": "b38be4e536d05e48072e88089c1a34288f2ff5c880afbaeefc753d6d0e560055",
+          "anchor": "shot-chat-success-answer-desktop-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-success-answer-desktop-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-success-answer-desktop.png",
+          "coverageSections": [
+            "Activity / Research Jobs",
+            "Answer Result States",
+            "Chat Messages",
+            "Evidence Details",
+            "Home Chat: Submission And Research",
+            "Interaction And Accessibility Visual States",
+            "Responsive Layout Stress Cases"
+          ],
+          "coverageItems": [
+            "Recovery to enabled composer after research finishes/fails/cancels",
+            "User message, short text",
+            "System message",
+            "Assistant success answer with one result",
+            "Assistant answer with next actions",
+            "Message timestamp alignment across roles",
+            "Verified/high-confidence result",
+            "Result with place address",
+            "Multiple fact cards in desktop grid",
+            "Fact cards on mobile single column",
+            "Caveats present and collapsed",
+            "Evidence details collapsed",
+            "Completed job",
+            "Job outcome for completed answer",
+            "No horizontal page overflow at every target viewport",
+            "390px mobile width",
+            "768px tablet breakpoint",
+            "1280px desktop",
+            "1440px wide desktop"
+          ]
+        },
+        {
+          "order": 4,
+          "file": "chat-success-answer-wide.png",
+          "present": true,
+          "state": "chat-success-answer",
+          "viewport": "wide",
+          "width": 1440,
+          "height": 1000,
+          "sha256": "98b46bd8936103983b026613cb1798da9dea8f1563f1107a6c9375f7b9dbd2ab",
+          "anchor": "shot-chat-success-answer-wide-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-success-answer-wide-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-success-answer-wide.png",
+          "coverageSections": [
+            "Activity / Research Jobs",
+            "Answer Result States",
+            "Chat Messages",
+            "Evidence Details",
+            "Home Chat: Submission And Research",
+            "Interaction And Accessibility Visual States",
+            "Responsive Layout Stress Cases"
+          ],
+          "coverageItems": [
+            "Recovery to enabled composer after research finishes/fails/cancels",
+            "User message, short text",
+            "System message",
+            "Assistant success answer with one result",
+            "Assistant answer with next actions",
+            "Message timestamp alignment across roles",
+            "Verified/high-confidence result",
+            "Result with place address",
+            "Multiple fact cards in desktop grid",
+            "Fact cards on mobile single column",
+            "Caveats present and collapsed",
+            "Evidence details collapsed",
+            "Completed job",
+            "Job outcome for completed answer",
+            "No horizontal page overflow at every target viewport",
+            "390px mobile width",
+            "768px tablet breakpoint",
+            "1280px desktop",
+            "1440px wide desktop"
+          ]
+        }
+      ]
+    },
+    {
+      "order": 12,
+      "key": "multi-result-answer",
+      "label": "Multiple-result answer",
+      "complete": true,
+      "states": [
+        "chat-multi-result-answer"
+      ],
+      "missingStates": [],
+      "missingFiles": [],
+      "files": [
+        {
+          "order": 1,
+          "file": "chat-multi-result-answer-mobile.png",
+          "present": true,
+          "state": "chat-multi-result-answer",
+          "viewport": "mobile",
+          "width": 390,
+          "height": 976,
+          "sha256": "64499dbc605a1c2ac23fd0b71f5b6e8702945cca9e6dd1156b8b9acfe44d58bd",
+          "anchor": "shot-chat-multi-result-answer-mobile-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-multi-result-answer-mobile-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-multi-result-answer-mobile.png",
+          "coverageSections": [
+            "Answer Result States",
+            "Chat Messages"
+          ],
+          "coverageItems": [
+            "Assistant success answer with multiple results",
+            "Multiple fact cards in desktop grid"
+          ]
+        },
+        {
+          "order": 2,
+          "file": "chat-multi-result-answer-tablet.png",
+          "present": true,
+          "state": "chat-multi-result-answer",
+          "viewport": "tablet",
+          "width": 768,
+          "height": 1024,
+          "sha256": "916e1887662689cf698f70981782eb52f00a397a2c83e1881529d3cc3431b100",
+          "anchor": "shot-chat-multi-result-answer-tablet-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-multi-result-answer-tablet-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-multi-result-answer-tablet.png",
+          "coverageSections": [
+            "Answer Result States",
+            "Chat Messages"
+          ],
+          "coverageItems": [
+            "Assistant success answer with multiple results",
+            "Multiple fact cards in desktop grid"
+          ]
+        },
+        {
+          "order": 3,
+          "file": "chat-multi-result-answer-desktop.png",
+          "present": true,
+          "state": "chat-multi-result-answer",
+          "viewport": "desktop",
+          "width": 1280,
+          "height": 900,
+          "sha256": "96f8908567d143e4c7be994a9a847efdaaa8d2c31820749d83425fb44419b43b",
+          "anchor": "shot-chat-multi-result-answer-desktop-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-multi-result-answer-desktop-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-multi-result-answer-desktop.png",
+          "coverageSections": [
+            "Answer Result States",
+            "Chat Messages"
+          ],
+          "coverageItems": [
+            "Assistant success answer with multiple results",
+            "Multiple fact cards in desktop grid"
+          ]
+        },
+        {
+          "order": 4,
+          "file": "chat-multi-result-answer-wide.png",
+          "present": true,
+          "state": "chat-multi-result-answer",
+          "viewport": "wide",
+          "width": 1440,
+          "height": 1000,
+          "sha256": "a4de953b3bbb3169a06f8a43c87d690989ffea96c3e7eb2962eb3bddfd13bad6",
+          "anchor": "shot-chat-multi-result-answer-wide-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-multi-result-answer-wide-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-multi-result-answer-wide.png",
+          "coverageSections": [
+            "Answer Result States",
+            "Chat Messages"
+          ],
+          "coverageItems": [
+            "Assistant success answer with multiple results",
+            "Multiple fact cards in desktop grid"
+          ]
+        }
+      ]
+    },
+    {
+      "order": 13,
+      "key": "candidate-warning",
+      "label": "Candidate or unverified warning",
+      "complete": true,
+      "states": [
+        "chat-candidate-warning"
+      ],
+      "missingStates": [],
+      "missingFiles": [],
+      "files": [
+        {
+          "order": 1,
+          "file": "chat-candidate-warning-mobile.png",
+          "present": true,
+          "state": "chat-candidate-warning",
+          "viewport": "mobile",
+          "width": 390,
+          "height": 976,
+          "sha256": "28d86be830e65d80cd258e3a5154fa85ea93b60d4001521205cb97b46c9d669b",
+          "anchor": "shot-chat-candidate-warning-mobile-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-candidate-warning-mobile-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-candidate-warning-mobile.png",
+          "coverageSections": [
+            "Answer Result States"
+          ],
+          "coverageItems": [
+            "Extracted/non-high-confidence result",
+            "Candidate/unverified result warning",
+            "Result without place address"
+          ]
+        },
+        {
+          "order": 2,
+          "file": "chat-candidate-warning-tablet.png",
+          "present": true,
+          "state": "chat-candidate-warning",
+          "viewport": "tablet",
+          "width": 768,
+          "height": 1024,
+          "sha256": "d3fc00892dc8cb59b36f3a14ce844c764cfc52c44d76f0a12ce32dd279dfd5b0",
+          "anchor": "shot-chat-candidate-warning-tablet-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-candidate-warning-tablet-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-candidate-warning-tablet.png",
+          "coverageSections": [
+            "Answer Result States"
+          ],
+          "coverageItems": [
+            "Extracted/non-high-confidence result",
+            "Candidate/unverified result warning",
+            "Result without place address"
+          ]
+        },
+        {
+          "order": 3,
+          "file": "chat-candidate-warning-desktop.png",
+          "present": true,
+          "state": "chat-candidate-warning",
+          "viewport": "desktop",
+          "width": 1280,
+          "height": 900,
+          "sha256": "0017d99e3b746a4f5bbfd8d5666e7b21d1e381a31a06a2c7d67a8b97bee2ba9d",
+          "anchor": "shot-chat-candidate-warning-desktop-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-candidate-warning-desktop-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-candidate-warning-desktop.png",
+          "coverageSections": [
+            "Answer Result States"
+          ],
+          "coverageItems": [
+            "Extracted/non-high-confidence result",
+            "Candidate/unverified result warning",
+            "Result without place address"
+          ]
+        },
+        {
+          "order": 4,
+          "file": "chat-candidate-warning-wide.png",
+          "present": true,
+          "state": "chat-candidate-warning",
+          "viewport": "wide",
+          "width": 1440,
+          "height": 1000,
+          "sha256": "0d783de1b3799facd5e9d8a2c9db12817b842ad33b08a49875535c2f9ed744ad",
+          "anchor": "shot-chat-candidate-warning-wide-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-candidate-warning-wide-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-candidate-warning-wide.png",
+          "coverageSections": [
+            "Answer Result States"
+          ],
+          "coverageItems": [
+            "Extracted/non-high-confidence result",
+            "Candidate/unverified result warning",
+            "Result without place address"
+          ]
+        }
+      ]
+    },
+    {
+      "order": 14,
+      "key": "missing-fields",
+      "label": "Missing extracted fields",
+      "complete": true,
+      "states": [
+        "chat-missing-fields"
+      ],
+      "missingStates": [],
+      "missingFiles": [],
+      "files": [
+        {
+          "order": 1,
+          "file": "chat-missing-fields-mobile.png",
+          "present": true,
+          "state": "chat-missing-fields",
+          "viewport": "mobile",
+          "width": 390,
+          "height": 976,
+          "sha256": "81caa363c226108d268861779d2e7ab4c69a5723fa0fe6d095bc4d17e86ac9e1",
+          "anchor": "shot-chat-missing-fields-mobile-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-missing-fields-mobile-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-missing-fields-mobile.png",
+          "coverageSections": [
+            "Answer Result States"
+          ],
+          "coverageItems": [
+            "Extracted/non-high-confidence result",
+            "Candidate/unverified result warning",
+            "Result with missing place name",
+            "Result with missing schedule/time",
+            "Result without place address",
+            "Caveats absent"
+          ]
+        },
+        {
+          "order": 2,
+          "file": "chat-missing-fields-tablet.png",
+          "present": true,
+          "state": "chat-missing-fields",
+          "viewport": "tablet",
+          "width": 768,
+          "height": 1024,
+          "sha256": "198b1d0a35593a7dc6b8466ff3d5d8596f85502e1874fb0c79f7398f0df13ae7",
+          "anchor": "shot-chat-missing-fields-tablet-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-missing-fields-tablet-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-missing-fields-tablet.png",
+          "coverageSections": [
+            "Answer Result States"
+          ],
+          "coverageItems": [
+            "Extracted/non-high-confidence result",
+            "Candidate/unverified result warning",
+            "Result with missing place name",
+            "Result with missing schedule/time",
+            "Result without place address",
+            "Caveats absent"
+          ]
+        },
+        {
+          "order": 3,
+          "file": "chat-missing-fields-desktop.png",
+          "present": true,
+          "state": "chat-missing-fields",
+          "viewport": "desktop",
+          "width": 1280,
+          "height": 900,
+          "sha256": "2e71a5b557b707d213df3bcc8cf8f50e48a18ad0e16b578a867fbf2e6078fe67",
+          "anchor": "shot-chat-missing-fields-desktop-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-missing-fields-desktop-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-missing-fields-desktop.png",
+          "coverageSections": [
+            "Answer Result States"
+          ],
+          "coverageItems": [
+            "Extracted/non-high-confidence result",
+            "Candidate/unverified result warning",
+            "Result with missing place name",
+            "Result with missing schedule/time",
+            "Result without place address",
+            "Caveats absent"
+          ]
+        },
+        {
+          "order": 4,
+          "file": "chat-missing-fields-wide.png",
+          "present": true,
+          "state": "chat-missing-fields",
+          "viewport": "wide",
+          "width": 1440,
+          "height": 1000,
+          "sha256": "408a31a65e6817e1ae705900e51980874b3ae2d2aa833004f7ae2d40f670674a",
+          "anchor": "shot-chat-missing-fields-wide-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-missing-fields-wide-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-missing-fields-wide.png",
+          "coverageSections": [
+            "Answer Result States"
+          ],
+          "coverageItems": [
+            "Extracted/non-high-confidence result",
+            "Candidate/unverified result warning",
+            "Result with missing place name",
+            "Result with missing schedule/time",
+            "Result without place address",
+            "Caveats absent"
+          ]
+        }
+      ]
+    },
+    {
+      "order": 15,
+      "key": "failure-answer",
+      "label": "Research failure answer",
+      "complete": true,
+      "states": [
+        "chat-failure"
+      ],
+      "missingStates": [],
+      "missingFiles": [],
+      "files": [
+        {
+          "order": 1,
+          "file": "chat-failure-mobile.png",
+          "present": true,
+          "state": "chat-failure",
+          "viewport": "mobile",
+          "width": 390,
+          "height": 844,
+          "sha256": "622ade90a7e432db04315dcdacc1c4269baab7e8b41342983e25a214037124ac",
+          "anchor": "shot-chat-failure-mobile-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-failure-mobile-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-failure-mobile.png",
+          "coverageSections": [
+            "Activity / Research Jobs",
+            "Chat Messages",
+            "Failure And Error States",
+            "Home Chat: Submission And Research"
+          ],
+          "coverageItems": [
+            "Recovery to enabled composer after research finishes/fails/cancels",
+            "Assistant plain failure message",
+            "Research failure assistant message",
+            "Failed job in activity list",
+            "Failed job with technical details collapsed",
+            "“Could not extract usable schedule” message",
+            "Clifton Park Mass failure scenario",
+            "Recovery controls after failure",
+            "Failed job"
+          ]
+        },
+        {
+          "order": 2,
+          "file": "chat-failure-tablet.png",
+          "present": true,
+          "state": "chat-failure",
+          "viewport": "tablet",
+          "width": 768,
+          "height": 1024,
+          "sha256": "d0802fe7d0b322212cca676e99720c503ae4a915b8a12a904acec9c1a79fcac4",
+          "anchor": "shot-chat-failure-tablet-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-failure-tablet-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-failure-tablet.png",
+          "coverageSections": [
+            "Activity / Research Jobs",
+            "Chat Messages",
+            "Failure And Error States",
+            "Home Chat: Submission And Research"
+          ],
+          "coverageItems": [
+            "Recovery to enabled composer after research finishes/fails/cancels",
+            "Assistant plain failure message",
+            "Research failure assistant message",
+            "Failed job in activity list",
+            "Failed job with technical details collapsed",
+            "“Could not extract usable schedule” message",
+            "Clifton Park Mass failure scenario",
+            "Recovery controls after failure",
+            "Failed job"
+          ]
+        },
+        {
+          "order": 3,
+          "file": "chat-failure-desktop.png",
+          "present": true,
+          "state": "chat-failure",
+          "viewport": "desktop",
+          "width": 1280,
+          "height": 900,
+          "sha256": "731318360847955839af9b90069d268f810488e1818ffacbae4023deb8cc8fbc",
+          "anchor": "shot-chat-failure-desktop-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-failure-desktop-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-failure-desktop.png",
+          "coverageSections": [
+            "Activity / Research Jobs",
+            "Chat Messages",
+            "Failure And Error States",
+            "Home Chat: Submission And Research"
+          ],
+          "coverageItems": [
+            "Recovery to enabled composer after research finishes/fails/cancels",
+            "Assistant plain failure message",
+            "Research failure assistant message",
+            "Failed job in activity list",
+            "Failed job with technical details collapsed",
+            "“Could not extract usable schedule” message",
+            "Clifton Park Mass failure scenario",
+            "Recovery controls after failure",
+            "Failed job"
+          ]
+        },
+        {
+          "order": 4,
+          "file": "chat-failure-wide.png",
+          "present": true,
+          "state": "chat-failure",
+          "viewport": "wide",
+          "width": 1440,
+          "height": 1000,
+          "sha256": "bfaed25a0eca0a1265f7d998fc9325ba021195195939e06d18466712398d46da",
+          "anchor": "shot-chat-failure-wide-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-failure-wide-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-failure-wide.png",
+          "coverageSections": [
+            "Activity / Research Jobs",
+            "Chat Messages",
+            "Failure And Error States",
+            "Home Chat: Submission And Research"
+          ],
+          "coverageItems": [
+            "Recovery to enabled composer after research finishes/fails/cancels",
+            "Assistant plain failure message",
+            "Research failure assistant message",
+            "Failed job in activity list",
+            "Failed job with technical details collapsed",
+            "“Could not extract usable schedule” message",
+            "Clifton Park Mass failure scenario",
+            "Recovery controls after failure",
+            "Failed job"
+          ]
+        }
+      ]
+    },
+    {
+      "order": 16,
+      "key": "technical-failure-details",
+      "label": "Expanded technical failure details",
+      "complete": true,
+      "states": [
+        "chat-failure-details-expanded"
+      ],
+      "missingStates": [],
+      "missingFiles": [],
+      "files": [
+        {
+          "order": 1,
+          "file": "chat-failure-details-expanded-mobile.png",
+          "present": true,
+          "state": "chat-failure-details-expanded",
+          "viewport": "mobile",
+          "width": 390,
+          "height": 844,
+          "sha256": "89be19e4fdef901f06a3fa7e26f785f0aec428d74d5e0f17f7e599d90acb8974",
+          "anchor": "shot-chat-failure-details-expanded-mobile-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-failure-details-expanded-mobile-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-failure-details-expanded-mobile.png",
+          "coverageSections": [
+            "Admin: Unauthenticated Gate",
+            "Failure And Error States",
+            "Interaction And Accessibility Visual States"
+          ],
+          "coverageItems": [
+            "Failed job with technical details expanded",
+            "Long error message wrapping",
+            "Source fetch failure/candidate page failure message",
+            "Clifton Park Mass failure scenario",
+            "Long error text wrapping",
+            "Keyboard focus-visible on details summaries"
+          ]
+        },
+        {
+          "order": 2,
+          "file": "chat-failure-details-expanded-tablet.png",
+          "present": true,
+          "state": "chat-failure-details-expanded",
+          "viewport": "tablet",
+          "width": 768,
+          "height": 1024,
+          "sha256": "6d35ddd1dc4e8aaef41b491b0749743f66751ad9f798fa32817e6959e4408cc3",
+          "anchor": "shot-chat-failure-details-expanded-tablet-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-failure-details-expanded-tablet-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-failure-details-expanded-tablet.png",
+          "coverageSections": [
+            "Admin: Unauthenticated Gate",
+            "Failure And Error States",
+            "Interaction And Accessibility Visual States"
+          ],
+          "coverageItems": [
+            "Failed job with technical details expanded",
+            "Long error message wrapping",
+            "Source fetch failure/candidate page failure message",
+            "Clifton Park Mass failure scenario",
+            "Long error text wrapping",
+            "Keyboard focus-visible on details summaries"
+          ]
+        },
+        {
+          "order": 3,
+          "file": "chat-failure-details-expanded-desktop.png",
+          "present": true,
+          "state": "chat-failure-details-expanded",
+          "viewport": "desktop",
+          "width": 1280,
+          "height": 900,
+          "sha256": "0527fd77e57263c289a13a2a7953a38ed102ad6b98336acee619c0c82ffa9ab4",
+          "anchor": "shot-chat-failure-details-expanded-desktop-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-failure-details-expanded-desktop-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-failure-details-expanded-desktop.png",
+          "coverageSections": [
+            "Admin: Unauthenticated Gate",
+            "Failure And Error States",
+            "Interaction And Accessibility Visual States"
+          ],
+          "coverageItems": [
+            "Failed job with technical details expanded",
+            "Long error message wrapping",
+            "Source fetch failure/candidate page failure message",
+            "Clifton Park Mass failure scenario",
+            "Long error text wrapping",
+            "Keyboard focus-visible on details summaries"
+          ]
+        },
+        {
+          "order": 4,
+          "file": "chat-failure-details-expanded-wide.png",
+          "present": true,
+          "state": "chat-failure-details-expanded",
+          "viewport": "wide",
+          "width": 1440,
+          "height": 1000,
+          "sha256": "faba8b8dac8e62e0a7363de31d101825290273005ed864be7a45f1ccec2ace5c",
+          "anchor": "shot-chat-failure-details-expanded-wide-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-failure-details-expanded-wide-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-failure-details-expanded-wide.png",
+          "coverageSections": [
+            "Admin: Unauthenticated Gate",
+            "Failure And Error States",
+            "Interaction And Accessibility Visual States"
+          ],
+          "coverageItems": [
+            "Failed job with technical details expanded",
+            "Long error message wrapping",
+            "Source fetch failure/candidate page failure message",
+            "Clifton Park Mass failure scenario",
+            "Long error text wrapping",
+            "Keyboard focus-visible on details summaries"
+          ]
+        }
+      ]
+    },
+    {
+      "order": 17,
+      "key": "unsupported-failure",
+      "label": "Unsupported query failure",
+      "complete": true,
+      "states": [
+        "chat-unsupported-failure"
+      ],
+      "missingStates": [],
+      "missingFiles": [],
+      "files": [
+        {
+          "order": 1,
+          "file": "chat-unsupported-failure-mobile.png",
+          "present": true,
+          "state": "chat-unsupported-failure",
+          "viewport": "mobile",
+          "width": 390,
+          "height": 844,
+          "sha256": "5d943174c460c8c32f6954d9bc4f2ee52e425982e2c9e155ee4d0f2e4fce5bb2",
+          "anchor": "shot-chat-unsupported-failure-mobile-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-unsupported-failure-mobile-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-unsupported-failure-mobile.png",
+          "coverageSections": [
+            "Chat Messages",
+            "Failure And Error States"
+          ],
+          "coverageItems": [
+            "Assistant plain failure message",
+            "Research failure assistant message",
+            "Unsupported query failure"
+          ]
+        },
+        {
+          "order": 2,
+          "file": "chat-unsupported-failure-tablet.png",
+          "present": true,
+          "state": "chat-unsupported-failure",
+          "viewport": "tablet",
+          "width": 768,
+          "height": 1024,
+          "sha256": "64a2ae46417e714028ab1558778c7e16a608c6aa7e1679b8d1b1664eb5760f0f",
+          "anchor": "shot-chat-unsupported-failure-tablet-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-unsupported-failure-tablet-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-unsupported-failure-tablet.png",
+          "coverageSections": [
+            "Chat Messages",
+            "Failure And Error States"
+          ],
+          "coverageItems": [
+            "Assistant plain failure message",
+            "Research failure assistant message",
+            "Unsupported query failure"
+          ]
+        },
+        {
+          "order": 3,
+          "file": "chat-unsupported-failure-desktop.png",
+          "present": true,
+          "state": "chat-unsupported-failure",
+          "viewport": "desktop",
+          "width": 1280,
+          "height": 900,
+          "sha256": "827581f8babd28b772ce301a9931a333a71644d4028f897568a6ab54e4512e2d",
+          "anchor": "shot-chat-unsupported-failure-desktop-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-unsupported-failure-desktop-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-unsupported-failure-desktop.png",
+          "coverageSections": [
+            "Chat Messages",
+            "Failure And Error States"
+          ],
+          "coverageItems": [
+            "Assistant plain failure message",
+            "Research failure assistant message",
+            "Unsupported query failure"
+          ]
+        },
+        {
+          "order": 4,
+          "file": "chat-unsupported-failure-wide.png",
+          "present": true,
+          "state": "chat-unsupported-failure",
+          "viewport": "wide",
+          "width": 1440,
+          "height": 1000,
+          "sha256": "317e867398c73255272f51ffdcdb6739d120b94c38c6de9ac0d150ef81a6c36a",
+          "anchor": "shot-chat-unsupported-failure-wide-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-unsupported-failure-wide-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-unsupported-failure-wide.png",
+          "coverageSections": [
+            "Chat Messages",
+            "Failure And Error States"
+          ],
+          "coverageItems": [
+            "Assistant plain failure message",
+            "Research failure assistant message",
+            "Unsupported query failure"
+          ]
+        }
+      ]
+    },
+    {
+      "order": 18,
+      "key": "scroll-pressure",
+      "label": "Scrollable message stack and top/bottom positions",
+      "complete": true,
+      "states": [
+        "chat-scroll-pressure",
+        "chat-scroll-pressure-top",
+        "chat-scroll-pressure-bottom"
+      ],
+      "missingStates": [],
+      "missingFiles": [],
+      "files": [
+        {
+          "order": 1,
+          "file": "chat-scroll-pressure-mobile.png",
+          "present": true,
+          "state": "chat-scroll-pressure",
+          "viewport": "mobile",
+          "width": 390,
+          "height": 956,
+          "sha256": "d78d222d3c3ea4f7d7a53f0afc4a93d6b2c720db1076d390c48a62bbbc68a770",
+          "anchor": "shot-chat-scroll-pressure-mobile-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-scroll-pressure-mobile-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-scroll-pressure-mobile.png",
+          "coverageSections": [
+            "Activity / Research Jobs",
+            "Chat Messages",
+            "Interaction And Accessibility Visual States",
+            "Responsive Layout Stress Cases"
+          ],
+          "coverageItems": [
+            "User message, long wrapping text",
+            "Message timestamp alignment across roles",
+            "Message stack with enough content to scroll",
+            "Auto-scroll bottom state after new message",
+            "Activity list with many jobs and scroll pressure",
+            "No overlapping text or controls",
+            "Very tall page after many messages"
+          ]
+        },
+        {
+          "order": 2,
+          "file": "chat-scroll-pressure-tablet.png",
+          "present": true,
+          "state": "chat-scroll-pressure",
+          "viewport": "tablet",
+          "width": 768,
+          "height": 1024,
+          "sha256": "8fcfd1fe31e41e2331ec228394eb857eac2619ec4e6a07fc562f4a7621883232",
+          "anchor": "shot-chat-scroll-pressure-tablet-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-scroll-pressure-tablet-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-scroll-pressure-tablet.png",
+          "coverageSections": [
+            "Activity / Research Jobs",
+            "Chat Messages",
+            "Interaction And Accessibility Visual States",
+            "Responsive Layout Stress Cases"
+          ],
+          "coverageItems": [
+            "User message, long wrapping text",
+            "Message timestamp alignment across roles",
+            "Message stack with enough content to scroll",
+            "Auto-scroll bottom state after new message",
+            "Activity list with many jobs and scroll pressure",
+            "No overlapping text or controls",
+            "Very tall page after many messages"
+          ]
+        },
+        {
+          "order": 3,
+          "file": "chat-scroll-pressure-desktop.png",
+          "present": true,
+          "state": "chat-scroll-pressure",
+          "viewport": "desktop",
+          "width": 1280,
+          "height": 900,
+          "sha256": "37ec9778378f842066a77e1634d8639c77ae8d30a0e599194b2d7060f2da12d4",
+          "anchor": "shot-chat-scroll-pressure-desktop-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-scroll-pressure-desktop-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-scroll-pressure-desktop.png",
+          "coverageSections": [
+            "Activity / Research Jobs",
+            "Chat Messages",
+            "Interaction And Accessibility Visual States",
+            "Responsive Layout Stress Cases"
+          ],
+          "coverageItems": [
+            "User message, long wrapping text",
+            "Message timestamp alignment across roles",
+            "Message stack with enough content to scroll",
+            "Auto-scroll bottom state after new message",
+            "Activity list with many jobs and scroll pressure",
+            "No overlapping text or controls",
+            "Very tall page after many messages"
+          ]
+        },
+        {
+          "order": 4,
+          "file": "chat-scroll-pressure-wide.png",
+          "present": true,
+          "state": "chat-scroll-pressure",
+          "viewport": "wide",
+          "width": 1440,
+          "height": 1000,
+          "sha256": "076a123fc96c07cba5c64e5c1edd9e6ddca6e34e08582200b3093cff2cc10a97",
+          "anchor": "shot-chat-scroll-pressure-wide-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-scroll-pressure-wide-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-scroll-pressure-wide.png",
+          "coverageSections": [
+            "Activity / Research Jobs",
+            "Chat Messages",
+            "Interaction And Accessibility Visual States",
+            "Responsive Layout Stress Cases"
+          ],
+          "coverageItems": [
+            "User message, long wrapping text",
+            "Message timestamp alignment across roles",
+            "Message stack with enough content to scroll",
+            "Auto-scroll bottom state after new message",
+            "Activity list with many jobs and scroll pressure",
+            "No overlapping text or controls",
+            "Very tall page after many messages"
+          ]
+        },
+        {
+          "order": 5,
+          "file": "chat-scroll-pressure-top-mobile.png",
+          "present": true,
+          "state": "chat-scroll-pressure-top",
+          "viewport": "mobile",
+          "width": 390,
+          "height": 956,
+          "sha256": "18dfa81a665214961a962649d4a14fc99c92e31b8abbcf7ca06a7949a663157e",
+          "anchor": "shot-chat-scroll-pressure-top-mobile-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-scroll-pressure-top-mobile-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-scroll-pressure-top-mobile.png",
+          "coverageSections": [
+            "Chat Messages",
+            "Responsive Layout Stress Cases"
+          ],
+          "coverageItems": [
+            "Message stack with enough content to scroll",
+            "Very tall page after many messages"
+          ]
+        },
+        {
+          "order": 6,
+          "file": "chat-scroll-pressure-top-tablet.png",
+          "present": true,
+          "state": "chat-scroll-pressure-top",
+          "viewport": "tablet",
+          "width": 768,
+          "height": 1024,
+          "sha256": "20a5c3979fe245dbf60111ca2fbf0a8316a18af877a44b03959c3b28c08fe200",
+          "anchor": "shot-chat-scroll-pressure-top-tablet-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-scroll-pressure-top-tablet-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-scroll-pressure-top-tablet.png",
+          "coverageSections": [
+            "Chat Messages",
+            "Responsive Layout Stress Cases"
+          ],
+          "coverageItems": [
+            "Message stack with enough content to scroll",
+            "Very tall page after many messages"
+          ]
+        },
+        {
+          "order": 7,
+          "file": "chat-scroll-pressure-top-desktop.png",
+          "present": true,
+          "state": "chat-scroll-pressure-top",
+          "viewport": "desktop",
+          "width": 1280,
+          "height": 900,
+          "sha256": "9078fc142e03c42b0ccf75a7678e3438b378d174fe6a04f2fc590dc52ed58098",
+          "anchor": "shot-chat-scroll-pressure-top-desktop-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-scroll-pressure-top-desktop-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-scroll-pressure-top-desktop.png",
+          "coverageSections": [
+            "Chat Messages",
+            "Responsive Layout Stress Cases"
+          ],
+          "coverageItems": [
+            "Message stack with enough content to scroll",
+            "Very tall page after many messages"
+          ]
+        },
+        {
+          "order": 8,
+          "file": "chat-scroll-pressure-top-wide.png",
+          "present": true,
+          "state": "chat-scroll-pressure-top",
+          "viewport": "wide",
+          "width": 1440,
+          "height": 1000,
+          "sha256": "bddf3bc2343b888365d8a757021e4454aa95b5e6f0bc0153c7d0ef6b3e2ae583",
+          "anchor": "shot-chat-scroll-pressure-top-wide-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-scroll-pressure-top-wide-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-scroll-pressure-top-wide.png",
+          "coverageSections": [
+            "Chat Messages",
+            "Responsive Layout Stress Cases"
+          ],
+          "coverageItems": [
+            "Message stack with enough content to scroll",
+            "Very tall page after many messages"
+          ]
+        },
+        {
+          "order": 9,
+          "file": "chat-scroll-pressure-bottom-mobile.png",
+          "present": true,
+          "state": "chat-scroll-pressure-bottom",
+          "viewport": "mobile",
+          "width": 390,
+          "height": 956,
+          "sha256": "d78d222d3c3ea4f7d7a53f0afc4a93d6b2c720db1076d390c48a62bbbc68a770",
+          "anchor": "shot-chat-scroll-pressure-bottom-mobile-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-scroll-pressure-bottom-mobile-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-scroll-pressure-bottom-mobile.png",
+          "coverageSections": [
+            "Chat Messages",
+            "Responsive Layout Stress Cases"
+          ],
+          "coverageItems": [
+            "Message stack with enough content to scroll",
+            "Auto-scroll bottom state after new message",
+            "Very tall page after many messages"
+          ]
+        },
+        {
+          "order": 10,
+          "file": "chat-scroll-pressure-bottom-tablet.png",
+          "present": true,
+          "state": "chat-scroll-pressure-bottom",
+          "viewport": "tablet",
+          "width": 768,
+          "height": 1024,
+          "sha256": "8fcfd1fe31e41e2331ec228394eb857eac2619ec4e6a07fc562f4a7621883232",
+          "anchor": "shot-chat-scroll-pressure-bottom-tablet-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-scroll-pressure-bottom-tablet-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-scroll-pressure-bottom-tablet.png",
+          "coverageSections": [
+            "Chat Messages",
+            "Responsive Layout Stress Cases"
+          ],
+          "coverageItems": [
+            "Message stack with enough content to scroll",
+            "Auto-scroll bottom state after new message",
+            "Very tall page after many messages"
+          ]
+        },
+        {
+          "order": 11,
+          "file": "chat-scroll-pressure-bottom-desktop.png",
+          "present": true,
+          "state": "chat-scroll-pressure-bottom",
+          "viewport": "desktop",
+          "width": 1280,
+          "height": 900,
+          "sha256": "37ec9778378f842066a77e1634d8639c77ae8d30a0e599194b2d7060f2da12d4",
+          "anchor": "shot-chat-scroll-pressure-bottom-desktop-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-scroll-pressure-bottom-desktop-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-scroll-pressure-bottom-desktop.png",
+          "coverageSections": [
+            "Chat Messages",
+            "Responsive Layout Stress Cases"
+          ],
+          "coverageItems": [
+            "Message stack with enough content to scroll",
+            "Auto-scroll bottom state after new message",
+            "Very tall page after many messages"
+          ]
+        },
+        {
+          "order": 12,
+          "file": "chat-scroll-pressure-bottom-wide.png",
+          "present": true,
+          "state": "chat-scroll-pressure-bottom",
+          "viewport": "wide",
+          "width": 1440,
+          "height": 1000,
+          "sha256": "076a123fc96c07cba5c64e5c1edd9e6ddca6e34e08582200b3093cff2cc10a97",
+          "anchor": "shot-chat-scroll-pressure-bottom-wide-png",
+          "contactSheetHref": "e2e-snapshots\\index.html#shot-chat-scroll-pressure-bottom-wide-png",
+          "screenshotHref": "e2e-snapshots\\visual\\chat-scroll-pressure-bottom-wide.png",
+          "coverageSections": [
+            "Chat Messages",
+            "Responsive Layout Stress Cases"
+          ],
+          "coverageItems": [
+            "Message stack with enough content to scroll",
+            "Auto-scroll bottom state after new message",
+            "Very tall page after many messages"
+          ]
+        }
+      ]
+    }
+  ]
+}

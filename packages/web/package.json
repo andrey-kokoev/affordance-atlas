@@ -9,7 +9,10 @@
     "preview": "vite preview",
     "typecheck": "pnpm --filter @affordance-atlas/domain build && vue-tsc --noEmit",
     "test:e2e": "playwright test",
-    "test:e2e:mcp": "node e2e-node/mcp.mjs"
+    "test:e2e:mcp": "node e2e-node/mcp.mjs",
+    "audit:visual": "node scripts/visual-snapshot-audit.mjs",
+    "audit:visual:manual": "node scripts/visual-snapshot-audit.mjs --require-manual-review",
+    "audit:visual:manual:selftest": "node scripts/visual-snapshot-manual-gate-selftest.mjs"
   },
   "dependencies": {
     "@affordance-atlas/domain": "workspace:*",
@@ -18,7 +21,9 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.50.0",
+    "@tailwindcss/vite": "^4.3.1",
     "@vitejs/plugin-vue": "^6.0.0",
+    "tailwindcss": "^4.3.1",
     "typescript": "^5.9.0",
     "vite": "^8.0.0",
     "vue-tsc": "^3.0.0"

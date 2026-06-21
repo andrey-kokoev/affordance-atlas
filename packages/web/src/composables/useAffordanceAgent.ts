@@ -25,6 +25,10 @@ function getOrCreateSessionId(): string {
   return id;
 }
 
+function isVisualFixtureActive(): boolean {
+  return typeof window !== "undefined" && (window as unknown as Record<string, unknown>).__affordanceAtlasVisualFixtureActive === true;
+}
+
 export function useAffordanceAgent() {
   const connected = ref(false);
   const connecting = ref(true);
@@ -49,29 +53,35 @@ export function useAffordanceAgent() {
       host: window.location.host,
       protocol: (window.location.protocol === "https:" ? "wss" : "ws") as "wss" | "ws",
       onStateUpdate: (state: ServerSessionState) => {
+        if (isVisualFixtureActive()) return;
         messages.value = state.messages;
         jobs.value = state.jobs;
       },
       onStateUpdateError: (err: string) => {
+        if (isVisualFixtureActive()) return;
         error.value = err;
       },
     });
 
     clientRef.value = client;
     refreshTimer = window.setInterval(() => {
+      if (isVisualFixtureActive()) return;
       if (!jobs.value.some((j) => j.status === "queued" || j.status === "running")) return;
       void client.call("listSessionJobs", [], { timeout: 10000 }).catch(() => undefined);
     }, 2000);
 
     const handleOpen = () => {
+      if (isVisualFixtureActive()) return;
       connected.value = true;
       connecting.value = false;
       error.value = null;
     };
     const handleClose = () => {
+      if (isVisualFixtureActive()) return;
       connected.value = false;
     };
     const handleError = (evt: Event) => {
+      if (isVisualFixtureActive()) return;
       error.value = evt instanceof ErrorEvent ? evt.message : "Connection error";
       connecting.value = false;
     };
@@ -82,6 +92,7 @@ export function useAffordanceAgent() {
 
     client.ready
       .then(() => {
+        if (isVisualFixtureActive()) return;
         connected.value = true;
         connecting.value = false;
         if (client.state) {

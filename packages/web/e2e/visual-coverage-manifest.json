@@ -1,0 +1,1102 @@
+{
+  "schema": "affordance-atlas.visual-coverage-manifest.v1",
+  "inventory": "../../17-ui-snapshot-review-inventory.md",
+  "exclude_inventory_sections": [
+    "Viewports",
+    "Snapshot Coverage Priority"
+  ],
+  "coverage": [
+    {
+      "item": "Home route header, online",
+      "states": [
+        "home-empty"
+      ]
+    },
+    {
+      "item": "Home route header, connecting",
+      "states": [
+        "global-home-connecting",
+        "chat-reconnecting-with-messages"
+      ]
+    },
+    {
+      "item": "Home route header, offline",
+      "states": [
+        "global-home-offline",
+        "home-error-banner",
+        "chat-offline-with-messages"
+      ]
+    },
+    {
+      "item": "Admin route header, online",
+      "states": [
+        "admin-gate-empty",
+        "admin-auth-summary"
+      ]
+    },
+    {
+      "item": "Admin route header, connecting",
+      "states": [
+        "global-admin-connecting"
+      ]
+    },
+    {
+      "item": "Admin route header, offline",
+      "states": [
+        "global-admin-offline"
+      ]
+    },
+    {
+      "item": "New chat button normal, hover, focus-visible",
+      "states": [
+        "home-empty",
+        "home-new-chat-hover",
+        "home-new-chat-focus"
+      ]
+    },
+    {
+      "item": "Back to app button normal, hover, focus-visible",
+      "states": [
+        "admin-gate-empty",
+        "admin-back-hover",
+        "admin-back-focus"
+      ]
+    },
+    {
+      "item": "Connection status badges: online, connecting, offline",
+      "states": [
+        "home-empty",
+        "global-home-connecting",
+        "global-home-offline",
+        "global-admin-connecting",
+        "global-admin-offline",
+        "chat-reconnecting-with-messages",
+        "chat-offline-with-messages"
+      ]
+    },
+    {
+      "item": "Empty chat initial state",
+      "states": [
+        "home-empty"
+      ]
+    },
+    {
+      "item": "Empty chat with input focused",
+      "states": [
+        "home-input-focused"
+      ]
+    },
+    {
+      "item": "Empty chat with typed valid query",
+      "states": [
+        "home-typed-query"
+      ]
+    },
+    {
+      "item": "Empty chat with disabled input while offline/connecting",
+      "states": [
+        "global-home-offline",
+        "global-home-connecting",
+        "home-busy-disabled"
+      ]
+    },
+    {
+      "item": "Example query buttons normal, hover, focus-visible",
+      "states": [
+        "home-empty",
+        "home-example-hover",
+        "home-example-focus"
+      ]
+    },
+    {
+      "item": "Long example query wrapping",
+      "states": [
+        "home-empty",
+        "home-empty-stress-widths"
+      ]
+    },
+    {
+      "item": "Empty activity sidebar",
+      "states": [
+        "home-empty"
+      ]
+    },
+    {
+      "item": "Mobile empty activity section below composer",
+      "states": [
+        "home-empty"
+      ]
+    },
+    {
+      "item": "Query submitted with user message visible",
+      "states": [
+        "chat-submitted-user-only"
+      ]
+    },
+    {
+      "item": "System “looking that up” message",
+      "states": [
+        "chat-system-looking-only",
+        "chat-reconnecting-with-messages"
+      ]
+    },
+    {
+      "item": "Busy/submitting state with controls disabled",
+      "states": [
+        "home-busy-disabled",
+        "chat-submitted-user-only",
+        "chat-system-looking-only",
+        "chat-reconnecting-with-messages",
+        "chat-offline-with-messages"
+      ]
+    },
+    {
+      "item": "Active research indicator",
+      "states": [
+        "chat-active-research",
+        "chat-reconnecting-with-messages",
+        "chat-offline-with-messages"
+      ]
+    },
+    {
+      "item": "Active research actions: View job, Cancel research",
+      "states": [
+        "chat-active-research",
+        "chat-active-actions-focus"
+      ]
+    },
+    {
+      "item": "Active research elapsed-time display",
+      "states": [
+        "chat-active-research",
+        "chat-running-polling"
+      ]
+    },
+    {
+      "item": "Cancelled active research state",
+      "states": [
+        "chat-cancelled-research"
+      ]
+    },
+    {
+      "item": "Recovery to enabled composer after research finishes/fails/cancels",
+      "states": [
+        "chat-success-answer",
+        "chat-failure",
+        "chat-cancelled-research"
+      ]
+    },
+    {
+      "item": "User message, short text",
+      "states": [
+        "chat-submitted-user-only",
+        "chat-success-answer"
+      ]
+    },
+    {
+      "item": "User message, long wrapping text",
+      "states": [
+        "chat-scroll-pressure",
+        "chat-punctuation-url-message"
+      ]
+    },
+    {
+      "item": "User message with punctuation/URLs",
+      "states": [
+        "chat-punctuation-url-message"
+      ]
+    },
+    {
+      "item": "System message",
+      "states": [
+        "chat-system-looking-only",
+        "chat-success-answer"
+      ]
+    },
+    {
+      "item": "Assistant plain failure message",
+      "states": [
+        "chat-failure",
+        "chat-unsupported-failure"
+      ]
+    },
+    {
+      "item": "Assistant success answer with one result",
+      "states": [
+        "chat-success-answer"
+      ]
+    },
+    {
+      "item": "Assistant success answer with multiple results",
+      "states": [
+        "chat-multi-result-answer"
+      ]
+    },
+    {
+      "item": "Assistant answer with no next actions",
+      "states": [
+        "chat-no-next-actions"
+      ]
+    },
+    {
+      "item": "Assistant answer with next actions",
+      "states": [
+        "chat-success-answer"
+      ]
+    },
+    {
+      "item": "Long assistant answer wrapping",
+      "states": [
+        "chat-long-answer"
+      ]
+    },
+    {
+      "item": "Message timestamp alignment across roles",
+      "states": [
+        "chat-success-answer",
+        "chat-scroll-pressure"
+      ]
+    },
+    {
+      "item": "Message stack with enough content to scroll",
+      "states": [
+        "chat-scroll-pressure",
+        "chat-scroll-pressure-top",
+        "chat-scroll-pressure-bottom"
+      ]
+    },
+    {
+      "item": "Auto-scroll bottom state after new message",
+      "states": [
+        "chat-scroll-pressure-bottom",
+        "chat-scroll-pressure"
+      ]
+    },
+    {
+      "item": "Verified/high-confidence result",
+      "states": [
+        "chat-success-answer"
+      ]
+    },
+    {
+      "item": "Extracted/non-high-confidence result",
+      "states": [
+        "chat-candidate-warning",
+        "chat-missing-fields"
+      ]
+    },
+    {
+      "item": "Candidate/unverified result warning",
+      "states": [
+        "chat-candidate-warning",
+        "chat-missing-fields"
+      ]
+    },
+    {
+      "item": "Result with missing place name",
+      "states": [
+        "chat-missing-fields"
+      ]
+    },
+    {
+      "item": "Result with missing schedule/time",
+      "states": [
+        "chat-missing-fields"
+      ]
+    },
+    {
+      "item": "Result with place address",
+      "states": [
+        "chat-success-answer"
+      ]
+    },
+    {
+      "item": "Result without place address",
+      "states": [
+        "chat-candidate-warning",
+        "chat-missing-fields"
+      ]
+    },
+    {
+      "item": "Long place name wrapping",
+      "states": [
+        "chat-long-answer"
+      ]
+    },
+    {
+      "item": "Long recurrence label wrapping",
+      "states": [
+        "chat-long-answer"
+      ]
+    },
+    {
+      "item": "Multiple fact cards in desktop grid",
+      "states": [
+        "chat-success-answer",
+        "chat-multi-result-answer"
+      ]
+    },
+    {
+      "item": "Fact cards on mobile single column",
+      "states": [
+        "chat-success-answer",
+        "chat-success-stress-widths"
+      ]
+    },
+    {
+      "item": "Caveats absent",
+      "states": [
+        "chat-no-next-actions",
+        "chat-missing-fields"
+      ]
+    },
+    {
+      "item": "Caveats present and collapsed",
+      "states": [
+        "chat-success-answer"
+      ]
+    },
+    {
+      "item": "Caveats expanded",
+      "states": [
+        "chat-caveats-expanded"
+      ]
+    },
+    {
+      "item": "Evidence details collapsed",
+      "states": [
+        "chat-success-answer"
+      ]
+    },
+    {
+      "item": "Evidence details expanded with one source",
+      "states": [
+        "chat-evidence-expanded"
+      ]
+    },
+    {
+      "item": "Evidence details expanded with multiple sources",
+      "states": [
+        "chat-multiple-evidence-expanded"
+      ]
+    },
+    {
+      "item": "Long source title wrapping",
+      "states": [
+        "chat-evidence-expanded",
+        "chat-source-link-focus"
+      ]
+    },
+    {
+      "item": "Long source URL wrapping",
+      "states": [
+        "chat-multiple-evidence-expanded"
+      ]
+    },
+    {
+      "item": "Retrieved timestamp display",
+      "states": [
+        "chat-evidence-expanded",
+        "chat-multiple-evidence-expanded"
+      ]
+    },
+    {
+      "item": "Evidence span present",
+      "states": [
+        "chat-evidence-expanded"
+      ]
+    },
+    {
+      "item": "Evidence span absent",
+      "states": [
+        "chat-multiple-evidence-expanded"
+      ]
+    },
+    {
+      "item": "Long extracted evidence text",
+      "states": [
+        "chat-evidence-expanded",
+        "chat-multiple-evidence-expanded"
+      ]
+    },
+    {
+      "item": "Evidence source link hover/focus-visible",
+      "states": [
+        "chat-source-link-hover",
+        "chat-source-link-focus"
+      ]
+    },
+    {
+      "item": "Research failure assistant message",
+      "states": [
+        "chat-failure",
+        "chat-unsupported-failure"
+      ]
+    },
+    {
+      "item": "Failed job in activity list",
+      "states": [
+        "chat-failure",
+        "chat-many-job-statuses"
+      ]
+    },
+    {
+      "item": "Failed job with technical details collapsed",
+      "states": [
+        "chat-failure",
+        "chat-many-job-statuses"
+      ]
+    },
+    {
+      "item": "Failed job with technical details expanded",
+      "states": [
+        "chat-failure-details-expanded"
+      ]
+    },
+    {
+      "item": "Error banner visible",
+      "states": [
+        "home-error-banner"
+      ]
+    },
+    {
+      "item": "Long error message wrapping",
+      "states": [
+        "chat-failure-details-expanded",
+        "home-error-banner"
+      ]
+    },
+    {
+      "item": "Unsupported query failure",
+      "states": [
+        "chat-unsupported-failure"
+      ]
+    },
+    {
+      "item": "Source fetch failure/candidate page failure message",
+      "states": [
+        "chat-failure-details-expanded"
+      ]
+    },
+    {
+      "item": "“Could not extract usable schedule” message",
+      "states": [
+        "chat-failure"
+      ]
+    },
+    {
+      "item": "Clifton Park Mass failure scenario",
+      "states": [
+        "chat-failure",
+        "chat-failure-details-expanded"
+      ]
+    },
+    {
+      "item": "Recovery controls after failure",
+      "states": [
+        "chat-failure",
+        "home-error-banner"
+      ]
+    },
+    {
+      "item": "No jobs state",
+      "states": [
+        "home-empty"
+      ]
+    },
+    {
+      "item": "Queued job",
+      "states": [
+        "chat-queued-polling",
+        "chat-many-job-statuses"
+      ]
+    },
+    {
+      "item": "Running job",
+      "states": [
+        "chat-running-polling",
+        "chat-active-research",
+        "chat-many-job-statuses"
+      ]
+    },
+    {
+      "item": "Completed job",
+      "states": [
+        "chat-success-answer",
+        "chat-many-job-statuses"
+      ]
+    },
+    {
+      "item": "Failed job",
+      "states": [
+        "chat-failure",
+        "chat-many-job-statuses"
+      ]
+    },
+    {
+      "item": "Cancelled job",
+      "states": [
+        "chat-cancelled-research",
+        "chat-many-job-statuses"
+      ]
+    },
+    {
+      "item": "Highlighted/focused job",
+      "states": [
+        "chat-job-link-focus",
+        "chat-active-actions-focus"
+      ]
+    },
+    {
+      "item": "Job with long query text",
+      "states": [
+        "chat-many-job-statuses"
+      ]
+    },
+    {
+      "item": "Job outcome for completed answer",
+      "states": [
+        "chat-success-answer",
+        "chat-many-job-statuses"
+      ]
+    },
+    {
+      "item": "Job outcome for queued/running elapsed state",
+      "states": [
+        "chat-queued-polling",
+        "chat-running-polling",
+        "chat-active-research",
+        "chat-reconnecting-with-messages",
+        "chat-offline-with-messages"
+      ]
+    },
+    {
+      "item": "Job status badge colors for every status",
+      "states": [
+        "chat-many-job-statuses"
+      ]
+    },
+    {
+      "item": "Job link hover/focus-visible",
+      "states": [
+        "chat-job-link-hover",
+        "chat-job-link-focus"
+      ]
+    },
+    {
+      "item": "Activity list with many jobs and scroll pressure",
+      "states": [
+        "chat-many-job-statuses",
+        "chat-scroll-pressure"
+      ]
+    },
+    {
+      "item": "Activity sidebar on desktop",
+      "states": [
+        "home-empty",
+        "chat-many-job-statuses"
+      ]
+    },
+    {
+      "item": "Activity section on mobile",
+      "states": [
+        "home-empty",
+        "chat-many-job-statuses"
+      ]
+    },
+    {
+      "item": "Token gate empty",
+      "states": [
+        "admin-gate-empty"
+      ]
+    },
+    {
+      "item": "Token gate input focused",
+      "states": [
+        "admin-gate-focus"
+      ]
+    },
+    {
+      "item": "Token gate with typed token",
+      "states": [
+        "admin-gate-typed"
+      ]
+    },
+    {
+      "item": "Unlock button disabled",
+      "states": [
+        "admin-gate-empty"
+      ]
+    },
+    {
+      "item": "Unlock button enabled",
+      "states": [
+        "admin-gate-typed",
+        "admin-unlock-focus"
+      ]
+    },
+    {
+      "item": "Unlock button loading/verifying",
+      "states": [
+        "admin-gate-loading"
+      ]
+    },
+    {
+      "item": "Invalid token error",
+      "states": [
+        "admin-gate-invalid"
+      ]
+    },
+    {
+      "item": "Long error text wrapping",
+      "states": [
+        "admin-gate-invalid",
+        "home-error-banner",
+        "chat-failure-details-expanded"
+      ]
+    },
+    {
+      "item": "Gate panel at desktop width",
+      "states": [
+        "admin-gate-empty"
+      ]
+    },
+    {
+      "item": "Gate panel at mobile width",
+      "states": [
+        "admin-gate-empty"
+      ]
+    },
+    {
+      "item": "Saved bearer token row",
+      "states": [
+        "admin-auth-summary"
+      ]
+    },
+    {
+      "item": "Masked token display",
+      "states": [
+        "admin-auth-summary"
+      ]
+    },
+    {
+      "item": "Copy token button normal/hover/focus-visible",
+      "states": [
+        "admin-auth-summary",
+        "admin-copy-token-focus"
+      ]
+    },
+    {
+      "item": "Copy header button normal/hover/focus-visible",
+      "states": [
+        "admin-auth-summary",
+        "admin-copy-button-focus"
+      ]
+    },
+    {
+      "item": "Forget token button normal/hover/focus-visible",
+      "states": [
+        "admin-auth-summary",
+        "admin-forget-hover"
+      ]
+    },
+    {
+      "item": "Copy success message",
+      "states": [
+        "admin-copy-success"
+      ]
+    },
+    {
+      "item": "Status summary with no counts",
+      "states": [
+        "admin-summary-empty"
+      ]
+    },
+    {
+      "item": "Status summary with all statuses",
+      "states": [
+        "admin-auth-summary"
+      ]
+    },
+    {
+      "item": "Recent jobs collapsed",
+      "states": [
+        "admin-auth-summary"
+      ]
+    },
+    {
+      "item": "Recent jobs expanded with no jobs",
+      "states": [
+        "admin-summary-empty"
+      ]
+    },
+    {
+      "item": "Recent jobs expanded with multiple jobs",
+      "states": [
+        "admin-summary-recent-expanded"
+      ]
+    },
+    {
+      "item": "Recent job with error message",
+      "states": [
+        "admin-summary-recent-expanded"
+      ]
+    },
+    {
+      "item": "Long recent job query wrapping",
+      "states": [
+        "admin-summary-recent-expanded"
+      ]
+    },
+    {
+      "item": "Data table explorer initial state",
+      "states": [
+        "admin-data-table"
+      ]
+    },
+    {
+      "item": "Table tabs with few tables",
+      "states": [
+        "admin-data-table"
+      ]
+    },
+    {
+      "item": "Table tabs with many tables and horizontal overflow",
+      "states": [
+        "admin-many-table-tabs"
+      ]
+    },
+    {
+      "item": "Active table tab",
+      "states": [
+        "admin-data-table",
+        "admin-table-tab-focus"
+      ]
+    },
+    {
+      "item": "Table tab hover/focus-visible",
+      "states": [
+        "admin-table-tab-focus",
+        "admin-many-table-tabs"
+      ]
+    },
+    {
+      "item": "Refresh button normal/hover/focus-visible",
+      "states": [
+        "admin-data-table",
+        "admin-refresh-hover"
+      ]
+    },
+    {
+      "item": "Refresh button loading/disabled",
+      "states": [
+        "admin-table-loading"
+      ]
+    },
+    {
+      "item": "Table metadata row",
+      "states": [
+        "admin-data-table",
+        "admin-table-pagination-enabled"
+      ]
+    },
+    {
+      "item": "Empty table state",
+      "states": [
+        "admin-empty-table"
+      ]
+    },
+    {
+      "item": "Populated table state",
+      "states": [
+        "admin-data-table",
+        "admin-many-row-table"
+      ]
+    },
+    {
+      "item": "Previous/next pagination disabled",
+      "states": [
+        "admin-table-pagination-disabled"
+      ]
+    },
+    {
+      "item": "Previous/next pagination enabled",
+      "states": [
+        "admin-table-pagination-enabled"
+      ]
+    },
+    {
+      "item": "Pagination while loading",
+      "states": [
+        "admin-table-loading"
+      ]
+    },
+    {
+      "item": "Narrow viewport table horizontal scroll",
+      "states": [
+        "admin-data-table-stress-widths"
+      ]
+    },
+    {
+      "item": "Sticky header behavior during vertical scroll",
+      "states": [
+        "admin-many-row-table"
+      ]
+    },
+    {
+      "item": "Short cell values",
+      "states": [
+        "admin-data-table"
+      ]
+    },
+    {
+      "item": "Long cell values clipped to expected lines",
+      "states": [
+        "admin-data-table",
+        "admin-many-row-table"
+      ]
+    },
+    {
+      "item": "Long cell title/tooltip availability",
+      "states": [
+        "admin-data-table",
+        "admin-many-row-table"
+      ]
+    },
+    {
+      "item": "URL-like cell values",
+      "states": [
+        "admin-data-table",
+        "admin-many-row-table"
+      ]
+    },
+    {
+      "item": "JSON-like cell values",
+      "states": [
+        "admin-data-table",
+        "admin-many-row-table"
+      ]
+    },
+    {
+      "item": "Null/empty cell values",
+      "states": [
+        "admin-data-table",
+        "admin-empty-table"
+      ]
+    },
+    {
+      "item": "Timestamp cell values",
+      "states": [
+        "admin-data-table",
+        "admin-many-row-table"
+      ]
+    },
+    {
+      "item": "Many columns forcing horizontal scroll",
+      "states": [
+        "admin-data-table",
+        "admin-data-table-stress-widths"
+      ]
+    },
+    {
+      "item": "Many rows forcing vertical scroll",
+      "states": [
+        "admin-many-row-table"
+      ]
+    },
+    {
+      "item": "Header text wrapping/overflow",
+      "states": [
+        "admin-data-table",
+        "admin-many-table-tabs"
+      ]
+    },
+    {
+      "item": "Row hover/focus behavior if added later",
+      "states": [
+        "admin-many-row-table"
+      ],
+      "note": "No row focus behavior exists yet; table row density and hover-adjacent readability are covered by populated and many-row table states."
+    },
+    {
+      "item": "Keyboard focus-visible on all buttons",
+      "states": [
+        "home-new-chat-focus",
+        "home-example-focus",
+        "chat-active-actions-focus",
+        "chat-job-link-focus",
+        "admin-unlock-focus",
+        "admin-copy-token-focus",
+        "admin-copy-button-focus",
+        "admin-table-pagination-enabled"
+      ]
+    },
+    {
+      "item": "Keyboard focus-visible on inputs",
+      "states": [
+        "home-input-focused",
+        "admin-gate-focus"
+      ]
+    },
+    {
+      "item": "Keyboard focus-visible on links",
+      "states": [
+        "chat-source-link-focus",
+        "admin-back-focus"
+      ]
+    },
+    {
+      "item": "Keyboard focus-visible on details summaries",
+      "states": [
+        "chat-evidence-expanded",
+        "chat-caveats-expanded",
+        "chat-failure-details-expanded",
+        "admin-summary-recent-expanded"
+      ]
+    },
+    {
+      "item": "Disabled state contrast for all buttons",
+      "states": [
+        "home-busy-disabled",
+        "admin-gate-empty",
+        "admin-gate-loading",
+        "admin-table-loading",
+        "admin-table-pagination-disabled"
+      ]
+    },
+    {
+      "item": "Placeholder text contrast",
+      "states": [
+        "home-empty",
+        "admin-gate-empty"
+      ]
+    },
+    {
+      "item": "Text selection/readability in inputs",
+      "states": [
+        "home-typed-query",
+        "admin-gate-typed"
+      ]
+    },
+    {
+      "item": "Hover states for interactive controls",
+      "states": [
+        "home-example-hover",
+        "home-new-chat-hover",
+        "chat-source-link-hover",
+        "chat-job-link-hover",
+        "admin-back-hover",
+        "admin-forget-hover",
+        "admin-refresh-hover"
+      ]
+    },
+    {
+      "item": "Reduced content width on small screens",
+      "states": [
+        "home-empty-stress-widths",
+        "chat-success-stress-widths",
+        "admin-data-table-stress-widths"
+      ]
+    },
+    {
+      "item": "No horizontal page overflow at every target viewport",
+      "states": [
+        "home-empty",
+        "chat-success-answer",
+        "admin-data-table",
+        "admin-data-table-stress-widths"
+      ]
+    },
+    {
+      "item": "No text clipped inside buttons",
+      "states": [
+        "home-example-hover",
+        "home-busy-disabled",
+        "chat-active-actions-focus",
+        "admin-gate-loading",
+        "admin-table-pagination-enabled"
+      ]
+    },
+    {
+      "item": "No overlapping text or controls",
+      "states": [
+        "home-empty",
+        "chat-long-answer",
+        "chat-scroll-pressure",
+        "admin-many-row-table",
+        "admin-many-table-tabs"
+      ]
+    },
+    {
+      "item": "320px minimum width",
+      "states": [
+        "home-empty-stress-widths",
+        "chat-success-stress-widths",
+        "admin-data-table-stress-widths"
+      ]
+    },
+    {
+      "item": "390px mobile width",
+      "states": [
+        "home-empty",
+        "chat-success-answer",
+        "admin-data-table"
+      ]
+    },
+    {
+      "item": "768px tablet breakpoint",
+      "states": [
+        "home-empty",
+        "chat-success-answer",
+        "admin-data-table"
+      ]
+    },
+    {
+      "item": "960px content max-width boundary",
+      "states": [
+        "home-empty-stress-widths",
+        "chat-success-stress-widths",
+        "admin-data-table-stress-widths"
+      ]
+    },
+    {
+      "item": "1280px desktop",
+      "states": [
+        "home-empty",
+        "chat-success-answer",
+        "admin-data-table"
+      ]
+    },
+    {
+      "item": "1440px wide desktop",
+      "states": [
+        "home-empty",
+        "chat-success-answer",
+        "admin-data-table"
+      ]
+    },
+    {
+      "item": "Very tall page after many messages",
+      "states": [
+        "chat-scroll-pressure",
+        "chat-scroll-pressure-top",
+        "chat-scroll-pressure-bottom"
+      ]
+    },
+    {
+      "item": "Very tall admin table page",
+      "states": [
+        "admin-many-row-table"
+      ]
+    },
+    {
+      "item": "Browser zoom/text scaling risk states, if supported by test harness",
+      "states": [
+        "home-empty-large-text",
+        "chat-long-answer-large-text",
+        "admin-data-table-large-text"
+      ],
+      "note": "Large-text snapshots inject a 125% root font size across home, chat answer, and admin table layouts."
+    }
+  ]
+}
