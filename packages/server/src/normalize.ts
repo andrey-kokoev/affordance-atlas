@@ -94,7 +94,7 @@ export async function normalizeUserQuery(
   const timezone = input.userTimezone ?? "America/New_York";
 
   const { object } = await generateObject({
-    model: workersai("@cf/moonshotai/kimi-k2.6"),
+    model: workersai("@cf/moonshotai/kimi-k2.7"),
     schema: NormalizedQueryShapeSchema,
     system:
       "You normalize free-text user queries about where and when an activity or service is available into a structured query shape. " +

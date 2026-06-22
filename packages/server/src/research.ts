@@ -279,7 +279,7 @@ async function suggestCandidateUrls(
   for (let attempt = 0; attempt < 3; attempt += 1) {
     try {
       const discovery = await generateObject({
-        model: workersai("@cf/moonshotai/kimi-k2.6"),
+        model: workersai("@cf/moonshotai/kimi-k2.7"),
         schema: CandidateUrlsSchema,
         system:
           "Suggest likely official or authoritative public web URLs that may contain current hours, schedules, event times, or availability information for the user's query. Prefer official organization pages. Do not include search result pages, maps pages, social media, or generic directories.",
@@ -404,7 +404,7 @@ export async function runResearch(
           const pageText = await fetchPageText(url);
           assertSourceRelevant(query, url, pageText);
           const extraction = await generateObject({
-            model: workersai("@cf/moonshotai/kimi-k2.6"),
+            model: workersai("@cf/moonshotai/kimi-k2.7"),
             schema: ExtractedScheduleSchema,
             system:
               "Extract only schedule or availability information grounded in the supplied web page text. Do not invent missing facts. Return found=false when the page does not support the requested affordance, place, and time constraints.",
