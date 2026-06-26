@@ -1,7 +1,7 @@
 {
   "schema": "affordance-atlas.visual-review-status.v1",
   "template_schema": "affordance-atlas.visual-review-status-template.v1",
-  "generated_at": "2026-06-21T02:05:12.020Z",
+  "generated_at": "2026-06-21T20:21:16.256Z",
   "screenshot_count": 286,
   "snapshot_set_sha256": "48ae1c723d72ac169c32cc84be6fdd9bf8c7eeca0c9e63ef2673458f81c31ee8",
   "review_scope": {

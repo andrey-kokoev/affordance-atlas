@@ -6,3 +6,7 @@ dist/
 .wrangler/
 .dev.vars
 .ai/secrets/
+.pw-cache/
+packages/web/e2e-snapshots/visual-review-status.json
+packages/web/e2e-snapshots/visual-review-status.selftest-backup.json
+packages/web/e2e-snapshots/visual-review-status.local*.json

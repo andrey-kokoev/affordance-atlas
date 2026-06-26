@@ -27,6 +27,14 @@ This file records the current evidence for the visual snapshot review inventory 
 - Primary viewports: mobile 390 x 844, tablet 768 x 1024, desktop 1280 x 900, wide desktop 1440 x 1000
 - Stress viewports: narrow 320 x 740, boundary 960 x 900
 
+## Visual Artifact Policy
+
+Canonical visual-review artifacts stay in `packages/web/e2e-snapshots/` so `pnpm --filter @affordance-atlas/web audit:visual` remains reproducible from committed screenshots, manifests, and scripts. These include the generated report JSON, contact sheets, section sheets, todo files, duplicate guidance, chat progression evidence, inventory coverage, review status template, and PNG snapshots under `visual/`.
+
+Ephemeral local outputs stay untracked. `.gitignore` excludes the Playwright transform cache plus `visual-review-status.json`, the manual-gate self-test backup file, and optional `visual-review-status.local*.json` scratch exports. The strict manual gate still reads `packages/web/e2e-snapshots/visual-review-status.json` when `pnpm --filter @affordance-atlas/web audit:visual:manual` runs, but normal `audit:visual` ignores that local packet so canonical machine artifacts do not churn as reviewers export or iterate on approval files. The strict manual gate is also read-only for canonical generated artifacts; run normal `audit:visual` to regenerate the committed report, contact sheets, queues, and todo artifacts.
+
+To reduce no-op churn, `audit:visual` reuses the previous canonical `generated_at` timestamp when the current screenshot set hash is unchanged. If screenshots change, the regenerated report receives a fresh timestamp and all dependent canonical artifacts update together.
+
 ## Covered Screen Families
 
 - Global shell: home/admin online, connecting, offline; home new chat hover/focus; admin back hover/focus; status badges.

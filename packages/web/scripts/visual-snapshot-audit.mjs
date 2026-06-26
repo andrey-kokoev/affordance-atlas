@@ -422,6 +422,24 @@ function snapshotSetSha256(entries) {
   return hash.digest("hex");
 }
 
+function reusableGeneratedAt(currentSnapshotSetSha256) {
+  try {
+    const existingReport = JSON.parse(fs.readFileSync(reportPath, "utf8"));
+    const existingGeneratedAt = existingReport?.generated_at;
+    const existingSnapshotSetSha256 = existingReport?.manualReview?.expectedSnapshotSetSha256;
+    if (
+      existingSnapshotSetSha256 === currentSnapshotSetSha256
+      && typeof existingGeneratedAt === "string"
+      && !Number.isNaN(Date.parse(existingGeneratedAt))
+    ) {
+      return existingGeneratedAt;
+    }
+  } catch (error) {
+    if (error?.code !== "ENOENT") throw error;
+  }
+  return new Date().toISOString();
+}
+
 
 function expectedViewportsFor(stateName) {
   return stateName.includes("stress-widths") ? ["narrow", "boundary"] : ["mobile", "tablet", "desktop", "wide"];
@@ -451,7 +469,7 @@ function emptySectionCounts() {
 
 function manualReviewAudit(entries) {
   const files = new Set(entries.map((entry) => entry.file));
-  const reviewFileExists = fs.existsSync(manualReviewPath);
+  const reviewFileExists = requireManualReview && fs.existsSync(manualReviewPath);
   const reviewFile = reviewFileExists ? JSON.parse(fs.readFileSync(manualReviewPath, "utf8")) : null;
   const statusFileSchemaIssue = reviewFileExists && reviewFile?.schema !== "affordance-atlas.visual-review-status.v1"
     ? `Unsupported or missing review status schema: ${reviewFile?.schema ?? "none"}`
@@ -644,6 +662,9 @@ function buildReport() {
       ...pngMetadata(file),
     };
   });
+  const generatedAt = reusableGeneratedAt(snapshotSetSha256(entries));
+  const inventoryItemCoverage = inventoryItemCoverageAudit(stateNames, entries);
+  inventoryItemCoverage.generated_at = generatedAt;
 
   const entriesWithoutCoverage = entries.filter((entry) => entry.coverageItems.length === 0).map((entry) => entry.file);
   const entriesWithoutCoverageSections = entries.filter((entry) => entry.coverageSections.length === 0).map((entry) => entry.file);
@@ -699,7 +720,7 @@ function buildReport() {
   }));
 
   const report = {
-    generated_at: new Date().toISOString(),
+    generated_at: generatedAt,
     expected,
     actual: files.length,
     states: stateNames.length,
@@ -713,7 +734,7 @@ function buildReport() {
     entriesWithoutCoverage,
     entriesWithoutCoverageSections,
     inventorySections: [...new Set(entries.flatMap((entry) => entry.coverageSections))].sort(),
-    inventoryItemCoverage: inventoryItemCoverageAudit(stateNames, entries),
+    inventoryItemCoverage,
     tinyFiles: entries.filter((entry) => entry.bytes < 10000),
     duplicates,
     duplicateReview,
@@ -1870,17 +1891,19 @@ function writeContactSheet(report) {
 
 fs.mkdirSync(outputDir, { recursive: true });
 const report = buildReport();
-fs.writeFileSync(reportPath, JSON.stringify(report, null, 2));
-writeContactSheet(report);
-writeInventoryCoverage(report);
-writeDuplicateReviewArtifact(report);
-writeChatProgressionArtifact(report);
-writeChatProgressionHtml(report);
-writeSectionSheets(report);
-writeReviewStatusTemplate(report);
-writeReviewTodo(report);
-writeReviewSectionQueue(report);
-writeReviewTodoJson(report);
+if (!requireManualReview) {
+  fs.writeFileSync(reportPath, JSON.stringify(report, null, 2));
+  writeContactSheet(report);
+  writeInventoryCoverage(report);
+  writeDuplicateReviewArtifact(report);
+  writeChatProgressionArtifact(report);
+  writeChatProgressionHtml(report);
+  writeSectionSheets(report);
+  writeReviewStatusTemplate(report);
+  writeReviewTodo(report);
+  writeReviewSectionQueue(report);
+  writeReviewTodoJson(report);
+}
 
 console.log(JSON.stringify({
   expected: report.expected,

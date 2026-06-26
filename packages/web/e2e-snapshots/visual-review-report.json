@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-21T02:05:12.020Z",
+  "generated_at": "2026-06-21T20:21:16.256Z",
   "expected": 286,
   "actual": 286,
   "states": 73,
@@ -2319,7 +2319,7 @@
   ],
   "inventoryItemCoverage": {
     "schema": "affordance-atlas.visual-inventory-coverage.v1",
-    "generated_at": "2026-06-21T02:05:12.022Z",
+    "generated_at": "2026-06-21T20:21:16.256Z",
     "inventory": "../../17-ui-snapshot-review-inventory.md",
     "items": 158,
     "completeItems": 158,

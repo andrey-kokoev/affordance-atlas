@@ -140,7 +140,7 @@ function job(status: "queued" | "running" | "completed" | "failed" | "cancelled"
     scheduled_at: earlier,
     completed_at: status === "queued" || status === "running" ? null : fixedNow,
     result_answer_id: status === "completed" ? "answer_visual_success" : null,
-    error_message: status === "failed" ? "Could not extract a usable schedule from discovered sources: candidate page fetch failed with 530." : null,
+    error_message: status === "failed" ? "Could not extract a usable schedule from discovered sources: candidate page fetch failed with 530. Tried sources: https://www.stedwardtheconfessor.org/mass-times: Candidate page fetch failed for https://www.stedwardtheconfessor.org/mass-times: 530 | https://www.example.org/parish/schedule: Source did not match the requested place well enough." : null,
     ...overrides,
   };
 }
@@ -387,7 +387,7 @@ function chatFixture(kind: "active" | "success" | "failure" | "candidate" | "man
         ...baseMessages,
         { role: "assistant", content: `I couldn't produce a reliable answer for "${query}": Could not extract a usable schedule from discovered sources.`, createdAt: fixedNow },
       ],
-      jobs: [job("failed", "failed")],
+      jobs: [job("failed", "failed", { query_snapshot: querySnapshot(query) })],
     };
   }
 
@@ -557,8 +557,8 @@ const states: SnapshotState[] = [
   { name: "chat-source-link-hover", path: "/", viewports: standardViewports, fixture: chatFixture("success"), heading: "Affordance Atlas", requiredText: "Saint Edward the Confessor Parish Sunday Mass Schedule", expandText: "Sources and evidence", interaction: { kind: "hover", testId: "answer-source-link" } },
   { name: "chat-caveats-expanded", path: "/", viewports: standardViewports, fixture: chatFixture("success"), heading: "Affordance Atlas", requiredText: "Caveats", expandText: "Caveats" },
   { name: "chat-candidate-warning", path: "/", viewports: standardViewports, fixture: chatFixture("candidate"), heading: "Affordance Atlas", requiredText: "Source found; schedule not verified." },
-  { name: "chat-failure", path: "/", viewports: ["mobile", "tablet", "desktop", "wide"], fixture: chatFixture("failure"), heading: "Affordance Atlas", requiredText: "couldn't produce a reliable answer" },
-  { name: "chat-failure-details-expanded", path: "/", viewports: standardViewports, fixture: chatFixture("failure"), heading: "Affordance Atlas", requiredText: "candidate page fetch failed", expandText: "Technical details" },
+  { name: "chat-failure", path: "/", viewports: ["mobile", "tablet", "desktop", "wide"], fixture: chatFixture("failure"), heading: "Affordance Atlas", requiredTexts: ["couldn't produce a reliable answer", "Partial answer shell", "Retry", "Report issue"] },
+  { name: "chat-failure-details-expanded", path: "/", viewports: standardViewports, fixture: chatFixture("failure"), heading: "Affordance Atlas", requiredTexts: ["candidate page fetch failed", "Sources tried"], expandTexts: ["Sources tried", "Technical details"] },
   { name: "chat-unsupported-failure", path: "/", viewports: standardViewports, fixture: chatFixture("unsupported-failure"), heading: "Affordance Atlas", requiredTexts: ["unsupported query shape", "Unsupported query failure"] },
   { name: "chat-many-job-statuses", path: "/", viewports: standardViewports, fixture: chatFixture("many-jobs"), heading: "Affordance Atlas", requiredText: "cancelled" },
   { name: "chat-job-link-hover", path: "/", viewports: standardViewports, fixture: chatFixture("many-jobs"), heading: "Affordance Atlas", requiredText: "completed status", interaction: { kind: "hover", role: "button", name: /completed status/ } },
